@@ -6,7 +6,7 @@ module.exports = {
     siteUrl: `https://ryanharris.dev`,
     social: {
       github: `ryancharris`,
-      linkedin: 'ryancharris',
+      linkedin: "ryancharris",
       twitter: `ryan_c_harris`,
     },
   },
@@ -74,6 +74,14 @@ module.exports = {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /assets/,
+        },
       },
     },
   ],

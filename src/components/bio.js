@@ -11,6 +11,10 @@ import Image from "gatsby-image"
 
 import { rhythm } from "../utils/typography"
 
+import GithubLogo from "../../content/assets/githubLogo.svg"
+import LinkedInLogo from "../../content/assets/linkedinLogo.svg"
+import TwitterLogo from "../../content/assets/twitterLogo.svg"
+
 const Bio = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {
@@ -72,16 +76,41 @@ const Bio = () => {
           {author}
         </h3>
       </div>
-      <p>{description}</p>
-      <p>
-        <a href={`https://www.twitter.com/${social.twitter}`}>
-          {social.twitter}
-        </a>
-        <a href={`https://www.github.com/${social.github}`}>{social.github}</a>
-        <a href={`https://www.linkedin.com/in/${social.linkedin}`}>
-          {social.linkedin}
-        </a>
-      </p>
+      <div>{description}</div>
+      <div>
+        <ul>
+          <li>
+            <a href={`https://www.twitter.com/${social.twitter}`}>
+              <TwitterLogo
+                style={{
+                  width: "20px",
+                }}
+              />
+              {social.twitter}
+            </a>
+          </li>
+          <li>
+            <a href={`https://www.github.com/${social.github}`}>
+              <GithubLogo
+                style={{
+                  width: "20px",
+                }}
+              />
+              {social.github}
+            </a>
+          </li>
+          <li>
+            <a href={`https://www.linkedin.com/in/${social.linkedin}`}>
+              <LinkedInLogo
+                style={{
+                  width: "20px",
+                }}
+              />
+              {social.linkedin}
+            </a>
+          </li>
+        </ul>
+      </div>
     </aside>
   )
 }
