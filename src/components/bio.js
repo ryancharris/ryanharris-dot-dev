@@ -14,7 +14,7 @@ import { rhythm } from "../utils/typography"
 const Bio = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {
-      avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
+      avatar: file(absolutePath: { regex: "/avatar.jpg/" }) {
         childImageSharp {
           fixed(width: 50, height: 50) {
             ...GatsbyImageSharpFixed
@@ -24,7 +24,10 @@ const Bio = () => {
       site {
         siteMetadata {
           author
+          description
           social {
+            github
+            linkedin
             twitter
           }
         }
@@ -32,36 +35,54 @@ const Bio = () => {
     }
   `)
 
-  const { author, social } = data.site.siteMetadata
+  const { author, description, social } = data.site.siteMetadata
+
   return (
-    <div
+    <aside
       style={{
         display: `flex`,
+        flexDirection: "column",
         marginBottom: rhythm(2.5),
       }}
     >
-      <Image
-        fixed={data.avatar.childImageSharp.fixed}
-        alt={author}
+      <div
         style={{
-          marginRight: rhythm(1 / 2),
-          marginBottom: 0,
-          minWidth: 50,
-          borderRadius: `100%`,
+          alignItems: "center",
+          display: "flex",
         }}
-        imgStyle={{
-          borderRadius: `50%`,
-        }}
-      />
+      >
+        <Image
+          fixed={data.avatar.childImageSharp.fixed}
+          alt={author}
+          style={{
+            marginRight: rhythm(1 / 2),
+            marginBottom: 0,
+            minWidth: 50,
+            borderRadius: `100%`,
+          }}
+          imgStyle={{
+            borderRadius: `50%`,
+          }}
+        />
+        <h3
+          style={{
+            margin: 0,
+          }}
+        >
+          {author}
+        </h3>
+      </div>
+      <p>{description}</p>
       <p>
-        Written by <strong>{author}</strong> who lives and works in San
-        Francisco building useful things.
-        {` `}
-        <a href={`https://twitter.com/${social.twitter}`}>
-          You should follow him on Twitter
+        <a href={`https://www.twitter.com/${social.twitter}`}>
+          {social.twitter}
+        </a>
+        <a href={`https://www.github.com/${social.github}`}>{social.github}</a>
+        <a href={`https://www.linkedin.com/in/${social.linkedin}`}>
+          {social.linkedin}
         </a>
       </p>
-    </div>
+    </aside>
   )
 }
 
