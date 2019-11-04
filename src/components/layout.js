@@ -54,6 +54,7 @@ class Layout extends React.Component {
     return (
       <div
         style={{
+          boxSizing: `border-box`,
           marginLeft: `auto`,
           marginRight: `auto`,
           maxWidth: rhythm(24),
