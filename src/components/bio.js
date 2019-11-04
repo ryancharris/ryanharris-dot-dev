@@ -9,8 +9,9 @@ import GithubLogo from "../../content/assets/githubLogo.svg"
 import LinkedInLogo from "../../content/assets/linkedinLogo.svg"
 import TwitterLogo from "../../content/assets/twitterLogo.svg"
 
-const BioWrapper = styled.aside`
-  padding: 8px 0;
+const BioWrapper = styled.div`
+  padding: 8px 0
+  margin-right: 16px
 `
 
 const BioHeader = styled.div`
@@ -24,7 +25,7 @@ const BioHeader = styled.div`
 `
 
 const Description = styled.p`
-  margin: 0 0 8px 0;
+  margin: 0 0 16px 0
 `
 
 const DescriptionLink = styled.a`
