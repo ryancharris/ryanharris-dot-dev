@@ -1,7 +1,6 @@
 ---
 title: "3 Steps to Getting Started with Open Source"
 date: "2019-03-09"
-heroCaption: "NESA by Makers"
 heroLink: "https://unsplash.com/@nesabymakers"
 attachments:
   - "./circle-of-laptops.jpg"

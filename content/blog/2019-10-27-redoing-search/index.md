@@ -1,7 +1,6 @@
 ---
 title: "Redoing search UI with React Context and refs"
 date: "2019-10-27"
-heroCaption: "Joshua Aragon"
 heroLink: "https://unsplash.com/@goshua13"
 attachments:
   - "./joshua-aragon-unsplash.jpg"

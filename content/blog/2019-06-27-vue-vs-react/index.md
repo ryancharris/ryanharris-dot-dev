@@ -1,7 +1,6 @@
 ---
 title: "5 Vue tips for React developers"
 date: "2019-06-27"
-heroCaption: "Fotis Fotopoulos"
 heroLink: "https://unsplash.com/@ffstop"
 attachments:
   - "./two-monitors.jpg"

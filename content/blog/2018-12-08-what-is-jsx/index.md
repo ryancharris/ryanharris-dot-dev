@@ -1,7 +1,6 @@
 ---
 title: "What the heck is JSX?"
 date: "2018-12-08"
-heroCaption: "NESA by Makers"
 heroLink: "https://unsplash.com/@nesabymakers"
 attachments:
   - "./nesa-by-makers.jpg"
