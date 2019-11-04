@@ -1,10 +1,3 @@
-/**
- * Bio component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
@@ -34,6 +27,20 @@ const Description = styled.p`
   margin: 0 0 8px 0;
 `
 
+const DescriptionLink = styled.a`
+  background: skyblue
+  box-shadow: none
+  color: black
+  font-weight: bold
+  padding: 4px 8px
+  text-decoration: none
+
+  &:hover {
+    background: #007acc
+    color: white
+  }
+`
+
 const SocialIconList = styled.ul`
   align-items: center
   display: flex
@@ -48,7 +55,7 @@ const SocialIconListItem = styled.li`
 
 
   > a {
-    color: gray
+    color: black
     box-shadow: none
     text-decoration: none
   }
@@ -92,7 +99,6 @@ const Bio = () => {
       site {
         siteMetadata {
           author
-          description
           social {
             github
             linkedin
@@ -103,7 +109,7 @@ const Bio = () => {
     }
   `)
 
-  const { author, description, social } = data.site.siteMetadata
+  const { author, social } = data.site.siteMetadata
 
   return (
     <BioWrapper>
@@ -120,12 +126,22 @@ const Bio = () => {
           }}
           imgStyle={{
             borderRadius: `50%`,
-            margin: 0
+            margin: 0,
           }}
         />
         <h3>{author}</h3>
       </BioHeader>
-      <Description>{description}</Description>
+      <Description>
+        Software engineer. Organizer of{" "}
+        <DescriptionLink href="https://www.meetup.com/Reactadelphia" target="_blank">
+          Reactadelphia
+        </DescriptionLink>
+        . Writer for{" "}
+        <DescriptionLink href="https://blog.logrocket.com/author/ryanharris/" target="_blank">
+          LogRocket
+        </DescriptionLink>
+        .
+      </Description>
       <SocialIconList>
         <SocialIconListItem>
           <a href={`https://www.twitter.com/${social.twitter}`}>
