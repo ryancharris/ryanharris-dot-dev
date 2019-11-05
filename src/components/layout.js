@@ -14,6 +14,7 @@ class Layout extends React.Component {
     let header
 
     const mainContainer = css`
+      padding: 0 8px
       width: 66.66%;
     `
 

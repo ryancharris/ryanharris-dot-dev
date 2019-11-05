@@ -34,7 +34,7 @@ function Nav() {
 
   const pageLinks = siteRoutes.map(route => {
     return (
-      <li css={routeListItem}>
+      <li key={`route-${route.label.toLowerCase()}`} css={routeListItem}>
         <Link to={route.url}>{route.label}</Link>
       </li>
     )
