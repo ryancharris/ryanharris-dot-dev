@@ -11,7 +11,6 @@ import TwitterLogo from "../../content/assets/twitterLogo.svg"
 
 const BioWrapper = styled.div`
   padding: 8px 0
-  margin-right: 16px
 `
 
 const BioHeader = styled.div`
@@ -25,6 +24,7 @@ const BioHeader = styled.div`
 `
 
 const Description = styled.p`
+  line-height: 2.25
   margin: 0 0 16px 0
 `
 
@@ -67,21 +67,18 @@ const SocialIconListItem = styled.li`
 `
 
 const StyledGithubLogo = styled(GithubLogo).attrs(() => ({
-  ariaLabel: `GitHub logo`,
   role: `img`,
 }))`
   width: 16px;
 `
 
 const StyledLinkedinLogo = styled(LinkedInLogo).attrs(() => ({
-  ariaLabel: `LinkedIn logo`,
   role: `img`,
 }))`
   width: 16px;
 `
 
 const StyledTwitterIcon = styled(TwitterLogo).attrs(() => ({
-  ariaLabel: `Twitter logo`,
   role: `img`,
 }))`
   width: 16px;

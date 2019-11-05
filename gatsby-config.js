@@ -9,6 +9,24 @@ module.exports = {
       linkedin: `ryancharris`,
       twitter: `ryan_c_harris`,
     },
+    siteRoutes: [
+      {
+        url: `/about`,
+        label: `About`,
+      },
+      {
+        url: `/`,
+        label: `Blog`,
+      },
+      {
+        url: `/talks`,
+        label: `Talks`,
+      },
+      {
+        url: `/uses`,
+        label: `Uses`,
+      },
+    ],
   },
   plugins: [
     {
