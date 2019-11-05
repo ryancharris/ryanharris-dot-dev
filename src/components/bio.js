@@ -10,7 +10,7 @@ import LinkedInLogo from "../../content/assets/linkedinLogo.svg"
 import TwitterLogo from "../../content/assets/twitterLogo.svg"
 
 const BioWrapper = styled.div`
-  padding: 8px 0
+  padding: 8px 0;
 `
 
 const BioHeader = styled.div`
@@ -69,19 +69,19 @@ const SocialIconListItem = styled.li`
 const StyledGithubLogo = styled(GithubLogo).attrs(() => ({
   role: `img`,
 }))`
-  width: 16px;
+  width: 20px;
 `
 
 const StyledLinkedinLogo = styled(LinkedInLogo).attrs(() => ({
   role: `img`,
 }))`
-  width: 16px;
+  width: 20px;
 `
 
 const StyledTwitterIcon = styled(TwitterLogo).attrs(() => ({
   role: `img`,
 }))`
-  width: 16px;
+  width: 20px;
 `
 
 const Bio = () => {
@@ -131,24 +131,30 @@ const Bio = () => {
       </BioHeader>
       <Description>
         Software engineer. Organizer of{" "}
-        <DescriptionLink href="https://www.meetup.com/Reactadelphia" target="_blank">
+        <DescriptionLink
+          href="https://www.meetup.com/Reactadelphia"
+          target="_blank"
+        >
           Reactadelphia
         </DescriptionLink>
         . Writer for{" "}
-        <DescriptionLink href="https://blog.logrocket.com/author/ryanharris/" target="_blank">
+        <DescriptionLink
+          href="https://blog.logrocket.com/author/ryanharris/"
+          target="_blank"
+        >
           LogRocket
         </DescriptionLink>
         .
       </Description>
       <SocialIconList>
         <SocialIconListItem>
-          <a href={`https://www.twitter.com/${social.twitter}`}>
-            <StyledTwitterIcon />
+          <a href={`https://www.github.com/${social.github}`}>
+            <StyledGithubLogo />
           </a>
         </SocialIconListItem>
         <SocialIconListItem>
-          <a href={`https://www.github.com/${social.github}`}>
-            <StyledGithubLogo />
+          <a href={`https://www.twitter.com/${social.twitter}`}>
+            <StyledTwitterIcon />
           </a>
         </SocialIconListItem>
         <SocialIconListItem>
