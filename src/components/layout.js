@@ -1,15 +1,21 @@
+/** @jsx jsx */
 import React from "react"
 import { Link } from "gatsby"
+import { css, jsx } from "@emotion/core"
 
 import { rhythm, scale } from "../utils/typography"
 
-import Sidebar from "./Sidebar";
+import Sidebar from "./Sidebar"
 
 class Layout extends React.Component {
   render() {
     const { location, title, children } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
     let header
+
+    const mainContainer = css`
+      width: 66.66%;
+    `
 
     if (location.pathname === rootPath) {
       header = (
@@ -62,10 +68,11 @@ class Layout extends React.Component {
           marginRight: `auto`,
           maxWidth: rhythm(30),
           padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+          width: `100%`
         }}
       >
         <Sidebar />
-        <main>
+        <main css={mainContainer}>
           <header>{header}</header>
           {children}
           <footer>

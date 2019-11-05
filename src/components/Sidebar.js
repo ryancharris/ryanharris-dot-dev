@@ -1,13 +1,15 @@
-import React from "react"
+/** @jsx jsx */
+import { css, jsx } from "@emotion/core"
 
 import Bio from "./bio"
 import Nav from "./Nav"
 
 function Sidebar() {
   return (
-    <aside style={{
-      marginRight: `24px`
-    }}>
+    <aside css={css`
+      margin-right: 24px;
+      width: 33.34%;
+    `}>
       <Bio />
       <Nav />
     </aside>
