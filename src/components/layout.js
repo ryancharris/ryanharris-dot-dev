@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 import { css } from "@emotion/core"
 import { jsx, ThemeProvider } from "theme-ui"
 
-import { rhythm, scale } from "../utils/typography"
+import { rhythm } from "../utils/typography"
 
 import Sidebar from "./Sidebar"
 import theme from "../theme"
@@ -13,55 +13,34 @@ class Layout extends React.Component {
   render() {
     const { location, title, children } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
-    let header
 
     const mainContainer = css`
       padding: 0 8px
       width: 66.66%;
     `
 
-    if (location.pathname === rootPath) {
-      header = (
-        <h1
-          style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
-          <Link
+    const header =
+      location.pathname === rootPath ? (
+        <header>
+          <h1
             style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
+              marginTop: "12px",
             }}
-            to={`/`}
           >
-            {title}
-          </Link>
-        </h1>
-      )
-    } else {
-      header = (
-        <h3
-          style={{
-            fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/`}
-          >
-            {title}
-          </Link>
-        </h3>
-      )
-    }
+            <Link
+              style={{
+                boxShadow: `none`,
+                textDecoration: `none`,
+                color: `inherit`,
+              }}
+              to={`/`}
+            >
+              {title}
+            </Link>
+          </h1>
+        </header>
+      ) : null
+
     return (
       <ThemeProvider theme={theme}>
         <div
@@ -77,7 +56,7 @@ class Layout extends React.Component {
         >
           <Sidebar />
           <main css={mainContainer}>
-            <header>{header}</header>
+            {header}
             {children}
             <footer>
               © {new Date().getFullYear()}, Built with

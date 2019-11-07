@@ -11,7 +11,7 @@ export default {
   styles: {
     h1: {
       marginBottom: "32px",
-      marginTop: 0,
+      marginTop: "16px",
     },
     h2: {
       marginBottom: "12px",
