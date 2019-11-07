@@ -1,11 +1,13 @@
 /** @jsx jsx */
 import React from "react"
 import { Link } from "gatsby"
-import { css, jsx } from "@emotion/core"
+import { css } from "@emotion/core"
+import { jsx, ThemeProvider } from "theme-ui"
 
 import { rhythm, scale } from "../utils/typography"
 
 import Sidebar from "./Sidebar"
+import theme from "../theme"
 
 class Layout extends React.Component {
   render() {
@@ -61,28 +63,30 @@ class Layout extends React.Component {
       )
     }
     return (
-      <div
-        style={{
-          boxSizing: `border-box`,
-          display: `flex`,
-          marginLeft: `auto`,
-          marginRight: `auto`,
-          maxWidth: rhythm(30),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-          width: `100%`
-        }}
-      >
-        <Sidebar />
-        <main css={mainContainer}>
-          <header>{header}</header>
-          {children}
-          <footer>
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </footer>
-        </main>
-      </div>
+      <ThemeProvider theme={theme}>
+        <div
+          style={{
+            boxSizing: `border-box`,
+            display: `flex`,
+            marginLeft: `auto`,
+            marginRight: `auto`,
+            maxWidth: rhythm(30),
+            padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+            width: `100%`,
+          }}
+        >
+          <Sidebar />
+          <main css={mainContainer}>
+            <header>{header}</header>
+            {children}
+            <footer>
+              © {new Date().getFullYear()}, Built with
+              {` `}
+              <a href="https://www.gatsbyjs.org">Gatsby</a>
+            </footer>
+          </main>
+        </div>
+      </ThemeProvider>
     )
   }
 }
