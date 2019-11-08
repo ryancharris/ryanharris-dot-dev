@@ -16,7 +16,7 @@ const routeListItem = css`
   }
 `
 
-function Nav() {
+function Nav(props) {
   const data = useStaticQuery(graphql`
     query NavQuery {
       site {
@@ -35,7 +35,14 @@ function Nav() {
   const pageLinks = siteRoutes.map(route => {
     return (
       <li key={`route-${route.label.toLowerCase()}`} css={routeListItem}>
-        <Link to={route.url}>{route.label}</Link>
+        <Link
+          to={route.url}
+          getProps={props => {
+            return props.isCurrent ? { style: { color: "#007acc" } } : null
+          }}
+        >
+          {route.label}
+        </Link>
       </li>
     )
   })
