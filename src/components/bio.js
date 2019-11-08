@@ -120,7 +120,6 @@ const Bio = () => {
             marginBottom: 0,
             minWidth: 50,
             borderRadius: `100%`,
-            border: `1px solid rebeccapurple`,
           }}
           imgStyle={{
             borderRadius: `50%`,
@@ -130,7 +129,11 @@ const Bio = () => {
         <h3>{author}</h3>
       </BioHeader>
       <Description>
-        Software engineer. Organizer of{" "}
+        Software engineer @{" "}
+        <DescriptionLink href="https://www.getguru.com" target="_blank">
+          Guru
+        </DescriptionLink>
+        . Organizer of{" "}
         <DescriptionLink
           href="https://www.meetup.com/Reactadelphia"
           target="_blank"

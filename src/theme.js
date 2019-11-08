@@ -24,6 +24,7 @@ export default {
     h4: {
       marginBottom: "12px",
       marginTop: 0,
+      textTransform: "inherit",
     },
     h5: {
       marginBottom: "12px",
@@ -39,6 +40,9 @@ export default {
     },
     ul: {
       listStyle: "none",
+    },
+    li: {
+      marginBottom: "24px",
     },
   },
 }

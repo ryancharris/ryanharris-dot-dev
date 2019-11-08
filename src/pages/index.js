@@ -13,7 +13,7 @@ class BlogIndex extends React.Component {
 
     return (
       <Layout location={location} title={siteTitle}>
-        <SEO title="Ryan Harris" />
+        <SEO title="blog" />
         {posts.map(({ node }) => {
           const title = node.frontmatter.title
 
@@ -23,6 +23,7 @@ class BlogIndex extends React.Component {
                 <h3
                   style={{
                     marginBottom: rhythm(1 / 4),
+                    marginTop: 0,
                   }}
                 >
                   <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
