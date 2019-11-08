@@ -16,7 +16,7 @@ class Layout extends React.Component {
 
     const mainContainer = css`
       padding: 0 8px
-      width: 66.66%;
+      flex: 0 0 66.66%;
     `
 
     const header =
@@ -49,7 +49,7 @@ class Layout extends React.Component {
             display: `flex`,
             marginLeft: `auto`,
             marginRight: `auto`,
-            maxWidth: rhythm(30),
+            maxWidth: 960,
             padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
             width: `100%`,
           }}

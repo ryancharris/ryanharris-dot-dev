@@ -9,8 +9,7 @@ function Sidebar() {
     <aside
       css={css`
         margin-right: 24px;
-        min-width: 250px;
-        width: 33.34%;
+        flex: 0 0 33.33%;
       `}
     >
       <Bio />
