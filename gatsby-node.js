@@ -15,7 +15,11 @@ exports.createPages = async ({ graphql, actions }) => {
                 date(formatString: "MMMM DD, YYYY")
                 title
               }
+              body
               fileAbsolutePath
+              fields {
+                slug
+              }
             }
           }
         }
@@ -36,17 +40,17 @@ exports.createPages = async ({ graphql, actions }) => {
       const regex = new RegExp("/pages/")
       return !regex.test(post.node.fileAbsolutePath)
     })
-    .forEach((post, index) => {
-      const previous = index === posts.length - 1 ? null : posts[index + 1].node
-      const next = index === 0 ? null : posts[index - 1].node
+    .forEach(post => {
+      // const previous = index === posts.length - 1 ? null : posts[index + 1].node
+      // const next = index === 0 ? null : posts[index - 1].node
 
       createPage({
         path: post.node.fields.slug,
         component: blogPost,
         context: {
           slug: post.node.fields.slug,
-          previous,
-          next,
+          // previous,
+          // next,
         },
       })
     })
