@@ -37,5 +37,8 @@ export default {
       lineHeight: 2,
       marginBottom: "16px",
     },
+    ul: {
+      listStyle: "none",
+    },
   },
 }
