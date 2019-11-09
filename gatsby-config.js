@@ -115,6 +115,7 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve("./src/templates/page-template.js"),
         },
+        gatsbyRemarkPlugins: [`gatsby-remark-images`],
       },
     },
   ],
