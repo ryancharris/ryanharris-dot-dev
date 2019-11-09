@@ -1,5 +1,8 @@
+/** @jsx jsx */
 import React from "react"
 import { Link, graphql } from "gatsby"
+import { css, jsx } from "@emotion/core"
+import Img from "gatsby-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -16,9 +19,15 @@ class BlogIndex extends React.Component {
         <SEO title="blog" />
         {posts.map(({ node }) => {
           const title = node.frontmatter.title
+          const firstAttachment = node.frontmatter.attachments[0]
 
           return (
-            <article key={node.id}>
+            <article
+              key={node.id}
+              css={css`
+                margin: 0 0 48px 0;
+              `}
+            >
               <header>
                 <h3
                   style={{
@@ -30,9 +39,26 @@ class BlogIndex extends React.Component {
                     {title}
                   </Link>
                 </h3>
-                <small>{node.frontmatter.date}</small>
               </header>
               <section>
+                <Link to={node.fields.slug}>
+                  <Img
+                    css={css`
+                      margin: 12px 0 4px 0;
+                    `}
+                    fluid={firstAttachment.childImageSharp.fluid}
+                    alt={firstAttachment.name}
+                  />
+                </Link>
+                <small
+                  css={css`
+                    display: block;
+                    margin: 0 0 8px 0;
+                    text-align: right;
+                  `}
+                >
+                  {node.frontmatter.date}
+                </small>
                 <p
                   dangerouslySetInnerHTML={{
                     __html: node.frontmatter.description || node.excerpt,
@@ -65,9 +91,28 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
+            attachments {
+              name
+              childImageSharp {
+                fluid(maxHeight: 200, maxWidth: 600) {
+                  base64
+                  tracedSVG
+                  aspectRatio
+                  src
+                  srcSet
+                  srcWebp
+                  srcSetWebp
+                  sizes
+                  originalImg
+                  originalName
+                  presentationWidth
+                  presentationHeight
+                }
+              }
+            }
           }
           body
-          excerpt
+          excerpt(pruneLength: 275)
           id
         }
       }
