@@ -1,4 +1,5 @@
 export default {
+  breakpoints: ["640px"],
   fonts: {
     body: "system-ui, sans-serif",
     heading: '"Avenir Next", sans-serif',
@@ -39,7 +40,7 @@ export default {
       marginBottom: "16px",
     },
     ul: {
-      listStyle: "none",
+      marginLeft: "32px",
     },
     li: {
       marginBottom: "24px",

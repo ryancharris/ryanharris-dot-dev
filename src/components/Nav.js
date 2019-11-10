@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { graphql, Link, useStaticQuery } from "gatsby"
-import { css, jsx } from "@emotion/core"
+import { css } from "@emotion/core"
+import { jsx } from "theme-ui"
 
 const routeListItem = css`
   margin-bottom: 8px;
@@ -34,7 +35,13 @@ function Nav(props) {
 
   const pageLinks = siteRoutes.map(route => {
     return (
-      <li key={`route-${route.label.toLowerCase()}`} css={routeListItem}>
+      <li
+        key={`route-${route.label.toLowerCase()}`}
+        css={routeListItem}
+        sx={{
+          margin: [`0 16px 0 0`, "0"],
+        }}
+      >
         <Link
           to={route.url}
           getProps={props => {
@@ -49,9 +56,12 @@ function Nav(props) {
 
   return (
     <ul
-      style={{
+      sx={{
+        display: `flex`,
         listStyle: `none`,
+        margin: `0`,
         padding: `8px 0`,
+        flexDirection: [`row`, `column`],
       }}
     >
       {pageLinks}

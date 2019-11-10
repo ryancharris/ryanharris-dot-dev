@@ -53,6 +53,9 @@ class Layout extends React.Component {
             padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
             width: `100%`,
           }}
+          sx={{
+            flexDirection: ["column", "row"],
+          }}
         >
           <Sidebar />
           <main css={mainContainer}>
