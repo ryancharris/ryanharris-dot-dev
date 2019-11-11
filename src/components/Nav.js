@@ -39,13 +39,20 @@ function Nav(props) {
         key={`route-${route.label.toLowerCase()}`}
         css={routeListItem}
         sx={{
-          margin: [`0 16px 0 0`, "0"],
+          margin: [`0 16px 0 0`, "0 0 8px 0"],
         }}
       >
         <Link
           to={route.url}
           getProps={props => {
-            return props.isCurrent ? { style: { color: "#007acc" } } : null
+            return props.isCurrent
+              ? {
+                  style: {
+                    color: "#eff1f3",
+                    textShadow: "1px 1px 1px rgba(0, 0, 0, 0.5)",
+                  },
+                }
+              : null
           }}
         >
           {route.label}

@@ -1,4 +1,5 @@
 export default {
+  initialColorMode: `default`,
   breakpoints: ["720px"],
   body: "system-ui, sans-serif",
   fonts: {
@@ -6,15 +7,19 @@ export default {
     monospace: "Menlo, monospace",
   },
   colors: {
-    background: "#009fb7",
-    text: "#272727",
+    background: "#eff1f3",
     primary: "#33e",
+    sidebar: "#009fb7",
+    text: "#272727",
     white: "#eff1f3",
+    modes: {
+      dark: {},
+    },
   },
   styles: {
     h1: {
       marginBottom: "32px",
-      marginTop: "0",
+      marginTop: "12px",
     },
     h2: {
       marginBottom: "12px",

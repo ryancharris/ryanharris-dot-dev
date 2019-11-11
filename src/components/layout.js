@@ -2,12 +2,11 @@
 import React from "react"
 import { Link } from "gatsby"
 import { css } from "@emotion/core"
-import { jsx, ThemeProvider } from "theme-ui"
+import { jsx } from "theme-ui"
 
 import { rhythm } from "../utils/typography"
 
 import Sidebar from "./Sidebar"
-import theme from "../theme"
 
 class Layout extends React.Component {
   render() {
@@ -15,8 +14,8 @@ class Layout extends React.Component {
     const rootPath = `${__PATH_PREFIX__}/`
 
     const mainContainer = css`
-      padding: 0 8px
       flex: 0 0 66.66%;
+      width: 100%;
     `
 
     const header =
@@ -46,34 +45,30 @@ class Layout extends React.Component {
       ) : null
 
     return (
-      <ThemeProvider theme={theme}>
-        <div
-          css={css`
-            box-sizing: border-box;
-            display: flex;
-            marginleft: auto;
-            marginright: auto;
-            padding: 0;
-            width: 100%;
-          `}
+      <div
+        css={css`
+          box-sizing: border-box;
+          display: flex;
+          min-height: 100vh;
+          padding: 0;
+          width: 100%;
+        `}
+        sx={{
+          color: "text",
+          flexDirection: ["column", "row"],
+        }}
+      >
+        <Sidebar />
+        <main
+          css={mainContainer}
           sx={{
-            color: "text",
-            flexDirection: ["column", "row"],
+            padding: `${rhythm(0.5)} ${rhythm(3 / 4)}`,
           }}
         >
-          <Sidebar />
-          <main
-            css={mainContainer}
-            sx={{
-              backgroundColor: theme => `${theme.colors.white}`,
-              padding: `${rhythm(0.5)} ${rhythm(3 / 4)}`,
-            }}
-          >
-            {header}
-            {children}
-          </main>
-        </div>
-      </ThemeProvider>
+          {header}
+          {children}
+        </main>
+      </div>
     )
   }
 }

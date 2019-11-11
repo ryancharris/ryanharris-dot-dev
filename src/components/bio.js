@@ -35,24 +35,18 @@ const descriptionLink = css`
 `
 
 const socialIconListItem = css`
-  display: flex-item
-  line-height: 1
-  margin: 0 12px 0 0
-
-
-  a {
-    color: black
-    box-shadow: none
-    text-decoration: none
-  }
-
-  a:hover {
-    color: #007acc
-  }
+  display: flex-item;
+  line-height: 1;
+  margin: 0 12px 0 0;
 `
 
 const socialIcon = css`
-  width: 24px;
+  width: 18px;
+`
+
+const socialIconLink = css`
+  box-shadow: none;
+  text-decoration: none;
 `
 
 const Bio = () => {
@@ -110,7 +104,12 @@ const Bio = () => {
         `}
       >
         Software engineer @{" "}
-        <a css={descriptionLink} href="https://www.getguru.com" target="_blank">
+        <a
+          css={descriptionLink}
+          href="https://www.getguru.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Guru
         </a>
         . Organizer of{" "}
@@ -118,6 +117,7 @@ const Bio = () => {
           css={descriptionLink}
           href="https://www.meetup.com/Reactadelphia"
           target="_blank"
+          rel="noopener noreferrer"
         >
           Reactadelphia
         </a>
@@ -126,6 +126,7 @@ const Bio = () => {
           css={descriptionLink}
           href="https://blog.logrocket.com/author/ryanharris/"
           target="_blank"
+          rel="noopener noreferrer"
         >
           LogRocket
         </a>
@@ -140,17 +141,44 @@ const Bio = () => {
         `}
       >
         <li css={socialIconListItem}>
-          <a href={`https://www.github.com/${social.github}`}>
+          <a
+            href={`https://www.github.com/${social.github}`}
+            css={socialIconLink}
+            sx={{
+              color: "text",
+              "&:hover": {
+                color: "white",
+              },
+            }}
+          >
             <GithubLogo css={socialIcon} />
           </a>
         </li>
         <li css={socialIconListItem}>
-          <a href={`https://www.twitter.com/${social.twitter}`}>
+          <a
+            href={`https://www.twitter.com/${social.twitter}`}
+            css={socialIconLink}
+            sx={{
+              color: "text",
+              "&:hover": {
+                color: "white",
+              },
+            }}
+          >
             <TwitterLogo css={socialIcon} />
           </a>
         </li>
         <li css={socialIconListItem}>
-          <a href={`https://www.linkedin.com/in/${social.linkedin}`}>
+          <a
+            href={`https://www.linkedin.com/in/${social.linkedin}`}
+            css={socialIconLink}
+            sx={{
+              color: "text",
+              "&:hover": {
+                color: "white",
+              },
+            }}
+          >
             <LinkedInLogo css={socialIcon} />
           </a>
         </li>

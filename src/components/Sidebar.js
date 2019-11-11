@@ -12,8 +12,8 @@ function Sidebar() {
         flex: 0 0 33.33%;
       `}
       sx={{
-        backgroundColor: "background",
-        padding: ["24px 18px 12px", "24px 18px"],
+        backgroundColor: "sidebar",
+        padding: ["24px 24px 12px", "24px 18px"],
       }}
     >
       <Bio />

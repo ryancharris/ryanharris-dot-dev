@@ -118,5 +118,6 @@ module.exports = {
         gatsbyRemarkPlugins: [`gatsby-remark-images`],
       },
     },
+    `gatsby-plugin-theme-ui`,
   ],
 }
