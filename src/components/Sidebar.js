@@ -13,8 +13,7 @@ function Sidebar() {
       `}
       sx={{
         backgroundColor: "background",
-        padding: ["24px 24px 12px", "0"],
-        marginRight: ["0px", "24px"],
+        padding: ["24px 18px 12px", "24px 18px"],
       }}
     >
       <Bio />

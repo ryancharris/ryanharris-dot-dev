@@ -1,14 +1,15 @@
 export default {
-  breakpoints: ["640px"],
+  breakpoints: ["720px"],
   body: "system-ui, sans-serif",
   fonts: {
     heading: '"Avenir Next", sans-serif',
     monospace: "Menlo, monospace",
   },
   colors: {
-    background: "#587291",
+    background: "#009fb7",
     text: "#272727",
     primary: "#33e",
+    white: "#eff1f3",
   },
   styles: {
     h1: {

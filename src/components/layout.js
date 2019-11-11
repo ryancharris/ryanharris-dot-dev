@@ -48,25 +48,25 @@ class Layout extends React.Component {
     return (
       <ThemeProvider theme={theme}>
         <div
-          style={{
-            boxSizing: `border-box`,
-            display: `flex`,
-            marginLeft: `auto`,
-            marginRight: `auto`,
-            maxWidth: 960,
-            width: `100%`,
-          }}
+          css={css`
+            box-sizing: border-box;
+            display: flex;
+            marginleft: auto;
+            marginright: auto;
+            padding: 0;
+            width: 100%;
+          `}
           sx={{
             color: "text",
             flexDirection: ["column", "row"],
-            padding: ["0px", `${rhythm(1.5)} ${rhythm(3 / 4)}`],
           }}
         >
           <Sidebar />
           <main
             css={mainContainer}
             sx={{
-              padding: [`${rhythm(1.5)} ${rhythm(3 / 4)}`, "0px"],
+              backgroundColor: theme => `${theme.colors.white}`,
+              padding: `${rhythm(0.5)} ${rhythm(3 / 4)}`,
             }}
           >
             {header}

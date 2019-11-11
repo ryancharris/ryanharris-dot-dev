@@ -1,7 +1,8 @@
-import React from "react"
+/** @jsx jsx */
+import { jsx } from "theme-ui"
+import { css } from "@emotion/core"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
-import styled from "styled-components"
 
 import { rhythm } from "../utils/typography"
 
@@ -9,79 +10,49 @@ import GithubLogo from "../../content/assets/githubLogo.svg"
 import LinkedInLogo from "../../content/assets/linkedinLogo.svg"
 import TwitterLogo from "../../content/assets/twitterLogo.svg"
 
-const BioWrapper = styled.div`
-  padding: 8px 0;
-`
+const bioHeader = css`
+  align-items: center;
+  display: flex;
+  margin-bottom: 8px;
 
-const BioHeader = styled.div`
-  align-items: center
-  display: flex
-  margin-bottom: 8px
-
-  > h3 {
+  h3 {
     margin: 0;
   }
 `
 
-const Description = styled.p`
-  line-height: 2.25
-  margin: 0 0 16px 0
-`
-
-const DescriptionLink = styled.a`
-  background: skyblue
-  box-shadow: none
-  color: black
-  font-weight: bold
-  padding: 4px 8px
-  text-decoration: none
+const descriptionLink = css`
+  background: skyblue;
+  box-shadow: none;
+  color: black;
+  font-weight: bold;
+  padding: 4px 8px;
+  text-decoration: none;
 
   &:hover {
-    background: #007acc
-    color: white
+    background: #007acc;
+    color: #fff;
   }
 `
 
-const SocialIconList = styled.ul`
-  align-items: center
-  display: flex
-  list-style: none
-  margin: 0
-`
-
-const SocialIconListItem = styled.li`
+const socialIconListItem = css`
   display: flex-item
   line-height: 1
   margin: 0 12px 0 0
 
 
-  > a {
+  a {
     color: black
     box-shadow: none
     text-decoration: none
   }
 
-  > a:hover {
+  a:hover {
     color: #007acc
   }
 `
 
-const StyledGithubLogo = styled(GithubLogo).attrs(() => ({
-  role: `img`,
-}))`
-  width: 20px;
-`
-
-const StyledLinkedinLogo = styled(LinkedInLogo).attrs(() => ({
-  role: `img`,
-}))`
-  width: 20px;
-`
-
-const StyledTwitterIcon = styled(TwitterLogo).attrs(() => ({
-  role: `img`,
-}))`
-  width: 20px;
+const socialIcon = css`
+  width: 24px;
 `
 
 const Bio = () => {
@@ -110,8 +81,12 @@ const Bio = () => {
   const { author, social } = data.site.siteMetadata
 
   return (
-    <BioWrapper>
-      <BioHeader>
+    <div
+      css={css`
+        padding: 8px 0;
+      `}
+    >
+      <div css={bioHeader}>
         <Image
           fixed={data.avatar.childImageSharp.fixed}
           alt="Ryan Harris profile picture"
@@ -127,46 +102,60 @@ const Bio = () => {
           }}
         />
         <h3>{author}</h3>
-      </BioHeader>
-      <Description>
+      </div>
+      <p
+        css={css`
+          line-height: 2.25;
+          margin: 0 0 16px 0;
+        `}
+      >
         Software engineer @{" "}
-        <DescriptionLink href="https://www.getguru.com" target="_blank">
+        <a css={descriptionLink} href="https://www.getguru.com" target="_blank">
           Guru
-        </DescriptionLink>
+        </a>
         . Organizer of{" "}
-        <DescriptionLink
+        <a
+          css={descriptionLink}
           href="https://www.meetup.com/Reactadelphia"
           target="_blank"
         >
           Reactadelphia
-        </DescriptionLink>
+        </a>
         . Writer for{" "}
-        <DescriptionLink
+        <a
+          css={descriptionLink}
           href="https://blog.logrocket.com/author/ryanharris/"
           target="_blank"
         >
           LogRocket
-        </DescriptionLink>
+        </a>
         .
-      </Description>
-      <SocialIconList>
-        <SocialIconListItem>
+      </p>
+      <ul
+        css={css`
+          align-items: center;
+          display: flex;
+          list-style: none;
+          margin: 0;
+        `}
+      >
+        <li css={socialIconListItem}>
           <a href={`https://www.github.com/${social.github}`}>
-            <StyledGithubLogo />
+            <GithubLogo css={socialIcon} />
           </a>
-        </SocialIconListItem>
-        <SocialIconListItem>
+        </li>
+        <li css={socialIconListItem}>
           <a href={`https://www.twitter.com/${social.twitter}`}>
-            <StyledTwitterIcon />
+            <TwitterLogo css={socialIcon} />
           </a>
-        </SocialIconListItem>
-        <SocialIconListItem>
+        </li>
+        <li css={socialIconListItem}>
           <a href={`https://www.linkedin.com/in/${social.linkedin}`}>
-            <StyledLinkedinLogo />
+            <LinkedInLogo css={socialIcon} />
           </a>
-        </SocialIconListItem>
-      </SocialIconList>
-    </BioWrapper>
+        </li>
+      </ul>
+    </div>
   )
 }
 
