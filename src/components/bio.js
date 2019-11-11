@@ -6,9 +6,7 @@ import Image from "gatsby-image"
 
 import { rhythm } from "../utils/typography"
 
-import GithubLogo from "../../content/assets/githubLogo.svg"
-import LinkedInLogo from "../../content/assets/linkedinLogo.svg"
-import TwitterLogo from "../../content/assets/twitterLogo.svg"
+import SocialMenu from "../components/SocialMenu"
 
 const bioHeader = css`
   align-items: center;
@@ -21,31 +19,8 @@ const bioHeader = css`
 `
 
 const descriptionLink = css`
-  background: skyblue;
   box-shadow: none;
-  color: black;
-  font-weight: bold;
-  padding: 4px 8px;
-  text-decoration: none;
-
-  &:hover {
-    background: #007acc;
-    color: #fff;
-  }
-`
-
-const socialIconListItem = css`
-  display: flex-item;
-  line-height: 1;
-  margin: 0 12px 0 0;
-`
-
-const socialIcon = css`
-  width: 18px;
-`
-
-const socialIconLink = css`
-  box-shadow: none;
+  padding: 2px 4px;
   text-decoration: none;
 `
 
@@ -62,17 +37,12 @@ const Bio = () => {
       site {
         siteMetadata {
           author
-          social {
-            github
-            linkedin
-            twitter
-          }
         }
       }
     }
   `)
 
-  const { author, social } = data.site.siteMetadata
+  const { author } = data.site.siteMetadata
 
   return (
     <div
@@ -106,6 +76,11 @@ const Bio = () => {
         Software engineer @{" "}
         <a
           css={descriptionLink}
+          sx={{
+            color: "white",
+            fontWeight: "bold",
+            backgroundColor: "accent",
+          }}
           href="https://www.getguru.com"
           target="_blank"
           rel="noopener noreferrer"
@@ -115,6 +90,11 @@ const Bio = () => {
         . Organizer of{" "}
         <a
           css={descriptionLink}
+          sx={{
+            color: "white",
+            fontWeight: "bold",
+            backgroundColor: "accent",
+          }}
           href="https://www.meetup.com/Reactadelphia"
           target="_blank"
           rel="noopener noreferrer"
@@ -124,6 +104,11 @@ const Bio = () => {
         . Writer for{" "}
         <a
           css={descriptionLink}
+          sx={{
+            color: "white",
+            fontWeight: "bold",
+            backgroundColor: "accent",
+          }}
           href="https://blog.logrocket.com/author/ryanharris/"
           target="_blank"
           rel="noopener noreferrer"
@@ -132,57 +117,7 @@ const Bio = () => {
         </a>
         .
       </p>
-      <ul
-        css={css`
-          align-items: center;
-          display: flex;
-          list-style: none;
-          margin: 0;
-        `}
-      >
-        <li css={socialIconListItem}>
-          <a
-            href={`https://www.github.com/${social.github}`}
-            css={socialIconLink}
-            sx={{
-              color: "text",
-              "&:hover": {
-                color: "white",
-              },
-            }}
-          >
-            <GithubLogo css={socialIcon} />
-          </a>
-        </li>
-        <li css={socialIconListItem}>
-          <a
-            href={`https://www.twitter.com/${social.twitter}`}
-            css={socialIconLink}
-            sx={{
-              color: "text",
-              "&:hover": {
-                color: "white",
-              },
-            }}
-          >
-            <TwitterLogo css={socialIcon} />
-          </a>
-        </li>
-        <li css={socialIconListItem}>
-          <a
-            href={`https://www.linkedin.com/in/${social.linkedin}`}
-            css={socialIconLink}
-            sx={{
-              color: "text",
-              "&:hover": {
-                color: "white",
-              },
-            }}
-          >
-            <LinkedInLogo css={socialIcon} />
-          </a>
-        </li>
-      </ul>
+      <SocialMenu />
     </div>
   )
 }

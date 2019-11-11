@@ -6,9 +6,13 @@ export default {
     heading: '"Avenir Next", sans-serif',
     monospace: "Menlo, monospace",
   },
+  fontSizes: [18],
+  fontWeights: {
+    bold: 700,
+  },
   colors: {
+    accent: "#ff5a5f",
     background: "#eff1f3",
-    primary: "#33e",
     sidebar: "#009fb7",
     text: "#272727",
     white: "#eff1f3",

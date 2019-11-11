@@ -4,8 +4,6 @@ import { css } from "@emotion/core"
 import { jsx } from "theme-ui"
 
 const routeListItem = css`
-  margin-bottom: 8px;
-
   a {
     box-shadow: none;
     color: black;
@@ -69,6 +67,7 @@ function Nav(props) {
         margin: `0`,
         padding: `8px 0`,
         flexDirection: [`row`, `column`],
+        fontSize: 0,
       }}
     >
       {pageLinks}
