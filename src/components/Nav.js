@@ -9,10 +9,6 @@ const routeListItem = css`
     color: black;
     text-decoration: none;
   }
-
-  a:hover {
-    color: #007acc;
-  }
 `
 
 function Nav(props) {
@@ -37,11 +33,17 @@ function Nav(props) {
         key={`route-${route.label.toLowerCase()}`}
         css={routeListItem}
         sx={{
-          margin: [`0 16px 0 0`, "0 0 8px 0"],
+          margin: [`0 20px 0 0`, "0 0 8px 0"],
         }}
       >
         <Link
           to={route.url}
+          sx={{
+            "&:hover": {
+              color: "white",
+              textShadow: "1px 1px 1px rgba(0, 0, 0, 0.5)",
+            },
+          }}
           getProps={props => {
             return props.isCurrent
               ? {
