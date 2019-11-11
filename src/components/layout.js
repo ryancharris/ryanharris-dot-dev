@@ -21,7 +21,11 @@ class Layout extends React.Component {
 
     const header =
       location.pathname === rootPath ? (
-        <header>
+        <header
+          sx={{
+            display: ["none", "block"],
+          }}
+        >
           <h1
             style={{
               marginTop: "12px",
@@ -50,15 +54,21 @@ class Layout extends React.Component {
             marginLeft: `auto`,
             marginRight: `auto`,
             maxWidth: 960,
-            padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
             width: `100%`,
           }}
           sx={{
+            color: "text",
             flexDirection: ["column", "row"],
+            padding: ["0px", `${rhythm(1.5)} ${rhythm(3 / 4)}`],
           }}
         >
           <Sidebar />
-          <main css={mainContainer}>
+          <main
+            css={mainContainer}
+            sx={{
+              padding: [`${rhythm(1.5)} ${rhythm(3 / 4)}`, "0px"],
+            }}
+          >
             {header}
             {children}
           </main>

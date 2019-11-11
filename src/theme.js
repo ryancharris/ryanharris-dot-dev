@@ -1,18 +1,19 @@
 export default {
   breakpoints: ["640px"],
+  body: "system-ui, sans-serif",
   fonts: {
-    body: "system-ui, sans-serif",
     heading: '"Avenir Next", sans-serif',
     monospace: "Menlo, monospace",
   },
   colors: {
-    text: "#000",
+    background: "#587291",
+    text: "#272727",
     primary: "#33e",
   },
   styles: {
     h1: {
       marginBottom: "32px",
-      marginTop: "16px",
+      marginTop: "0",
     },
     h2: {
       marginBottom: "12px",
