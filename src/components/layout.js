@@ -4,8 +4,6 @@ import { Link } from "gatsby"
 import { css } from "@emotion/core"
 import { jsx } from "theme-ui"
 
-import { rhythm } from "../utils/typography"
-
 import Sidebar from "./Sidebar"
 
 class Layout extends React.Component {
@@ -62,7 +60,8 @@ class Layout extends React.Component {
         <main
           css={mainContainer}
           sx={{
-            padding: `${rhythm(0.5)} ${rhythm(3 / 4)}`,
+            padding: ["24px 32px", "12px 24px"],
+            maxWidth: ["100%", "800px"],
           }}
         >
           {header}

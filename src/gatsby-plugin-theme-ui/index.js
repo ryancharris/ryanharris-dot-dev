@@ -1,6 +1,6 @@
 export default {
   initialColorMode: `default`,
-  breakpoints: ["720px"],
+  breakpoints: ["768px"],
   body: "system-ui, sans-serif",
   fonts: {
     heading: '"Avenir Next", sans-serif',

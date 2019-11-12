@@ -4,6 +4,7 @@ import { css } from "@emotion/core"
 
 import Bio from "./bio"
 import Nav from "./Nav"
+import SocialMenu from "./SocialMenu"
 
 function Sidebar() {
   return (
@@ -13,11 +14,20 @@ function Sidebar() {
       `}
       sx={{
         backgroundColor: "sidebar",
-        padding: ["24px 24px 12px", "24px 18px"],
+        maxWidth: ["100%", "320px"],
+        padding: ["18px 24px", "24px 28px"],
       }}
     >
-      <Bio />
-      <Nav />
+      <div
+        sx={{
+          position: ["static", "sticky"],
+          top: ["auto", "24px"],
+        }}
+      >
+        <Bio />
+        <SocialMenu />
+        <Nav />
+      </div>
     </aside>
   )
 }

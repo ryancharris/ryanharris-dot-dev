@@ -6,8 +6,6 @@ import Image from "gatsby-image"
 
 import { rhythm } from "../utils/typography"
 
-import SocialMenu from "../components/SocialMenu"
-
 const bioHeader = css`
   align-items: center;
   display: flex;
@@ -47,7 +45,7 @@ const Bio = () => {
   return (
     <div
       css={css`
-        padding: 8px 0;
+        margin: 8px 0 16px 0;
       `}
     >
       <div css={bioHeader}>
@@ -64,22 +62,37 @@ const Bio = () => {
             borderRadius: `50%`,
             margin: 0,
           }}
+          sx={{
+            border: theme => `2px solid ${theme.colors.white}`,
+          }}
         />
-        <h3>{author}</h3>
+        <h3
+          sx={{
+            color: "white",
+            textShadow: theme => `1px 1px 2px ${theme.colors.text}`,
+          }}
+        >
+          {author}
+        </h3>
       </div>
       <p
         css={css`
           line-height: 2.25;
-          margin: 0 0 16px 0;
+          margin: 0;
         `}
+        sx={{
+          display: ["none", "block"],
+          textShadow: `1px 1px 1px rgba(0, 0, 0, 0.15)`,
+        }}
       >
         Software engineer @{" "}
         <a
           css={descriptionLink}
           sx={{
             color: "white",
-            fontWeight: "bold",
-            backgroundColor: "accent",
+            "&:hover": {
+              backgroundColor: "accent",
+            },
           }}
           href="https://www.getguru.com"
           target="_blank"
@@ -92,8 +105,9 @@ const Bio = () => {
           css={descriptionLink}
           sx={{
             color: "white",
-            fontWeight: "bold",
-            backgroundColor: "accent",
+            "&:hover": {
+              backgroundColor: "accent",
+            },
           }}
           href="https://www.meetup.com/Reactadelphia"
           target="_blank"
@@ -106,8 +120,9 @@ const Bio = () => {
           css={descriptionLink}
           sx={{
             color: "white",
-            fontWeight: "bold",
-            backgroundColor: "accent",
+            "&:hover": {
+              backgroundColor: "accent",
+            },
           }}
           href="https://blog.logrocket.com/author/ryanharris/"
           target="_blank"
@@ -117,7 +132,6 @@ const Bio = () => {
         </a>
         .
       </p>
-      <SocialMenu />
     </div>
   )
 }

@@ -45,7 +45,7 @@ function SocialMenu() {
         align-items: center;
         display: flex;
         list-style: none;
-        margin: 0;
+        margin: 0 0 16px 0;
       `}
     >
       <li css={socialIconListItem}>

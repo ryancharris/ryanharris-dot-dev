@@ -67,7 +67,7 @@ function Nav(props) {
         display: `flex`,
         listStyle: `none`,
         margin: `0`,
-        padding: `8px 0`,
+        padding: `0px`,
         flexDirection: [`row`, `column`],
         fontSize: 0,
       }}
