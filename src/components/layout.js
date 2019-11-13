@@ -60,7 +60,7 @@ class Layout extends React.Component {
         <main
           css={mainContainer}
           sx={{
-            padding: ["24px 32px", "12px 24px"],
+            padding: ["16px 32px", "12px 24px"],
             maxWidth: ["100%", "800px"],
           }}
         >

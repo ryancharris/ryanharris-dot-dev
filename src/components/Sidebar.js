@@ -15,10 +15,13 @@ function Sidebar() {
       sx={{
         backgroundColor: "sidebar",
         maxWidth: ["100%", "320px"],
-        padding: ["18px 24px", "24px 28px"],
+        padding: ["18px 32px", "24px 0 24px 28px"],
       }}
     >
       <div
+        css={css`
+          position: relative;
+        `}
         sx={{
           position: ["static", "sticky"],
           top: ["auto", "24px"],

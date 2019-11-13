@@ -69,7 +69,7 @@ function Nav(props) {
         margin: `0`,
         padding: `0px`,
         flexDirection: [`row`, `column`],
-        fontSize: 0,
+        fontSize: [2, 3],
       }}
     >
       {pageLinks}

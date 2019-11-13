@@ -1,7 +1,8 @@
 /** @jsx jsx */
 import React from "react"
 import { Link, graphql } from "gatsby"
-import { css, jsx } from "@emotion/core"
+import { jsx } from "theme-ui"
+import { css } from "@emotion/core"
 import Img from "gatsby-image"
 
 import Layout from "../components/layout"
@@ -34,8 +35,19 @@ class BlogIndex extends React.Component {
                     marginBottom: rhythm(1 / 4),
                     marginTop: 0,
                   }}
+                  sx={{
+                    lineHeight: "heading",
+                  }}
                 >
-                  <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+                  <Link
+                    css={css`
+                      box-shadow: none;
+                    `}
+                    sx={{
+                      color: "text",
+                    }}
+                    to={node.fields.slug}
+                  >
                     {title}
                   </Link>
                 </h3>
@@ -60,6 +72,9 @@ class BlogIndex extends React.Component {
                   {node.frontmatter.date}
                 </small>
                 <p
+                  sx={{
+                    fontSize: [1, 2],
+                  }}
                   dangerouslySetInnerHTML={{
                     __html: node.frontmatter.description || node.excerpt,
                   }}
@@ -94,7 +109,7 @@ export const pageQuery = graphql`
             attachments {
               name
               childImageSharp {
-                fluid(maxHeight: 200, maxWidth: 600) {
+                fluid(maxHeight: 200, maxWidth: 600, cropFocus: CENTER) {
                   base64
                   tracedSVG
                   aspectRatio

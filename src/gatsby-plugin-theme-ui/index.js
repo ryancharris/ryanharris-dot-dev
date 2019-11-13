@@ -6,9 +6,12 @@ export default {
     heading: '"Avenir Next", sans-serif',
     monospace: "Menlo, monospace",
   },
-  fontSizes: [18],
+  fontSizes: [12, 14, 16, 18],
   fontWeights: {
     bold: 700,
+  },
+  lineHeights: {
+    heading: 1.5,
   },
   colors: {
     accent: "#ff5a5f",
@@ -23,7 +26,7 @@ export default {
   styles: {
     h1: {
       marginBottom: "32px",
-      marginTop: "12px",
+      marginTop: "0",
     },
     h2: {
       marginBottom: "12px",

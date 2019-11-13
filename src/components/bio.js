@@ -22,6 +22,14 @@ const descriptionLink = css`
   text-decoration: none;
 `
 
+const descriptionLinkThemeStyles = {
+  color: "white",
+  "&:hover": {
+    backgroundColor: "accent",
+    boxShadown: "0.5px 1px 2px rgba(0, 0, 0, 0.2)",
+  },
+}
+
 const Bio = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {
@@ -44,9 +52,10 @@ const Bio = () => {
 
   return (
     <div
-      css={css`
-        margin: 8px 0 16px 0;
-      `}
+      sx={{
+        margin: ["0 0 8px 0", "0 0 16px 0"],
+        paddingRight: ["0", "16px"],
+      }}
     >
       <div css={bioHeader}>
         <Image
@@ -88,12 +97,7 @@ const Bio = () => {
         Software engineer @{" "}
         <a
           css={descriptionLink}
-          sx={{
-            color: "white",
-            "&:hover": {
-              backgroundColor: "accent",
-            },
-          }}
+          sx={descriptionLinkThemeStyles}
           href="https://www.getguru.com"
           target="_blank"
           rel="noopener noreferrer"
@@ -103,12 +107,7 @@ const Bio = () => {
         . Organizer of{" "}
         <a
           css={descriptionLink}
-          sx={{
-            color: "white",
-            "&:hover": {
-              backgroundColor: "accent",
-            },
-          }}
+          sx={descriptionLinkThemeStyles}
           href="https://www.meetup.com/Reactadelphia"
           target="_blank"
           rel="noopener noreferrer"
@@ -118,12 +117,7 @@ const Bio = () => {
         . Writer for{" "}
         <a
           css={descriptionLink}
-          sx={{
-            color: "white",
-            "&:hover": {
-              backgroundColor: "accent",
-            },
-          }}
+          sx={descriptionLinkThemeStyles}
           href="https://blog.logrocket.com/author/ryanharris/"
           target="_blank"
           rel="noopener noreferrer"
