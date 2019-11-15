@@ -19,6 +19,7 @@ function SocialMenu() {
   `
 
   const socialIcon = css`
+    height: 18px;
     width: 18px;
   `
 
@@ -58,8 +59,7 @@ function SocialMenu() {
         list-style: none;
       `}
       sx={{
-        margin: ["0", "0 0 16px 0"],
-        position: ["absolute", "inherit"],
+        margin: ["0 0 8px 0", "0 0 16px 0"],
         right: ["0"],
         top: ["10px"],
       }}
@@ -70,7 +70,7 @@ function SocialMenu() {
           css={socialIconLink}
           sx={socialIconLinkThemeStyles}
         >
-          <GithubLogo css={socialIcon} />
+          <TwitterLogo css={socialIcon} />
         </a>
       </li>
       <li css={socialIconListItem}>
@@ -79,7 +79,7 @@ function SocialMenu() {
           css={socialIconLink}
           sx={socialIconLinkThemeStyles}
         >
-          <TwitterLogo css={socialIcon} />
+          <GithubLogo css={socialIcon} />
         </a>
       </li>
       <li css={socialIconListItem}>

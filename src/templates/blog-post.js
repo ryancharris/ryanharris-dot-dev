@@ -1,4 +1,7 @@
+/** @jsx jsx */
 import React from "react"
+import { jsx } from "theme-ui"
+import { css } from "@emotion/core"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
@@ -21,10 +24,10 @@ class BlogPostTemplate extends React.Component {
         <article>
           <header>
             <h1
-              style={{
-                marginTop: rhythm(1),
-                marginBottom: 0,
-              }}
+              css={css`
+                margin-bottom: 0;
+                margin-top: 12px;
+              `}
             >
               {post.frontmatter.title}
             </h1>

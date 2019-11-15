@@ -26,7 +26,7 @@ export default {
   styles: {
     h1: {
       marginBottom: "32px",
-      marginTop: "0",
+      marginTop: "12px",
     },
     h2: {
       marginBottom: "12px",
@@ -58,6 +58,9 @@ export default {
     },
     li: {
       marginBottom: "24px",
+    },
+    pre: {
+      overflow: "auto",
     },
   },
 }
