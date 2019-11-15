@@ -52,8 +52,10 @@ const Bio = () => {
 
   return (
     <div
+      css={css`
+        margin: 0 0 16px 0;
+      `}
       sx={{
-        margin: ["0 0 12px 0", "0 0 16px 0"],
         paddingRight: ["0", "16px"],
       }}
     >
