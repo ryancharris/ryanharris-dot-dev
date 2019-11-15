@@ -30,6 +30,7 @@ function SocialMenu() {
 
   const socialIconLinkThemeStyles = {
     color: "text",
+    textShadow: theme => `1px 1px 1px ${theme.colors.white}`,
     "&:hover": {
       color: "white",
     },
@@ -60,8 +61,9 @@ function SocialMenu() {
       `}
       sx={{
         margin: ["0 0 8px 0", "0 0 16px 0"],
+        position: ["absolute", "inherit"],
         right: ["0"],
-        top: ["10px"],
+        top: ["6px"],
       }}
     >
       <li css={socialIconListItem}>

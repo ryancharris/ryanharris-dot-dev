@@ -58,23 +58,29 @@ const Bio = () => {
       }}
     >
       <div css={bioHeader}>
-        <Image
-          fixed={data.avatar.childImageSharp.fixed}
-          alt="Ryan Harris profile picture"
-          style={{
-            marginRight: rhythm(1 / 2),
-            marginBottom: 0,
-            minWidth: 50,
-            borderRadius: `100%`,
-          }}
-          imgStyle={{
-            borderRadius: `50%`,
-            margin: 0,
-          }}
+        <div
           sx={{
-            border: theme => `2px solid ${theme.colors.white}`,
+            display: ["none", "inherit"],
           }}
-        />
+        >
+          <Image
+            fixed={data.avatar.childImageSharp.fixed}
+            alt="Ryan Harris profile picture"
+            style={{
+              marginRight: rhythm(1 / 2),
+              marginBottom: 0,
+              minWidth: 50,
+              borderRadius: `100%`,
+            }}
+            imgStyle={{
+              borderRadius: `50%`,
+              margin: 0,
+            }}
+            sx={{
+              border: theme => `2px solid ${theme.colors.white}`,
+            }}
+          />
+        </div>
         <h3
           sx={{
             color: "white",

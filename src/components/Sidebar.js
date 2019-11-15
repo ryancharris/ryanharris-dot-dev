@@ -11,6 +11,7 @@ function Sidebar() {
     <aside
       css={css`
         flex: 0 0 33.33%;
+        position: relative;
       `}
       sx={{
         backgroundColor: "sidebar",

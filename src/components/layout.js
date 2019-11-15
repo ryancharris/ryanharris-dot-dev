@@ -13,6 +13,7 @@ class Layout extends React.Component {
 
     const mainContainer = css`
       flex: 0 0 66.66%;
+      overflow: auto;
       width: 100%;
     `
 

@@ -33,7 +33,7 @@ function Nav(props) {
         key={`route-${route.label.toLowerCase()}`}
         css={routeListItem}
         sx={{
-          margin: [`0 20px 0 0`, "0 0 8px 0"],
+          margin: [`0 12px 0 0`, "0 0 8px 0"],
         }}
       >
         <Link
