@@ -4,9 +4,12 @@ import { jsx } from "theme-ui"
 import { css } from "@emotion/core"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import { MDXProvider } from "@mdx-js/react"
 
+import CodeBlock from "../components/CodeBlock"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+
 import { rhythm, scale } from "../utils/typography"
 
 class BlogPostTemplate extends React.Component {
@@ -15,41 +18,46 @@ class BlogPostTemplate extends React.Component {
     const siteTitle = this.props.data.site.siteMetadata.title
     // const { previous, next } = this.props.pageContext
 
+    const components = {
+      pre: props => <CodeBlock {...props} language="javascript" />,
+      code: props => <CodeBlock {...props} language="javascript" />,
+    }
+
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />
-        <article>
-          <header>
-            <h1
-              css={css`
-                margin-bottom: 0;
-                margin-top: 12px;
-              `}
-            >
-              {post.frontmatter.title}
-            </h1>
-            <p
+        <MDXProvider components={components}>
+          <article>
+            <header>
+              <h1
+                css={css`
+                  margin-bottom: 0;
+                  margin-top: 12px;
+                `}
+              >
+                {post.frontmatter.title}
+              </h1>
+              <p
+                style={{
+                  ...scale(-1 / 5),
+                  display: `block`,
+                  marginBottom: rhythm(1),
+                }}
+              >
+                {post.frontmatter.date}
+              </p>
+            </header>
+            <MDXRenderer>{post.body}</MDXRenderer>
+            <hr
               style={{
-                ...scale(-1 / 5),
-                display: `block`,
                 marginBottom: rhythm(1),
               }}
-            >
-              {post.frontmatter.date}
-            </p>
-          </header>
-          <MDXRenderer>{post.body}</MDXRenderer>
-          <hr
-            style={{
-              marginBottom: rhythm(1),
-            }}
-          />
-        </article>
-
-        {/* <nav>
+            />
+          </article>
+          {/* <nav>
           <ul
             style={{
               display: `flex`,
@@ -75,6 +83,7 @@ class BlogPostTemplate extends React.Component {
             </li>
           </ul>
         </nav> */}
+        </MDXProvider>
       </Layout>
     )
   }
