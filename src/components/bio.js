@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { css } from "@emotion/core"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import Image from "gatsby-image"
 
 import { rhythm } from "../utils/typography"
@@ -59,39 +59,41 @@ const Bio = () => {
         paddingRight: ["0", "16px"],
       }}
     >
-      <div css={bioHeader}>
-        <div
-          sx={{
-            display: ["none", "inherit"],
-          }}
-        >
-          <Image
-            fixed={data.avatar.childImageSharp.fixed}
-            alt="Ryan Harris profile picture"
-            style={{
-              marginRight: rhythm(1 / 2),
-              marginBottom: 0,
-              minWidth: 50,
-              borderRadius: `100%`,
-            }}
-            imgStyle={{
-              borderRadius: `50%`,
-              margin: 0,
-            }}
+      <Link to={`/`}>
+        <div css={bioHeader}>
+          <div
             sx={{
-              border: theme => `2px solid ${theme.colors.white}`,
+              display: ["none", "inherit"],
             }}
-          />
+          >
+            <Image
+              fixed={data.avatar.childImageSharp.fixed}
+              alt="Ryan Harris profile picture"
+              style={{
+                marginRight: rhythm(1 / 2),
+                marginBottom: 0,
+                minWidth: 50,
+                borderRadius: `100%`,
+              }}
+              imgStyle={{
+                borderRadius: `50%`,
+                margin: 0,
+              }}
+              sx={{
+                border: theme => `2px solid ${theme.colors.white}`,
+              }}
+            />
+          </div>
+          <h3
+            sx={{
+              color: "white",
+              textShadow: theme => `1px 1px 2px ${theme.colors.text}`,
+            }}
+          >
+            {author}
+          </h3>
         </div>
-        <h3
-          sx={{
-            color: "white",
-            textShadow: theme => `1px 1px 2px ${theme.colors.text}`,
-          }}
-        >
-          {author}
-        </h3>
-      </div>
+      </Link>
       <p
         css={css`
           line-height: 2.25;
