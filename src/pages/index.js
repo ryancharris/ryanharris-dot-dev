@@ -97,7 +97,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMdx(filter: { fileAbsolutePath: { regex: "/blog/" } }) {
+    allMdx(
+      filter: { fileAbsolutePath: { regex: "/blog/" } }
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
       edges {
         node {
           fields {
