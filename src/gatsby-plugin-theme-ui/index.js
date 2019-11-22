@@ -15,7 +15,7 @@ export default {
   },
   colors: {
     accent: "#ff5a5f",
-    background: "#eff1f3",
+    background: "#ffffff",
     sidebar: "#009fb7",
     text: "#272727",
     white: "#eff1f3",
