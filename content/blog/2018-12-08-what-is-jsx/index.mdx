@@ -1,7 +1,12 @@
 ---
 title: "What the heck is JSX?"
 date: "2018-12-08"
+published: true
 heroLink: "https://unsplash.com/@nesabymakers"
+tags:
+  - "jsx"
+  - "react"
+  - "javascript"
 attachments:
   - "./nesa-by-makers.jpg"
   - "./rawpixel.jpg"
@@ -18,7 +23,7 @@ One of these technologies that you're already using is JSX, **a XML like syntax 
 Now, you're probably saying to yourself, "Hey, Ryan, this sounds great, but **get to the code already**", so here's our first example.
 
 ```javascript
-const helloWorld = <h1>Hello, World!</h1>;
+const helloWorld = <h1>Hello, World!</h1>
 ```
 
 And that's it! The snippet above looks familiar, but have you ever stopped to think about its power? JSX makes it so we can **pass around tree structures composed of HTML or React elements as if they were standard JavaScript values**. Crazy!
@@ -33,7 +38,7 @@ The first thing to note when using JSX syntax is that **React must be in scope**
 
 ```javascript
 function Hello() {
-  return <h1>Hello, World!</h1>;
+  return <h1>Hello, World!</h1>
 }
 ```
 
@@ -41,13 +46,15 @@ Behind the scenes, each element rendered by the `Hello` component is transpiled 
 
 ```javascript
 function Hello() {
-  return React.createElement("h1", {}, "Hello, World!");
+  return React.createElement("h1", {}, "Hello, World!")
 }
 ```
 
 ![Rawpixel](./rawpixel.jpg)
 
-<span className="BlogPost__image-caption">Image source <a href="https://unsplash.com/@rawpixel">Rawpixel</a></span>
+<span className="BlogPost__image-caption">
+  Image source <a href="https://unsplash.com/@rawpixel">Rawpixel</a>
+</span>
 
 The same is true for nested elements. The two examples below would ultimately render the same markup.
 
@@ -61,7 +68,7 @@ function Nav() {
       <li>Portfolio</li>
       <li>Contact</li>
     </ul>
-  );
+  )
 }
 // Example 2: Not using JSX syntax
 function Nav() {
@@ -72,7 +79,7 @@ function Nav() {
     React.createElement("li", null, "About"),
     React.createElement("li", null, "Portfolio"),
     React.createElement("li", null, "Contact")
-  );
+  )
 }
 ```
 
@@ -88,10 +95,10 @@ One thing to note here is that React interprets lowercase elements as HTML and P
 
 ```javascript
 // 1. HTML element
-React.createElement("div", null, "Some content text here");
+React.createElement("div", null, "Some content text here")
 
 // 2. React element
-React.createElement(Div, null, "Some content text here");
+React.createElement(Div, null, "Some content text here")
 ```
 
 The first example would generate a `<div>` with the string `"Some content text here"` as its child. However, the second version would throw an error (unless, of course, a custom component `<Div />` was in scope) because `<Div />` is undefined.
@@ -120,7 +127,9 @@ But beware! **You cannot pass if statements or for loops as props** because they
 
 ![Kevin Ku](./kevin-ku.jpg)
 
-<span className="BlogPost__image-caption">Image source <a href="https://unsplash.com/@ikukevk">Kevin Ku</a></span>
+<span className="BlogPost__image-caption">
+  Image source <a href="https://unsplash.com/@ikukevk">Kevin Ku</a>
+</span>
 
 ### Children in JSX
 
@@ -136,7 +145,7 @@ This is the simplest example of JSX children. In the case below, React creates a
 
 ```javascript
 function AlertBanner() {
-  return <h1>Your bill is due in 2 days</h1>;
+  return <h1>Your bill is due in 2 days</h1>
 }
 ```
 
@@ -151,7 +160,7 @@ function Header(props) {
       <Nav />
       <ProfilePic />
     </header>
-  );
+  )
 }
 ```
 
@@ -170,7 +179,7 @@ function BillFooter(props) {
       <h5>Tax: {props.total * props.taxRate}</h5>
       <h5>Total: {props.total + props.total * props.taxRate}</h5>
     </div>
-  );
+  )
 }
 ```
 
@@ -198,7 +207,7 @@ const pages = [
     text: "Contact",
     link: "/contact",
   },
-];
+]
 // Renders a <ul> with programmatically created <li> children
 function Nav() {
   return (
@@ -208,10 +217,10 @@ function Nav() {
           <li key={page.id}>
             <a href={page.link}>{page.text}</a>
           </li>
-        );
+        )
       })}
     </ul>
-  );
+  )
 }
 ```
 
@@ -225,7 +234,9 @@ Now, if we want to add a new page to our site, all we need to do is add a new ob
 
 ![Barn Images](./barn-images.jpg)
 
-<span className="BlogPost__image-caption">Image source <a href="https://unsplash.com/@barnimages">Barn Images</a></span>
+<span className="BlogPost__image-caption">
+  Image source <a href="https://unsplash.com/@barnimages">Barn Images</a>
+</span>
 
 Sure, you can write React applications without JSX, but I'm not really sure why you'd want to.
 
