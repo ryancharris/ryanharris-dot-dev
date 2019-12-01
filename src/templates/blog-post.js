@@ -15,8 +15,23 @@ import { rhythm, scale } from "../utils/typography"
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.mdx
+    const tags = post.frontmatter.tags
     const siteTitle = this.props.data.site.siteMetadata.title
     // const { previous, next } = this.props.pageContext
+
+    const tagsMeta = tags.map(tag => {
+      return {
+        name: "keyword",
+        content: tag,
+      }
+    })
+
+    const authorMeta = {
+      name: "author",
+      content: this.props.data.site.siteMetadata.author,
+    }
+
+    const metaData = tagsMeta.concat(authorMeta)
 
     const components = {
       pre: props => <CodeBlock {...props} language="javascript" />,
@@ -27,7 +42,8 @@ class BlogPostTemplate extends React.Component {
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
           title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
+          description={post.excerpt}
+          meta={metaData}
         />
         <MDXProvider components={components}>
           <article>
@@ -105,6 +121,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        tags
       }
     }
   }
