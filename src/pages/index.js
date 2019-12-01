@@ -23,37 +23,36 @@ class BlogIndex extends React.Component {
           const firstAttachment = node.frontmatter.attachments[0]
 
           return (
-            <article
-              key={node.id}
-              css={css`
-                margin: 0 0 48px 0;
-              `}
-            >
-              <header>
-                <h3
-                  style={{
-                    marginBottom: rhythm(1 / 4),
-                    marginTop: 0,
-                  }}
-                  sx={{
-                    lineHeight: "heading",
-                  }}
-                >
-                  <Link
-                    css={css`
-                      box-shadow: none;
-                    `}
-                    sx={{
-                      color: "text",
+            <Link to={node.fields.slug} sx={{ color: "text" }}>
+              <article
+                key={node.id}
+                css={css`
+                  margin: 0 0 18px 0;
+                  border: none;
+                  border-radius: 4px;
+                  padding: 12px;
+                  transition: box-shadow 0.35s ease-out;
+                `}
+                sx={{
+                  ":hover": {
+                    boxShadow: theme => `1px 1px 2px ${theme.colors.text}`,
+                  },
+                }}
+              >
+                <header>
+                  <h3
+                    style={{
+                      marginBottom: rhythm(1 / 4),
+                      marginTop: 0,
                     }}
-                    to={node.fields.slug}
+                    sx={{
+                      lineHeight: "heading",
+                    }}
                   >
                     {title}
-                  </Link>
-                </h3>
-              </header>
-              <section>
-                <Link to={node.fields.slug}>
+                  </h3>
+                </header>
+                <section>
                   <Img
                     css={css`
                       margin: 12px 0 4px 0;
@@ -61,26 +60,27 @@ class BlogIndex extends React.Component {
                     fluid={firstAttachment.childImageSharp.fluid}
                     alt={firstAttachment.name}
                   />
-                </Link>
-                <small
-                  css={css`
-                    display: block;
-                    margin: 0 0 8px 0;
-                    text-align: right;
-                  `}
-                >
-                  {node.frontmatter.date}
-                </small>
-                <p
-                  sx={{
-                    fontSize: [1, 2],
-                  }}
-                  dangerouslySetInnerHTML={{
-                    __html: node.frontmatter.description || node.excerpt,
-                  }}
-                />
-              </section>
-            </article>
+
+                  <small
+                    css={css`
+                      display: block;
+                      margin: 0 0 8px 0;
+                      text-align: right;
+                    `}
+                  >
+                    {node.frontmatter.date}
+                  </small>
+                  <p
+                    sx={{
+                      fontSize: [1, 2],
+                    }}
+                    dangerouslySetInnerHTML={{
+                      __html: node.frontmatter.description || node.excerpt,
+                    }}
+                  />
+                </section>
+              </article>
+            </Link>
           )
         })}
       </Layout>
