@@ -51,11 +51,11 @@ class BlogPostTemplate extends React.Component {
               </p>
             </header>
             <MDXRenderer>{post.body}</MDXRenderer>
-            <hr
+            {/* <hr
               style={{
                 marginBottom: rhythm(1),
               }}
-            />
+            /> */}
           </article>
           {/* <nav>
           <ul
