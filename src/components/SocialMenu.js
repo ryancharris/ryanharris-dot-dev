@@ -73,6 +73,8 @@ function SocialMenu() {
           href={`https://www.twitter.com/${social.twitter}`}
           css={socialIconLink}
           sx={socialIconLinkThemeStyles}
+          target="_blank"
+          rel="noreferrer noopener"
         >
           <TwitterLogo css={socialIcon} />
         </a>
@@ -82,6 +84,8 @@ function SocialMenu() {
           href={`https://www.github.com/${social.github}`}
           css={socialIconLink}
           sx={socialIconLinkThemeStyles}
+          target="_blank"
+          rel="noreferrer noopener"
         >
           <GithubLogo css={socialIcon} />
         </a>
@@ -91,6 +95,8 @@ function SocialMenu() {
           href={`https://www.linkedin.com/in/${social.linkedin}`}
           css={socialIconLink}
           sx={socialIconLinkThemeStyles}
+          target="_blank"
+          rel="noreferrer noopener"
         >
           <LinkedInLogo css={socialIcon} />
         </a>
@@ -100,6 +106,8 @@ function SocialMenu() {
           href={social.youtube}
           css={socialIconLink}
           sx={socialIconLinkThemeStyles}
+          target="_blank"
+          rel="noreferrer noopener"
         >
           <YoutubeLogo css={socialIcon} />
         </a>
