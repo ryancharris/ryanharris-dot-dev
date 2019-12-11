@@ -6,6 +6,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import GithubLogo from "../../content/assets/githubLogo.svg"
 import LinkedInLogo from "../../content/assets/linkedinLogo.svg"
 import TwitterLogo from "../../content/assets/twitterLogo.svg"
+import YoutubeLogo from "../../content/assets/youtubeLogo.svg"
 
 function SocialMenu() {
   const socialIconListItem = css`
@@ -44,6 +45,7 @@ function SocialMenu() {
             github
             linkedin
             twitter
+            youtube
           }
         }
       }
@@ -91,6 +93,15 @@ function SocialMenu() {
           sx={socialIconLinkThemeStyles}
         >
           <LinkedInLogo css={socialIcon} />
+        </a>
+      </li>
+      <li css={socialIconListItem}>
+        <a
+          href={social.youtube}
+          css={socialIconLink}
+          sx={socialIconLinkThemeStyles}
+        >
+          <YoutubeLogo css={socialIcon} />
         </a>
       </li>
     </ul>
