@@ -68,7 +68,7 @@ function SocialMenu() {
     >
       <li css={socialIconListItem}>
         <a
-          href={`https://www.github.com/${social.github}`}
+          href={`https://www.twitter.com/${social.twitter}`}
           css={socialIconLink}
           sx={socialIconLinkThemeStyles}
         >
@@ -77,7 +77,7 @@ function SocialMenu() {
       </li>
       <li css={socialIconListItem}>
         <a
-          href={`https://www.twitter.com/${social.twitter}`}
+          href={`https://www.github.com/${social.github}`}
           css={socialIconLink}
           sx={socialIconLinkThemeStyles}
         >
