@@ -8,6 +8,7 @@ module.exports = {
       github: `ryancharris`,
       linkedin: `ryancharris`,
       twitter: `ryan_c_harris`,
+      youtube: `https://www.youtube.com/playlist?list=PLCP3kvy3RyhRyre5F-S9-CL2vFea43I-W`,
     },
     siteRoutes: [
       {

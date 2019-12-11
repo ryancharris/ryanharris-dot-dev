@@ -6,6 +6,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import GithubLogo from "../../content/assets/githubLogo.svg"
 import LinkedInLogo from "../../content/assets/linkedinLogo.svg"
 import TwitterLogo from "../../content/assets/twitterLogo.svg"
+import YoutubeLogo from "../../content/assets/youtubeLogo.svg"
 
 function SocialMenu() {
   const socialIconListItem = css`
@@ -44,6 +45,7 @@ function SocialMenu() {
             github
             linkedin
             twitter
+            youtube
           }
         }
       }
@@ -68,18 +70,22 @@ function SocialMenu() {
     >
       <li css={socialIconListItem}>
         <a
-          href={`https://www.github.com/${social.github}`}
+          href={`https://www.twitter.com/${social.twitter}`}
           css={socialIconLink}
           sx={socialIconLinkThemeStyles}
+          target="_blank"
+          rel="noreferrer noopener"
         >
           <TwitterLogo css={socialIcon} />
         </a>
       </li>
       <li css={socialIconListItem}>
         <a
-          href={`https://www.twitter.com/${social.twitter}`}
+          href={`https://www.github.com/${social.github}`}
           css={socialIconLink}
           sx={socialIconLinkThemeStyles}
+          target="_blank"
+          rel="noreferrer noopener"
         >
           <GithubLogo css={socialIcon} />
         </a>
@@ -89,8 +95,21 @@ function SocialMenu() {
           href={`https://www.linkedin.com/in/${social.linkedin}`}
           css={socialIconLink}
           sx={socialIconLinkThemeStyles}
+          target="_blank"
+          rel="noreferrer noopener"
         >
           <LinkedInLogo css={socialIcon} />
+        </a>
+      </li>
+      <li css={socialIconListItem}>
+        <a
+          href={social.youtube}
+          css={socialIconLink}
+          sx={socialIconLinkThemeStyles}
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <YoutubeLogo css={socialIcon} />
         </a>
       </li>
     </ul>
