@@ -1,7 +1,7 @@
 ---
 title: "Managing SSH keys and identities for GitHub"
 date: "2020-01-19"
-published: true
+published: false
 tags:
   - "github"
   - "git"
@@ -63,7 +63,7 @@ In the `<textfield>` below, we need to enter the public key we generated above. 
 
 ### Managing your SSH keys
 
-With out GitHub accounts squared away, we now need to manage the keys on our local system using a CLI tool called `ssh-agent`. As described in [their own documentation](https://www.ssh.com/ssh/agent), `ssh-agent` is a "...helper program that keeps track of user's identity keys and their passphrases", which is exactly what we need!
+With our GitHub accounts squared away, we now need to manage the keys on our local system using a CLI tool called `ssh-agent`. As described in [their own documentation](https://www.ssh.com/ssh/agent), `ssh-agent` is a "...helper program that keeps track of user's identity keys and their passphrases", which is exactly what we need!
 
 Let's add each of the keys we've generated to `ssh-agent` by running the command below for both:
 
