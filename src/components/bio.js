@@ -104,15 +104,15 @@ const Bio = () => {
           textShadow: `1px 1px 1px rgba(0, 0, 0, 0.15)`,
         }}
       >
-        Software engineer @{" "}
+        engineer @{" "}
         <a
           css={descriptionLink}
           sx={descriptionLinkThemeStyles}
-          href="https://www.getguru.com"
+          href="https://www.fauna.com"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Guru
+          Fauna
         </a>
         . Organizer of{" "}
         <a
