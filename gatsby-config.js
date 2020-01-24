@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `ryanharris.dev`,
     author: `Ryan Harris`,
-    description: `dev @guru_hq. co-organizer reactadelphia. write for logrocket. career changer. gritizen.`,
+    description: `dev @ fauna. co-organizer reactadelphia. write for logrocket. career changer. gritizen.`,
     siteUrl: `https://ryanharris.dev`,
     social: {
       github: `ryancharris`,
