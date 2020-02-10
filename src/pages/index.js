@@ -21,6 +21,7 @@ class BlogIndex extends React.Component {
         {posts.map(({ node }) => {
           const title = node.frontmatter.title
           const firstAttachment = node.frontmatter.attachments[0]
+          const tags = node.frontmatter.tags
 
           return (
             <Link to={node.fields.slug} sx={{ color: "text" }}>
@@ -71,6 +72,9 @@ class BlogIndex extends React.Component {
                     {node.frontmatter.date}
                   </small>
                   <p
+                    css={css`
+                      margin-bottom: 20px;
+                    `}
                     sx={{
                       fontSize: [1, 2],
                     }}
@@ -78,6 +82,27 @@ class BlogIndex extends React.Component {
                       __html: node.frontmatter.description || node.excerpt,
                     }}
                   />
+                  <ul css={css`
+                    display: flex;
+                    flex-direction: row;
+                    list-style: none;
+                    margin: 0;
+                  `}>
+                    <li css={css`
+                      margin: 0 8px 0 0;
+                    `}>
+                      Tags:
+                    </li>
+                    {tags.map((tag, index) => {
+                      return (
+                        <li css={css`
+                          margin-bottom: 0;
+                        `}>
+                          <i>#{tag}{index === tags.length - 1 ? '' : <span>,&nbsp;</span>}</i>
+                        </li>
+                      )
+                    })}
+                  </ul>
                 </section>
               </article>
             </Link>
@@ -131,6 +156,7 @@ export const pageQuery = graphql`
                 }
               }
             }
+            tags
           }
           body
           excerpt(pruneLength: 275)
