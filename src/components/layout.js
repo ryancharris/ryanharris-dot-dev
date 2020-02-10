@@ -15,6 +15,13 @@ class Layout extends React.Component {
       flex: 0 0 66.66%;
       overflow: auto;
       width: 100%;
+
+      code {
+        background: #2A2734;
+        color: #ffcc99;
+        font-size: 1rem;
+        padding: 0 8px;
+      }
     `
 
     const header =

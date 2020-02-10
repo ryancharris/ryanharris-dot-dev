@@ -19,6 +19,7 @@ export default {
     sidebar: "#009fb7",
     text: "#272727",
     white: "#eff1f3",
+    codeBlack: "#2a2734",
     modes: {
       dark: {},
     },
