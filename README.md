@@ -22,7 +22,7 @@ cd ryanharris-dot-dev
 yarn install
 ```
 
-4. Start the development server using one of the following commands:
+4. Start the development server:
 
 ```javascript
 yarn run start
