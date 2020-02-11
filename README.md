@@ -13,7 +13,7 @@ git clone https://github.com/ryancharris/ryanharris-dot-dev.git
 2. Navigate to the cloned repo:
 
 ```bash
-cd my-repo/
+cd ryanharris-dot-dev
 ```
 
 3. Install `node_modules`
