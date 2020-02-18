@@ -1,0 +1,39 @@
+---
+title: "⚓️ Hooks: Revisited"
+date: "2020-02-17"
+published: false
+tags:
+  - "react"
+  - "hooks"
+  - "javascript"
+heroLink: "https://unsplash.com/@tata186"
+attachments:
+  - "./01-hooks.jpg"
+---
+
+import { Link } from 'gatsby'
+
+### Background
+Introduced in <a href="https://github.com/facebook/react/blob/master/CHANGELOG.md#1680-february-6-2019" target="_blank">React v16.8</a>, the hooks API represents a change in how developers compose their components. Intended to compartmentalize blocks of functionality into portable pieces, they make reusing code across your application easier. They also represented a shift away from using the `class` keyword for components and the use of lifecycle methods.
+
+To learn more about the background and motivations behind hooks, check out the talk from React Conf 2018 below featuring [Dan Abramov](https://overreacted.io/), [Sophie Alpert](https://sophiebits.com/) and [Ryan Florence](https://reacttraining.com/).
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dpw9EHDh2bM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### Motivation
+When the hooks API became official, my team adopted using them quickly. However, most of the logic for the project I was working on at the time was contained within class components still using lifecycle methods. When I did create new function components, they usually only leveraged `useState` and `useEffect` (at most).
+
+Now, I am working in a newer codebase that was all written after the shift to hooks. Because of that, I want to better understand how the hooks work and when I should use them.
+
+To remedy that, I am writing an article for each hook. Each one is linked below and will cover that hook in depth, including code samples illustrating how it works.
+
+### Table of Contents
+1. <Link to='/hooks-usestate'>useState</Link>
+2. useEffect
+3. useLayoutEffect
+4. useRef
+5. useContext
+6. useMemo
+7. useCallback
+8. useReducer
+9. Custom hooks
