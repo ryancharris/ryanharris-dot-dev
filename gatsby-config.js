@@ -57,7 +57,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
+              wrapperStyle: `margin-bottom: 1.0725rem`
             },
           },
           `gatsby-remark-prismjs`,
@@ -117,7 +117,7 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve("./src/templates/page-template.js"),
         },
-        gatsbyRemarkPlugins: [`gatsby-remark-images`],
+        gatsbyRemarkPlugins: [`gatsby-remark-images`, `gatsby-remark-responsive-iframe`],
       },
     },
     `gatsby-plugin-theme-ui`,
