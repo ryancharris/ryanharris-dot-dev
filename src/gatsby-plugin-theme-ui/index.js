@@ -55,11 +55,9 @@ export default {
       marginBottom: "16px",
     },
     ul: {
-      listStyle: "inside",
       marginLeft: "32px",
     },
     ol: {
-      listStyle: "inside",
       marginLeft: "32px",
     },
     li: {
