@@ -57,7 +57,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`
+              wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
           `gatsby-remark-prismjs`,
@@ -80,7 +80,8 @@ module.exports = {
       options: {
         name: `ryanharris.dev`,
         short_name: `ryanharris.dev`,
-        description: 'dev @ fauna. co-organizer reactadelphia. write for logrocket. career changer. gritizen.',
+        description:
+          "dev @ fauna. co-organizer reactadelphia. write for logrocket. career changer. gritizen.",
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#009fb7`,
@@ -117,7 +118,15 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve("./src/templates/page-template.js"),
         },
-        gatsbyRemarkPlugins: [`gatsby-remark-images`, `gatsby-remark-responsive-iframe`],
+        gatsbyRemarkPlugins: [
+          `gatsby-remark-images`,
+          {
+            resolve: `gatsby-remark-responsive-iframe`,
+            options: {
+              wrapperStyle: `margin-bottom: 1.0725rem`,
+            },
+          },
+        ],
       },
     },
     `gatsby-plugin-theme-ui`,
