@@ -1,7 +1,7 @@
 ---
 title: "Hooks Revisited"
-date: "2020-02-17"
-published: false
+date: "2020-02-16"
+published: true
 tags:
   - "react"
   - "hooks"
@@ -13,7 +13,8 @@ attachments:
 
 import { Link } from 'gatsby'
 
-### Background
+>Hooks are functions that let you “hook into” React state and lifecycle features from function components [[React docs]](https://reactjs.org/docs/hooks-overview.html#but-what-is-a-hook)
+
 Introduced in <a href="https://github.com/facebook/react/blob/master/CHANGELOG.md#1680-february-6-2019" target="_blank">React v16.8</a>, the hooks API represents a change in how developers compose their components. Intended to compartmentalize blocks of functionality, they make reusing code across your application easier. They also mark a shift away from using `class` components and the use of lifecycle methods.
 
 When hooks were first introduced at [React Conf 2018](https://www.youtube.com/playlist?list=PLPxbbTqCLbGE5AihOSExAa4wUM-P42EIJ), the React team explained the motivations behind them. Essentially, they wanted to solve the many problems all at once:
@@ -28,7 +29,7 @@ For a **much** more detailed explanation about the origin of hooks, make sure to
 ### Goals
 When the hooks API moved out of beta, my team started using them almost immediately. However, most of the logic for the feature I was working on at the time was contained within class components still using lifecycle methods. When creating new components, I was using function components and hooks; however, the components usually weren't complex enough to leverage more than `useState` or `useEffect`.
 
-Now, I work in a codebase that was all written after developers started shifting to hooks and I want to better understand how **all** of them work, as well as when to use them.
+Now, I work in a codebase that was all written after developers started shifting to hooks and I want to revisit (hence the title of this series) how they **all** work, as well as when to use them.
 
 To do that, I am writing an article about each standard React hook. Each piece is linked below and will cover the hook in depth, including code samples illustrating how it works.
 
