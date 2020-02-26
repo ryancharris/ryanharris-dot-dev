@@ -11,9 +11,9 @@ attachments:
   - "./01-hooks.jpg"
 ---
 
-import { Link } from 'gatsby'
+import { Link } from "gatsby"
 
->Hooks are functions that let you “hook into” React state and lifecycle features from function components [[React docs]](https://reactjs.org/docs/hooks-overview.html#but-what-is-a-hook)
+> Hooks are functions that let you “hook into” React state and lifecycle features from function components [[React docs]](https://reactjs.org/docs/hooks-overview.html#but-what-is-a-hook)
 
 Introduced in <a href="https://github.com/facebook/react/blob/master/CHANGELOG.md#1680-february-6-2019" target="_blank">React v16.8</a>, the hooks API represents a change in how developers compose their components. Intended to compartmentalize blocks of functionality, they make reusing code across your application easier. They also mark a shift away from using `class` components and the use of lifecycle methods.
 
@@ -25,10 +25,17 @@ When hooks were first introduced at [React Conf 2018](https://www.youtube.com/pl
 
 For a **much** more detailed explanation about the origin of hooks, make sure to check out the team's full talk featuring [Dan Abramov](https://overreacted.io/), [Sophie Alpert](https://sophiebits.com/) and [Ryan Florence](https://reacttraining.com/).
 
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/dpw9EHDh2bM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/dpw9EHDh2bM"
+  frameborder="0"
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+></iframe>
 
 ### Goals
+
 When the hooks API moved out of beta, my team started using them almost immediately. However, most of the logic for the feature I was working on at the time was contained within class components still using lifecycle methods. When creating new components, I was using function components and hooks; however, the components usually weren't complex enough to leverage more than `useState` or `useEffect`.
 
 Currently, I work in a codebase that was all written after developers started shifting to hooks and I want to revisit (hence the title of this series) how they **all** work, as well as when to use them.
@@ -36,8 +43,9 @@ Currently, I work in a codebase that was all written after developers started sh
 To do that, I am writing an article about each standard React hook. Each piece is linked below and will cover the hook in depth, including code samples illustrating how it works.
 
 ### Table of Contents
-1. <Link to='/hooks-usestate'>useState</Link>
-2. useEffect
+
+1. <Link to="/hooks-usestate">useState</Link>
+2. <Link to="/hooks-useeffect">useEffect</Link>
 3. useLayoutEffect
 4. useRef
 5. useContext

@@ -1,0 +1,74 @@
+---
+title: "Hooks Revisited: useEffect"
+date: "2020-02-26"
+published: true
+tags:
+  - "react"
+  - "hooks"
+  - "javascript"
+heroLink: "https://unsplash.com/@sapegin"
+attachments:
+  - "./01-coffee-and-code.jpg"
+---
+
+import { Link } from "gatsby"
+
+In <Link to="/hooks-usestate">my last article</Link>, we learned about one of the most commonly used hooks, `useState`. This time around, we are going to look at another very common hook: `useEffect`:
+
+> By using this Hook, you tell React that your component needs to do something after render. React will remember the function you passed (we'll refer to it as our "effect"), and call it later after performing DOM updates. [[React docs]](https://reactjs.org/docs/hooks-effect.html)
+
+### What are effects?
+
+Effects, a shorthand for "side effects", represent component operations or actions that cannot be done during the render phase. Examples of this can include:
+
+1. Fetching data from an API
+2. Setting up data subscriptions or document event listeners
+3. Manipulating the DOM
+
+Beyond this, effects can be classified into two categories: those that require cleanup and those that don't. For example, if we attach an event listener to the document, we will want to remove it when the component unmounts for performance reasons. On the other hand, something like updating the `document.title` does not require any further work when the component unmounts.
+
+Using the `useEffect` API, cleanup is done in an optional function returned by the hook. Previously, you would've needed to leverage both the `componentDidMount` and `componentDidUnmount` lifecycle methods whereas `useEffect` allows us to take care of this all at once.
+
+### Anatomy of useEffect
+
+Now that we've talked about what `useEffect` does, let's take a look at the syntax:
+
+```javascript
+useEffect(() => {
+  // Do work here
+  window.addEventListener("resize", handleResize)
+
+  return () => {
+    // Optionally clean up effects inside this function
+    window.removeEventListener("resize", handleResize)
+  }
+}, []) // Conditionally execute based on dependencies array
+```
+
+If this syntax looks a bit strange, don't worry. We'll break down each piece before moving on to some examples.
+
+The first argument `useEffect` takes is a function. This function **is your effect** and defines the work you want to do whatever that may be. In this case, we are simply adding an event listener to the window that executes the `handleResize` function on `resize`.
+
+The second argument in this example is what's called the "dependency array" and it is optional. Essentially, this allows you to control the conditional execution of the effect based upon changing prop or state values in the component. We will talk about this more in-depth in the next section.
+
+In the example above, we are also returning a function from the hook which represents the cleanup work we need to do when this component unmounts. Here, we are simply removing the event listener from the window to make sure it doesn't keep listening/firing well after the component has unmounted.
+
+### What is the dependency array?
+
+> By default, effects run after every completed render, but you can choose to fire them only when certain values have changed. [[React docs]](https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects)
+
+As I mentioned above, the dependency array is an optional secondary argument passed to the `useEffect` hook. Its purpose is to allow you to more easily control the execution of your effects based upon the values within you component. In class components, we would most likely need to use the `componentDidUpdate` lifecycle method to achieve the same results.
+
+Using the dependencies array we can do things like:
+
+- Fire the effect everytime the component renders
+- Fire the effect only upon the first render
+- Fire the effect only when certain prop or state values have changed
+
+[INSERT CODE SAMPLES OF THE ABOVE]
+
+One thing to note here is that while you can also use `if` statements within your `useEffect` hooks to conditionally execute logic, **you cannot wrap hooks in `if` statements**. Part of how React keeps effects predictable is to run them all upon render. Skipping effects like this is considered bad practice, so don't do it!
+
+### Code sample
+
+[ADD DESCRIPTION OF SANDBOX CODE]
