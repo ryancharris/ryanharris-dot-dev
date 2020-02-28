@@ -25,7 +25,7 @@ Effects, a shorthand for "side effects", represent component operations or actio
 - Setting up data subscriptions or document event listeners
 - Manipulating the DOM
 
-Beyond this, effects can be classified into two categories:
+We can also further classify them into two categories:
 
 1. Effects that require cleanup
 2. Effects that don't
@@ -40,26 +40,26 @@ Now that we've talked about what `useEffect` does, let's take a look at the synt
 
 ```javascript
 useEffect(() => {
-  // 1. This function body is your effect
+  // 2. This function body is your effect
   window.addEventListener("resize", handleResize)
 
   return () => {
-    // 3. Optionally clean up effects inside this function
+    // 1. Optionally clean up effects inside this function
     window.removeEventListener("resize", handleResize)
   }
-}, []) // 2. Conditionally execute based on dependencies array
+}, []) // 3. Conditionally execute based on dependencies array
 ```
 
-If this syntax looks a bit strange, don't worry. We'll break down each piece before moving on to some practical examples.
+If this syntax looks a bit strange, don't worry. We'll break down each piece before moving on to some practical examples. Let's start with the optional cleanup function since we were just talking about it.
 
-#### 1. The effect
+#### 1. Cleanup
+Inside our effect, we can optionally return a function. This function will perform any cleanup work we want to happen when this component unmounts. In our example, we are removing the event listener from the window to make sure it doesn't keep listening/firing after the component is no longer in the DOM.
+
+#### 2. The effect
 The first argument `useEffect` takes is a function. This function **is your effect** and defines the work you want to do whenever the component mounts. In this case, we are simply adding an event listener to the window that executes the `handleResize` function on `resize`.
 
-#### 2. Dependency array
-The second argument in this example is what's called the "dependency array" and is optional. Essentially, leveraging this array allows you to control the conditional execution of the effect based upon changing prop or state values in the component. We will talk about this more in-depth in the next section.
-
-#### 3. Cleanup
-In the example above, we are also returning an optional function from the hook which represents the cleanup work we need to do when this component unmounts. Here, we are simply removing the event listener from the window to make sure it doesn't keep listening/firing after the component is no longer in the DOM.
+#### 3. Dependency array
+The optional second argument in this example is what's known as the "dependency array". Essentially, leveraging this array allows you to control the conditional execution of the effect based upon changing prop or state values in the component. We will talk about this more in-depth in the next section.
 
 ### What is the dependency array?
 
@@ -102,8 +102,6 @@ useEffect(() => {
 One thing to note here is that while you can also use `if` statements within your `useEffect` hooks to conditionally execute logic, **you cannot wrap hooks in `if` statements**. Part of how React keeps effects predictable is to run them all upon render. Skipping effects like this is considered bad practice, so don't do it!
 
 ### In practice
-
-[ADD DESCRIPTION OF SANDBOX CODE]
 
 In the sandbox below, I've create a small application that leverages `useEffect` in numerous ways in order to serve us information about the latest weather on Mars. Elon Musk, eat your heart out!
 
