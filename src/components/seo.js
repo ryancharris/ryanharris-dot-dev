@@ -19,6 +19,9 @@ function SEO({ description, lang, meta, title, socialImage }) {
             title
             description
             author
+            social {
+              twitter
+            }
           }
         }
       }
