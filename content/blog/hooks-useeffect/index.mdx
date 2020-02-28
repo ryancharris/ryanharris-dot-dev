@@ -105,4 +105,24 @@ One thing to note here is that while you can also use `if` statements within you
 
 [ADD DESCRIPTION OF SANDBOX CODE]
 
-[ADD SANDBOX EMBED]
+In the sandbox below, I've create a small application that leverages `useEffect` in numerous ways in order to serve us information about the latest weather on Mars. Elon Musk, eat your heart out!
+
+For simplicity's sake, I've created two components: `App` and `WeatherDisplay`. The former handles fetching our data from the Nasa API and our application logic, whearas the latter simply displays the data we've passed down to it as props. Because of that, all of our `useEffect` hooks live inside of `App`.
+
+As you will notice, we actually have **three** `useEffect` hooks inside of our component, which may seem a bit strange, but is the whole idea of hooks! This allows us to compartmentalize our component logic and more easily reason about the effects they trigger. In this example, our three hooks are doing the following:
+
+- Hook #1 sets the title of our document **on every render** using the value of our `day` state
+- Hook #2 fetchs our API data **only on the first render** as we don't want to make be making continually API calls as the component updates
+- Hook #3 parses the proper data object based on the value of `day` **any time the value of `day` or `data`** change
+
+Each of these hooks is using a diffrent variation of the optional dependency array we discussed earlier. Look at the code a bit more closely -- do you know why each array looks the way it does?
+
+<iframe
+     src="https://codesandbox.io/embed/hooksuseeffect-gkejk?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="hooks/useEffect"
+     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+   ></iframe>
+
+Don't worry if you're still a bit confused because learning to "think in hooks" can take some time. The best way to get more comfortable with them is to use them, so feel free to fork the sandbox above and play around with the code. As a good place to start, try removing the dependency array from Hook #2 completely. What happens?
