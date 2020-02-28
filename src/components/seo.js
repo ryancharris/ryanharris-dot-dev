@@ -28,8 +28,6 @@ function SEO({ description, lang, meta, title, socialImage }) {
     `
   )
 
-  console.log(socialImage)
-
   const metaDescription = description || site.siteMetadata.description
 
   return (
