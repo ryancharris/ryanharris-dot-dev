@@ -124,3 +124,11 @@ Each of these hooks is using a diffrent variation of the optional dependency arr
    ></iframe>
 
 Don't worry if you're still a bit confused because learning to "think in hooks" can take some time. The best way to get more comfortable with them is to use them, so feel free to fork the sandbox above and play around with the code. As a good place to start, try removing the dependency array from Hook #2 completely. What happens?
+
+With an empty dependency array, the effect makes a request for our API data on mount and this **only happens once**. Previously, we would `componentDidUpdate` and compare the components `prevProps` to it's current `props` and use that to determine if there was work to be done. Now, with `useEffect`, we no longer have to do this and can just define what prop values we care about and run the effect only when one of them changes. We'll talk more about this more later in the series.
+
+If we remove the dependency array altogether, the effect runs on **every** render, which means we're making API calls every time the component re-renders. Since something simple like changing state (ex. clicking on the `Today` or `Yesterday` buttons) causes a re-render, we'd essentially fetch data everytime the user clicked one of the buttons. This is not good for application performance, nor your API bill.
+
+Ultimately, hooks are meant to compartmentalize application logic to make them easier to re-use and reason about. `useEffect` is no different. Like all hooks, it runs on every render by default, but unlike other hooks, provides a way to conditionally control our logic execution (i.e. the dependency array). While `useEffect` is often described as `componentDidMount`, `componentDidUpdate` and `componentWillUnmount` altogether, I would try to avoid thinking about hooks in terms of their equivalent lifecycle methods. Instead, identify the effects that need to take place in your component, determine how often your would like the effect to run and cleanup your work (if needed) when the component unmounts.
+
+Try adding `useEffect` to your next component. Maybe you'll get hooked.
