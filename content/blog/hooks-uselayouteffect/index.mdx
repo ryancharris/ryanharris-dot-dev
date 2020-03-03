@@ -10,6 +10,7 @@ heroLink: "https://unsplash.com/@nesabymakers"
 attachments:
   - "./01-pair-programming.jpg"
 ---
+
 import { Link } from "gatsby"
 
 Last time, we learned about the <Link to="/hooks-useeffect">useEffect hook</Link>, how it works and when to use it. If you have not read that article yet, I **strongly** suggest you go back and do so before proceeding any further. Much of what we will discuss below will be about the similiarities and difference between `useEffect` and `useLayoutEffect`, which may not make sense without having a grip on `useEffect`.
@@ -59,7 +60,7 @@ If you're still a bit confused, don't worry! It can be hard to wrap your head ar
 
 ### In practice
 
-In the example below, we have a simple application that renders a few HTML elements, namely two `div`s and a `main`, which we can see in `App.js`:
+In both of the examples below, we have a simple application that renders a few HTML elements, namely two `div`s and a `main`, which we can see in `App.js`:
 
 ```javascript
 return (
@@ -68,39 +69,47 @@ return (
       <div className="App__square" />
     </main>
   </div>
-);
+)
 ```
 
-Above `<App />`'s return, you will see two effects, one defined with `useEffect` and the other with `useLayoutEffect`.
+Above each `<App />`'s return, you will see an effect defined with either `useEffect` or `useLayoutEffect`. The snippet below shows them side-by-side:
 
 ```javascript
 useLayoutEffect(() => {
-  const greenSquare = document.querySelector(".App__square");
-  greenSquare.style.transform = "translate(-50%, -50%)";
-  greenSquare.style.left = "50%";
-  greenSquare.style.top = "50%";
-});
+  const greenSquare = document.querySelector(".App__square")
+  greenSquare.style.transform = "translate(-50%, -50%)"
+  greenSquare.style.left = "50%"
+  greenSquare.style.top = "50%"
+})
 
 useEffect(() => {
-  const greenSquare = document.querySelector(".App__square");
-  greenSquare.style.transform = "translate(-50%, -50%)";
-  greenSquare.style.left = "50%";
-  greenSquare.style.top = "50%";
-});
+  const greenSquare = document.querySelector(".App__square")
+  greenSquare.style.transform = "translate(-50%, -50%)"
+  greenSquare.style.left = "50%"
+  greenSquare.style.top = "50%"
+})
 ```
 
 As I am sure you've noticed by now, the effect function passed to both hooks are **exactly the same**. Again, the big difference here is the timing of when these effects run.
 
+To start, let's look at the sandbox using `useEffect`. You should see the purple circle appear in the top left-hand corner of the screen before it is quickly repositioned and moved to the center of the screen. This happens because **useEffect runs after render**, so the effect isn't executed till after the DOM paints, which is what causes the unwanted flash of content.
+
 <iframe
-     src="https://codesandbox.io/embed/hooksuselayouteffect-vgkbd?fontsize=14&hidenavigation=1&theme=dark"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="hooks/useLayoutEffect"
-     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
-     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-   ></iframe>
+  src="https://codesandbox.io/embed/hooksuselayouteffect-useeffect-vgkbd?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+  title="hooks/useLayoutEffect (useEffect)"
+  allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+></iframe>
 
-To start, comment out the `useLayoutEffect` hook and refresh the sandbox. You should see the purple circle appear in the top left-hand corner of the screen before it is quickly repositioned and moved to the center of the screen. This happens because **useEffect runs after render**, so the effect isn't executed till after the DOM paints, which is what causes the unwanted flash of content.
+Now, let's look at the `useLayoutEffect` hook. If you refresh the page, you should always see the purple circle in the center of the screen and no longer see the circle get quickly repositioned. This is because **useLayoutEffect runs before the DOM pains**, so the circle has already been positioned correctly before we see the first visuals on our page. In this example, it would be more appropriate to use `useLayoutEffect` because we would not want our users to see what looks like a visual bug.
 
-Now, let's reverse things. Uncomment the `useLayoutEffect` hook and instead comment out our `useEffect`. Now, if you refresh the page, you should always see the purple circle in the center of the screen and no longer see the circle get quickly repositioned. This is because **useLayoutEffect runs before the DOM pains**, so the circle has already been positioned correctly before we see the first visuals on our page. In this example, it would be more appropriate to use `useLayoutEffect` because we would not want our users to see what looks like a visual bug.
+<iframe
+  src="https://codesandbox.io/embed/hooksuselayouteffect-uselayouteffect-jxvzg?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+  title="hooks/useLayoutEffect (useLayoutEffect)"
+  allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+></iframe>
 
-In the snippets above, we are using vanilla JavaScript to access and modify the document, which is considered an anti-pattern in React. A more appropriate way to do this would be to use a `ref` instead of accessing the DOM directly. Luckily, we'll be covering that in the next article on `useRef`!
+In the examples above, we are using vanilla JavaScript to access and modify the document, which is considered an anti-pattern in React. A more appropriate way to do this would be to use a `ref` instead of accessing the DOM directly. Luckily, we'll be covering that in the next article about `useRef`!
