@@ -13,23 +13,35 @@ attachments:
 
 import { Link } from "gatsby"
 
-Last time, we learned about the <Link to="/hooks-useeffect">useEffect hook</Link>, how it works and when to use it. If you have not read that article yet, I **strongly** suggest you go back and do so before proceeding any further. Much of what we will discuss below will be about the similiarities and difference between `useEffect` and `useLayoutEffect`, which may not make sense without having a grip on `useEffect`.
-
-> The signature is identical to useEffect, but it fires synchronously after all DOM mutations. [[React docs]](https://reactjs.org/docs/hooks-reference.html#uselayouteffect)
+Last time, we learned about the <Link to="/hooks-useeffect">useEffect hook</Link>, how it works and when to use it. If you have not read that article yet, I **strongly suggest you go back and do so before proceeding any further**. Much of what we will discuss below will be about the similarities and differences between `useEffect` and `useLayoutEffect`, which may not make much sense without having a good grip on the former.
 
 ### useLayoutEffect and useEffect
+
+> The signature is identical to useEffect, but it fires synchronously after all DOM mutations. [[React docs]](https://reactjs.org/docs/hooks-reference.html#uselayouteffect)
 
 While the underlying implementation and execution of these hooks does differ, you may notice that the code snippets below look quite similar. That's because these two hooks have the same function signature!
 
 ```javascript
 useEffect(() => {
-  // Define an example hook here
+  function getData() {
+    // Define effect logic here
+  }
+
+  const apiData = getData()
+  setData(apiData)
 }, [])
 ```
 
 ```javascript
 useLayoutEffect(() => {
-  // Define an example hook here
+  function handleResize() {
+    // Define effect logic here
+  }
+
+  document.addEventListener("resize", handleResize)
+  return () => {
+    document.removeEventListener("resize", handleResize)
+  }
 }, [])
 ```
 
@@ -43,7 +55,7 @@ Since we're already pretty familiar with how these hooks are composed, let's loo
 
 ### Difference between useLayoutEffect and useEffect
 
-As we saw above, these two hooks are quite similar in terms of their syntax and function signatures, however, the difference between them is quite subtle and has everything to do with timing. Let's dive a bit deeper to get a better understanding of how they work.
+As we saw above, these two hooks are quite similar in terms of their syntax and function signatures, however, the difference between them is quite subtle and has everything to do with timing.
 
 The `useEffect` hook fires **after render** so as not to block the DOM from painting and effecting your application's performance. Due to this behavior, the React documentation advises that when writing new effects you start with `useEffect` and only reach for `useLayoutEffect` when absolutely necessary.
 
@@ -102,7 +114,7 @@ To start, let's look at the sandbox using `useEffect`. You should see the purple
   sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
 ></iframe>
 
-Now, let's look at the `useLayoutEffect` hook. If you refresh the page, you should always see the purple circle in the center of the screen and no longer see the circle get quickly repositioned. This is because **useLayoutEffect runs before the DOM pains**, so the circle has already been positioned correctly before we see the first visuals on our page. In this example, it would be more appropriate to use `useLayoutEffect` because we would not want our users to see what looks like a visual bug.
+Now, let's look at the `useLayoutEffect` hook. If you refresh the page, you should always see the purple circle in the center of the screen and no longer see the circle get quickly repositioned. This is because **useLayoutEffect runs before the DOM paints**, so the circle has already been positioned correctly before we see the first visual representation of our page. In this example, it would be more appropriate to use `useLayoutEffect` because we would not want our users to see what looks like a visual bug.
 
 <iframe
   src="https://codesandbox.io/embed/hooksuselayouteffect-uselayouteffect-jxvzg?fontsize=14&hidenavigation=1&theme=dark"
@@ -111,5 +123,7 @@ Now, let's look at the `useLayoutEffect` hook. If you refresh the page, you shou
   allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
   sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
 ></iframe>
+
+### Next steps
 
 In the examples above, we are using vanilla JavaScript to access and modify the document, which is considered an anti-pattern in React. A more appropriate way to do this would be to use a `ref` instead of accessing the DOM directly. Luckily, we'll be covering that in the next article about `useRef`!
