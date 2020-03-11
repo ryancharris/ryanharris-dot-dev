@@ -3,7 +3,6 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import { jsx } from "theme-ui"
 import { css } from "@emotion/core"
-import Img from "gatsby-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -20,7 +19,6 @@ class BlogIndex extends React.Component {
         <SEO title="blog" />
         {posts.map(({ node }) => {
           const title = node.frontmatter.title
-          const firstAttachment = node.frontmatter.attachments[0]
           const tags = node.frontmatter.tags
 
           return (
@@ -54,14 +52,6 @@ class BlogIndex extends React.Component {
                   </h3>
                 </header>
                 <section>
-                  <Img
-                    css={css`
-                      margin: 12px 0 4px 0;
-                    `}
-                    fluid={firstAttachment.childImageSharp.fluid}
-                    alt={firstAttachment.name}
-                  />
-
                   <small
                     css={css`
                       display: block;
@@ -82,23 +72,36 @@ class BlogIndex extends React.Component {
                       __html: node.frontmatter.description || node.excerpt,
                     }}
                   />
-                  <ul css={css`
-                    display: flex;
-                    flex-direction: row;
-                    list-style: none;
-                    margin: 0;
-                  `}>
-                    <li css={css`
-                      margin: 0 8px 0 0;
-                    `}>
+                  <ul
+                    css={css`
+                      display: flex;
+                      flex-direction: row;
+                      list-style: none;
+                      margin: 0;
+                    `}
+                  >
+                    <li
+                      css={css`
+                        margin: 0 8px 0 0;
+                      `}
+                    >
                       Tags:
                     </li>
                     {tags.map((tag, index) => {
                       return (
-                        <li css={css`
-                          margin-bottom: 0;
-                        `}>
-                          <i>#{tag}{index === tags.length - 1 ? '' : <span>,&nbsp;</span>}</i>
+                        <li
+                          css={css`
+                            margin-bottom: 0;
+                          `}
+                        >
+                          <i>
+                            #{tag}
+                            {index === tags.length - 1 ? (
+                              ""
+                            ) : (
+                              <span>,&nbsp;</span>
+                            )}
+                          </i>
                         </li>
                       )
                     })}

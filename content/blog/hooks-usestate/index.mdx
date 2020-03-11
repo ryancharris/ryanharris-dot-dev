@@ -8,7 +8,6 @@ tags:
   - "javascript"
 heroLink: "https://unsplash.com/@socialcut"
 attachments:
-  - "./01-women-coding.jpg"
 ---
 
 One of the first hooks you'll probably encounter is `useState`, which replaces the `setState()` function used to update state in class components. The big difference here, however, is that `useState` allows function components to have multiple state values as opposed to one monolithic object. The snippet below illustrates this idea (don't worry about the syntax as we'll be covering that below):
@@ -22,7 +21,7 @@ class Cart extends React.Component {
     this.state = {
       apples: 10,
       oranges: 25,
-      peaches: 40
+      peaches: 40,
     }
   }
 }
@@ -36,6 +35,7 @@ function Cart(props) {
 ```
 
 Not too crazy, right? In this example, all of our values are numbers but the value stored in `useState` can be any JavaScript type, including:
+
 - Strings
 - Booleans
 - Objects
@@ -68,11 +68,11 @@ The first instance is a function component using three `useState` hooks to manag
 As you can see, both components do the same things: keep track of how many of each item a user wants and increment/decrement that value based on button presses.
 
 <iframe
-     src="https://codesandbox.io/embed/hooksusestate-o64ve?autoresize=1&fontsize=14&hidenavigation=1&theme=dark"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="hooks/useState"
-     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
-     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-   ></iframe>
+  src="https://codesandbox.io/embed/hooksusestate-o64ve?autoresize=1&fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+  title="hooks/useState"
+  allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+></iframe>
 
 Take a look at the code and see which one you prefer. While hooks may still be new to you, can you see any benefits from using them?
