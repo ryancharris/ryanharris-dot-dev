@@ -140,25 +140,6 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
-            attachments {
-              name
-              childImageSharp {
-                fluid(maxHeight: 200, maxWidth: 600, cropFocus: CENTER) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
-                  sizes
-                  originalImg
-                  originalName
-                  presentationWidth
-                  presentationHeight
-                }
-              }
-            }
             tags
           }
           body
