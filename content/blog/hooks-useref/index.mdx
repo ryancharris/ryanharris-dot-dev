@@ -87,15 +87,32 @@ As I mentioned in the intro, `refs` are primarily used for accessing the DOM. Be
 
 ```javascript
 class MyComponent extends React.Component {
-  // TODO: Define this example
+  constructor() {
+    super();
+    this.inputRef = React.createRef();
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <input ref={this.inputRef} type="text" />
+      </div>
+    );
+  }
 }
 ```
 
 To do the same exact thing using hooks, we would leverage `useRef` like you see in the snippet below:
 
 ```javascript
-function MyComponent {
-  // TODO: Define this example
+function MyComponent() {
+  const inputRef = useRef(null);
+
+  return (
+    <div className="App">
+      <input ref={inputRef} type="text" />
+    </div>
+  );
 }
 ```
 
