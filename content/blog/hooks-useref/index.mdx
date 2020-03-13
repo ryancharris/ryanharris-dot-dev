@@ -39,7 +39,7 @@ While the React docs cite a few examples where using `refs` would be appropriate
 
 For a practical example of how to use `refs` in your React app, [checkout my previous article about rebuilding a search UI](https://ryanharris.dev/2019-10-27-redoing-search/) using `refs` and React Context. We'll also cover the ins and outs of Context in the next article in this series.
 
-In the next section, we'll look more closesly at the `useRef` hook and its syntax.
+In the next section, we'll look more closely at the `useRef` hook and its syntax.
 
 ### Anatomy of useRef
 
@@ -118,7 +118,7 @@ function MyComponent() {
 
 Hopefully, those examples clearly illustrated how to define a ref. Just remember: `refs` are a "reference" to a DOM element -- it's right in the name!
 
-`refs` also have another less-known use case. Since a `ref`'s value can be any JavaScript primitve, you can also use `refs` as basic data stores. Usually, you would use `useState` for something like that, however, there are time where you want to avoid unecessary re-renders but cache a value. Updating values in state cause a re-render each time, whereas updating `refs` **do not cause the component to update**. This is a subtle, but important distinction.
+`refs` also have another less-known use case. Since a `ref`'s value can be any JavaScript value, you can also use `refs` as basic data stores. Usually, you would use `useState` for something like that, however, there are time where you want to avoid uneccessary re-renders but cache a value. Updating values in state cause a re-render each time, whereas updating `refs` **do not cause the component to update**. This is a subtle, but important distinction.
 
 ### In practice
 
@@ -209,8 +209,8 @@ In this example, I want to illustrate the subtle difference between using `useSt
   sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
 ></iframe>
 
-Here, we have two sections that have buttons, which allow us to increment/decrement our `refValue` or `stateValue`, respectively. When the page initally loads, each section is assigned a random hex value as its `background-color`. From then on, you will see the colors change whnever our `App` component re-renders.
+Here, we have two sections that have buttons, which allow us to increment/decrement our `refValue` or `stateValue`, respectively. When the page initally loads, each section is assigned a random hex value as its `background-color`. From then on, you will see the colors change whenever our `App` component re-renders.
 
-Since updating state values cause a re-render, you should see the `stateValue` number update everytime you click on of the buttons; however, if you click on the buttons for our `refValue`, nothing happens. This is because **updating `ref` values does not cause a component to re-render**. To demonstrate that the `refValue` is in fact changing, I have added `console.log` statements to the `onClick` handlers for both buttons.
+Since updating state values cause a re-render, you should see the `stateValue` number update every time you click on of the buttons; however, if you click on the buttons for our `refValue`, nothing happens. This is because **updating `ref` values does not cause a component to re-render**. To demonstrate that the `refValue` is in fact changing, I have added `console.log` statements to the `onClick` handlers for both buttons.
 
-While incrementing or decrementing the `refValue` will not cause our UI to update with the proper numeric value, when you change the `stateValue` our `refValue` will update and its section will have a new background color. This is because our `ref` section is re-rendered when the state value is updated since the parent component `App` has to go through reconciliation to bring the virtual DOM and browser DOM into sync with one another. This can be a great strategy for avoiding unecessary renders in your application and improving its performance!
+While incrementing or decrementing the `refValue` will not cause our UI to update with the proper numeric value, when you change the `stateValue` our `refValue` will update and its section will have a new background color. This is because our `ref` section is re-rendered when the state value is updated since the parent component `App` has to go through reconciliation to bring the virtual DOM and browser DOM into sync with one another. This can be a great strategy for avoiding uneccessary renders in your application and improving its performance!
