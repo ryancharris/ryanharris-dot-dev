@@ -6,9 +6,7 @@ tags:
   - "react"
   - "hooks"
   - "javascript"
-heroLink: "https://unsplash.com/@oskaryil"
 attachments:
-  - "./01-laptop.jpg"
 ---
 
 import { Link } from "gatsby"
@@ -53,12 +51,15 @@ useEffect(() => {
 If this syntax looks a bit strange, don't worry. We'll break down each piece before moving on to some practical examples. Let's start with the optional cleanup function since we were just talking about it.
 
 #### 1. Cleanup
+
 Inside our effect, we can optionally return a function. This function will perform any cleanup work we want to happen when this component unmounts. In our example, we are removing the event listener from the window to make sure it doesn't keep listening/firing after the component is no longer in the DOM.
 
 #### 2. The effect
+
 The first argument `useEffect` takes is a function. This function **is your effect** and defines the work you want to do whenever the component mounts. In this case, we are simply adding an event listener to the window that executes the `handleResize` function on `resize`.
 
 #### 3. Dependency array
+
 The optional second argument in this example is what's known as the "dependency array". Essentially, leveraging this array allows you to control the conditional execution of the effect based upon changing prop or state values in the component. We will talk about this more in-depth in the next section.
 
 ### What is the dependency array?
@@ -78,23 +79,28 @@ componentDidUpdate(prevProps, prevState) {
 Using the dependencies array we can do things like:
 
 - Fire the effect everytime the component renders
+
 ```javascript
 useEffect(() => {
-  const cardTypes = fetchCardTypes();
+  const cardTypes = fetchCardTypes()
   setCardTypes(cardTypes)
 })
 ```
+
 - Fire the effect only upon the first render
+
 ```javascript
 useEffect(() => {
-  const cardTypes = fetchCardTypes();
+  const cardTypes = fetchCardTypes()
   setCardTypes(cardTypes)
 }, [])
 ```
+
 - Fire the effect only when certain prop or state values have changed
+
 ```javascript
 useEffect(() => {
-  const cardTypes = fetchCardTypes();
+  const cardTypes = fetchCardTypes()
   setCardTypes(cardTypes)
 }, [cards])
 ```
@@ -116,12 +122,12 @@ As you will notice, we actually have **three** `useEffect` hooks inside of our c
 Each of these hooks is using a diffrent variation of the optional dependency array we discussed earlier. Look at the code a bit more closely -- do you know why each array looks the way it does?
 
 <iframe
-     src="https://codesandbox.io/embed/hooksuseeffect-gkejk?fontsize=14&hidenavigation=1&theme=dark"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="hooks/useEffect"
-     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
-     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-   ></iframe>
+  src="https://codesandbox.io/embed/hooksuseeffect-gkejk?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+  title="hooks/useEffect"
+  allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+></iframe>
 
 Don't worry if you're still a bit confused because learning to "think in hooks" can take some time. The best way to get more comfortable with them is to use them, so feel free to fork the sandbox above and play around with the code. As a good place to start, try removing the dependency array from Hook #2 completely. What happens?
 

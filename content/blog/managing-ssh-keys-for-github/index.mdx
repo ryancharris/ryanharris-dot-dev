@@ -7,9 +7,7 @@ tags:
   - "git"
   - "ssh"
   - "security"
-heroLink: "https://unsplash.com/@cmdrshane"
 attachments:
-  - "./01-key.jpg"
   - "./02-add-a-key.png"
 ---
 
@@ -58,6 +56,7 @@ Next, we'll need to log into both GitHub accounts and add the new SSH key. Go in
 ![GitHub's SSH key interface](./02-add-a-key.png)
 
 In the `<textfield>` below, we need to enter the public key we generated above. You can do this in a couple ways:
+
 1. Copy the key from the `.pub` file in your `/.ssh/` directory
 2. Run the following command `pbcopy < ~/.ssh/id_rsa.pub`
 
@@ -111,9 +110,9 @@ Host github.com-personal
    HostName github.com
    User git
    IdentityFile ~/.ssh/id_rsa_personal
-   
+
 # Work
-Host github.com-work    
+Host github.com-work
    HostName github.com
    User git
    IdentityFile ~/.ssh/id_rsa_work
