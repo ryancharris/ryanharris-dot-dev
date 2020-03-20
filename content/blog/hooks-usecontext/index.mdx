@@ -14,9 +14,9 @@ import { Link } from "gatsby"
 
 ### Putting things in Context
 
-[Context is one of my favorite React APIs](https://reactjs.org/docs/context.html) and has a wide variety of uses cases. I've previously written about <Link to="2019-10-27-redoing-search">redoing a search UI using `ref`s and Context</Link>, as well as <Link to="/hooks-useref">how to use the `useRef` hook</Link>. This time around, we're going to cover the `useContext` hook, which is now the way we use Context in function components.
+[Context]((https://reactjs.org/docs/context.html)) is one of my favorite React APIs and has a wide variety of uses cases. I've previously written about <Link to="2019-10-27-redoing-search">redoing a search UI using `ref`s and Context</Link>, as well as <Link to="/hooks-useref">how to use the `useRef` hook</Link>. This time around, we're going to cover the `useContext` hook, which is now the way we use Context in function components.
 
-I love the Context API because it **allows you to compartmentalize aspects of your app's data within a sub-tree of components**. Essentially, you have a Provider (think of this as a gloabl value somewhat like a store), which provides access to its data via a `value` prop for child components. Those components can choose whether or not they want to consume the data (i.e. Consumers) at all, which means you can avoid [prop drilling](https://kentcdodds.com/blog/prop-drilling). Here's a rough illustration:
+I love the Context API because it **allows you to compartmentalize aspects of your app's data within a sub-tree of components**. Essentially, your child components can access data via the `value` prop provided by the `Context.Provider`. You can think of this like a store that's specifically scoped to this tree. The components wrapped by the Provider can choose whether or not they want to consume the data (i.e. Consumers) at all, which means you can avoid [prop drilling](https://kentcdodds.com/blog/prop-drilling). Here's a rough illustration:
 
 ![With and without Context illustrations](./01-context-drawings.png)
 
