@@ -20,9 +20,9 @@ I love the Context API because it **allows you to compartmentalize aspects of yo
 
 ![With and without Context illustrations](./01-context-drawings.png)
 
-In `class` components, we used a combination of `<Context.Provider>` and `<Context.Consumer>` tags to set up the relationship described above. However, in function components, the `<Context.Cosumer>` syntax has been replaced with the `useContext` hook.
+In [`class` components](https://codesandbox.io/s/hooksusecontext-class-wdiii), we used a combination of `<Context.Provider>` and `<Context.Consumer>` tags to set up the relationship described above. However, in function components, the `<Context.Cosumer>` syntax has been [replaced with the `useContext` hook](https://codesandbox.io/s/hooksusecontext-hooks-8ss8k).
 
-For context (no pun intended), [the snippets below](https://codesandbox.io/s/hooksusecontext-hooks-8ss8k) show these two implementations of the same Context. Despite the syntax difference, the functionality is **identical**.
+For context (no pun intended), the snippets below show these two implementations of the same Context. Despite the syntax difference, the functionality is **identical**.
 
 ```javascript
 function NestedComponent() {
@@ -79,7 +79,7 @@ function App() {
 }
 ```
 
-Notice that [even though we're using the `useContext` hook](https://codesandbox.io/s/hooksusecontext-hooks-8ss8k), the way we define our context and `Provider` is exactly the same as our `class` example above. The provider works the same no matter which of the following consumption syntaxes you're using:
+Notice that even though we're using the `useContext` hook, the way we define our context and `Provider` is exactly the same as our `class` example above. The provider works the same no matter which of the following consumption syntaxes you're using:
 
 1. `useContext()`
 2. `<Context.Consumer>`
@@ -87,12 +87,48 @@ Notice that [even though we're using the `useContext` hook](https://codesandbox.
 
 ### In practice
 
-ADD CODESANDBOX DESCRIPTION
+In the sandbox below, I have built out a component tree that represents a self-contained search widget using the `SearchInput` component we built in <Link to="/hooks-useref">an earlier article covering the `useRef` hook</Link>.
+
+For the purposes of this demonstration, we are mimicking an API call by loading data about breweries in Philadelphia from `results.json` directly into our `Search` component and displaying them as `ResultCard`s in the `SearchResults` component. Then, whenever the text value in `SearchInput` changes, we filter our results to breweries who have names containing a string matching the input text.
+
+Try it out for yourself below:
 
 <iframe
-  src="https://codesandbox.io/embed/charming-knuth-meepq?fontsize=14&hidenavigation=1&theme=dark"
-  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-  title="hooks/useContext"
-  allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
-  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-></iframe>
+     src="https://codesandbox.io/embed/hooksusecontext-in-practice-shd17?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="hooks/useContext (In Practice)"
+     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+   ></iframe>
+
+In `Search`, we have created a `SearchContext` by using `React.createContext()`. By doing this, we will be able to pass down context values to `SearchResults` and `SearchInput` without having to prop drill through our `SearchWidget` component. While we would only be passing props through one additonal component in this example, think about how effective this strategy would be for components nested even further!
+
+To **provide** values to the children of `Search`, we are using the `SearchContext.Provider` to pass data via the `value` prop. We've constructed and are passing an object that has two values:
+
+1. `results` - An array of objects representing breweries
+2. `setInputValue` - The setter function from the `useState` hook in `Search` that we're using to store the text value from `SearchInput` (i.e. `inputValue`)
+
+With the `Provider` set up, any of `Search`'s descendant components can **consume** our context values using `useContext`. 
+
+```javascript
+const context = useContext(SearchContext);
+```
+
+In `SearchInput`, we use the `setInputValue` function passed down via our context to set the state of `inputValue` in `Search` whenever the user enters text in the `<input />`.
+
+```javascript
+function handleInputChange(event) {
+  context.setInputValue(event.currentTarget.value);
+}
+
+<input
+  onChange={handleInputChange}
+  ref={inputRef}
+  type="search"
+  className="SearchInput__input"
+/>
+```
+
+By elevating this state to the `Search` component, we are able to use its value to filter our `apiResults` and pass down a new array (i.e. `results`) to the `SearchResults` component, which renders each item as a `ResultCard`.
+
+Essentially, `Context` allows us to more easily centralize related logic and create a good data management system for this self-contained subtree of components. Theoretically, we could repurpose this widget pretty easily by using different API data and updating a few prop names. Pretty cool!
