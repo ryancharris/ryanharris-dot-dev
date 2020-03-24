@@ -1,9 +1,67 @@
 ---
 title: "Hooks Revisited: useMemo"
 date: "2020-03-24"
-published: true
+published: false
 tags:
   - "react"
   - "hooks"
   - "javascript"
 ---
+
+import { Link } from "gatsby"
+
+Up until this point in <Link to="/hooks-revisited">the series</Link>, I have been generally familiar with the hooks we've covered and have used them before at work. It wasn't until I recently started working in a new codebase that I came across [`useMemo`](https://reactjs.org/docs/hooks-reference.html#usememo). Not understanding how it worked or how to debug it was a large part of why I chose to write this series in the first place.
+
+### What is "memoization"?
+
+If you look at the React docs, they say that the `useMemo` hook "returns a memoized value". [Memization](https://en.wikipedia.org/wiki/Memoization) was **not** a term I was familiar with when I first read it, so don't worry if you haven't heard of it either. We're in the same boat!
+
+Essentially, it is an optimization strategy that returns cached values from functions that have previously been invoked with the same arguments. In other words, instead of recalculating a value functions will return a cached value. This is useful when you have functions doing memory intensive calculations and want to minimize how often they're invoked
+
+Here's my mental model for how this works:
+
+```javascript
+// Value must be calculated
+add(1, 2)
+
+// Value must be calculated
+add(3, 4)
+
+// Cached value returned
+add(1, 2)
+```
+
+### Anatomy of useMemo
+
+As mentioned, the `useMemo` hook returns a "memoized value" and takes two arguments:
+
+1. A function
+2. A dependency array
+
+```javascript
+// TODO: Add code snippet
+```
+
+If you have read my articles on <Link to="/hooks-useeffect">useEffect</Link> and <Link to="/hooks-uselayouteffect">useLayoutEffect</Link>, you'll probably recognize this function signature. Just like those hooks, `useMemo` runs on every render if there is no dependency array. Otherwise, it only runs when one of the values in the array has changed. If the array is empty, the function runs only on component render.
+
+<!-- HOOK DOES NOTHING WITHOUT A DEPENDENCY ARRAY -->
+
+According to the React docs, `useMemo` is meant to be a **performance optimization**. They suggest you et your code to work without `useMemo` and implement it after the fact to avoid recalculating expensive values when a cached value would be more performant.
+
+One thing to note, however, is that you can't really guarantee when `useMemo` runs. Read the following sentence carefully:
+
+> In the future, React may choose to “forget” some previously memoized values and recalculate them on next render, e.g. to free memory for offscreen components. [[React docs](https://reactjs.org/docs/hooks-reference.html#usememo)]
+
+### In practice
+
+```javascript
+// TODO: ADD CODE SAMPLE
+```
+
+<iframe
+  src="https://codesandbox.io/embed/strange-thunder-kfgvu?fontsize=14&hidenavigation=1&theme=dark&view=editor"
+  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+  title="hooks/useMemo"
+  allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+></iframe>
