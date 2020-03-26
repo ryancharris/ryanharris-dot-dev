@@ -38,19 +38,25 @@ As mentioned, the `useMemo` hook returns a "memoized value" and takes two argume
 1. A function
 2. A dependency array
 
+Here's an example of how it looks directly from the React docs:
+
 ```javascript
-// TODO: Add code snippet
+const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b])
 ```
 
-If you have read my articles on <Link to="/hooks-useeffect">useEffect</Link> and <Link to="/hooks-uselayouteffect">useLayoutEffect</Link>, you'll probably recognize this function signature. Just like those hooks, `useMemo` runs on every render if there is no dependency array. Otherwise, it only runs when one of the values in the array has changed. If the array is empty, the function runs only on component render.
+If you have read my articles on <Link to="/hooks-useeffect">useEffect</Link> and <Link to="/hooks-uselayouteffect">useLayoutEffect</Link>, you'll probably recognize this function signature. Just like those hooks, `useMemo` executes the logic inside the function passed to it **only** when one of the values in the dependency array changes. If no array is passed, `useMemo` will re-calculate its return value on **every** render.
 
-<!-- HOOK DOES NOTHING WITHOUT A DEPENDENCY ARRAY -->
+The difference here is that `useMemo` is not intended to cause side effects -- those should be handled in the appropriately named `useEffect` or `useLayoutEffect` hooks. `useMemo` simply calculates and returns a value based on the function and dependency array passed to it and helps with handling expensive computations that may cause your application to perform poorly.
 
-According to the React docs, `useMemo` is meant to be a **performance optimization**. They suggest you et your code to work without `useMemo` and implement it after the fact to avoid recalculating expensive values when a cached value would be more performant.
+### Optimization
 
-One thing to note, however, is that you can't really guarantee when `useMemo` runs. Read the following sentence carefully:
+According to the React docs, `useMemo` is meant to be a **performance optimization**. They suggest you get your code to work without `useMemo` and implement it after the fact to avoid recalculating expensive values when a cached value would be more performant.
+
+One thing to note, however, is that you can't really guarantee that `useMemo` will return a cached value when expected. Read the following sentence carefully:
 
 > In the future, React may choose to “forget” some previously memoized values and recalculate them on next render, e.g. to free memory for offscreen components. [[React docs](https://reactjs.org/docs/hooks-reference.html#usememo)]
+
+Essentially, to keep things performany and properly manage memory, React may get rid of a cached value its not actively using in order to save room for other operations. In this case, `useMemo` will have to recalculate its return value even if the values being passed to the hook have been used before.
 
 ### In practice
 
