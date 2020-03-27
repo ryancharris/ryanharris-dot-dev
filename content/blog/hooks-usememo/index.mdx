@@ -14,7 +14,7 @@ Up until this point in <Link to="/hooks-revisited">the series</Link>, I have bee
 
 ### What is "memoization"?
 
-If you look at the React docs, they say that the `useMemo` hook "returns a memoized value". [Memization](https://en.wikipedia.org/wiki/Memoization) was **not** a term I was familiar with when I first read it, so don't worry if you haven't heard of it either. We're in the same boat!
+If you look at the React docs, they say that the `useMemo` hook "returns a memoized value". [Memoization](https://en.wikipedia.org/wiki/Memoization) was **not** a term I was familiar with when I first read it, so don't worry if you haven't heard of it either. We're in the same boat!
 
 Essentially, it is an optimization strategy that returns cached values from functions that have previously been invoked with the same arguments. In other words, instead of recalculating a value functions will return a cached value. This is useful when you have functions doing memory intensive calculations and want to minimize how often they're invoked
 
@@ -56,7 +56,7 @@ One thing to note, however, is that you can't really guarantee that `useMemo` wi
 
 > In the future, React may choose to “forget” some previously memoized values and recalculate them on next render, e.g. to free memory for offscreen components. [[React docs](https://reactjs.org/docs/hooks-reference.html#usememo)]
 
-Essentially, to keep things performany and properly manage memory, React may get rid of a cached value its not actively using in order to save room for other operations. In this case, `useMemo` will have to recalculate its return value even if the values being passed to the hook have been used before.
+Essentially, to keep things performant and properly manage memory, React may get rid of a cached value it's not actively using in order to save room for other operations. In this case, `useMemo` will have to recalculate its return value even if the values being passed to the hook have been used before.
 
 ### In practice
 
