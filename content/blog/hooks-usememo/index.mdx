@@ -31,6 +31,8 @@ add(3, 4)
 add(1, 2)
 ```
 
+If you want to read more about memoization, checkout [this article](https://scotch.io/tutorials/understanding-memoization-in-javascript#toc-a-functional-approach) on [Scotch.io](https://scotch.io) by [Philip Obosi](https://twitter.com/worldclassdev). He takes a deeper look at memoization and how to implement your own memoized functions using plain JavaScript.
+
 ### Anatomy of useMemo
 
 As mentioned, the `useMemo` hook returns a "memoized value" and takes two arguments:
@@ -60,14 +62,78 @@ Essentially, to keep things performant and properly manage memory, React may get
 
 ### In practice
 
-```javascript
-// TODO: ADD CODE SAMPLE
-```
+In the example below, I've created a demo to better illustrate how `useMemo` works. For our purposes, I have stubbed out some functions in order to make the example work properly. However, pay attention to the comments as they will provide further context.
+
+_Note: If you're unfamiliar with <Link to="/hooks-useeffect">`useEffect`</Link> or <Link to="/hooks-usestate">`useState`</Link>, take a moment and check out the previous articles in this series before continuing. Otherwise, these should look pretty familiar to you._
 
 <iframe
-  src="https://codesandbox.io/embed/strange-thunder-kfgvu?fontsize=14&hidenavigation=1&theme=dark&view=editor"
+  src="https://codesandbox.io/embed/hooksusememo-kfgvu?expanddevtools=1&fontsize=14&hidenavigation=1&theme=dark&view=editor"
   style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
   title="hooks/useMemo"
   allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
   sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
 ></iframe>
+
+Essentially, our `<App />` component does three things:
+
+1. Makes a call to the NASA API in a `useEffect` hook and fetches a list of NASA facilities, which we store in a `useState` hook.
+
+```javascript
+useEffect(() => {
+  fetch("https://data.nasa.gov/resource/gvk9-iz74.json")
+    .then(res => res.json())
+    .then(json => {
+      setNasaLocations(json)
+    })
+    .catch(err => console.log("Error fetching data", err))
+}, [])
+```
+
+2. Observes the value of our `<input />` and stores it in another `useState` hook
+
+```javascript
+const [inputValue, setInputValue] = useState("")
+
+<input
+  name="search"
+  type="search"
+  onChange={event => setInputValue(event.currentTarget.value)}
+/>
+```
+
+3. Passes a filtered array to `<MapView />` via the `coordinates` prop, which represents location information for each facility
+
+```javascript
+<MapView coordinates={mapCoordinates} />
+```
+
+Technically, we could achieve these three goals without using `useMemo`, however, the NASA API returns to us a list of 484 facilities, which we iterate over in `createMapCoordinates()`. This is **expensive** work, especially if the function runs frequently. On top of that, it calls another function for each item in the array (i.e. `createCoordsForLocation()`), which currently returns a plain JavaScript object.
+
+```javascript
+function createCoordsForLocation(lat, long) {
+  return {
+    latitude: lat,
+    longitude: long,
+  }
+}
+```
+
+But imagine that `createCoordsForLocation()` called a backend service for each item in the list to compute its geographic coordinates. This would make our already expensive `createMapCoordinates()` call that much more memory intensive. Since we need to do this to make our app function properly, we can leverage `useMemo` to optimize performance.
+
+Let's look at our use case:
+
+```javascript
+const mapCoordinates = useMemo(() => {
+  return createMapCoordinates(inputValue, nasaLocations)
+}, [inputValue, nasaLocations])
+```
+
+First, look at the dependency array (i.e. `[inputValue, nasaLocations]`). Like `useEffect`, this tells `useMemo` only to run when either of those values change. Right now, we only make a call for `nasaLocation` on initial render, so its value will only change once, which triggers the hook.
+
+Our other value (i.e. `inputValue`), represents the value the user has entered in the `<input />`. Anytime the user adds or removes characters from the input, the `inputValue` will change in our `useState` hook and cause `useMemo` to run again.
+
+The trick here is that since we filter our `nasaLocations` list based on the `inputValue`, we can use `useMemo` to reduce computations. Since the hook will return a cached value whenever it receives inputs it has used for computation before, we will avoid re-running all the logic in `createCoordsForLocation()` and `createMapCoordinates()` if the `inputValue` and `nasaLocations` list we're passing in have already been processed.
+
+Of all the hooks we've covered thus far, `useMemo` is one of the harder ones to illustrate as its effect on your application is not necessarily visual, but performance based. Like the React docs say, get your application logic working **without** `useMemo` to confirm the proper functionality. Then, go through your component code and identify any expensive computations as these may be great candidates for `useMemo`!
+
+In the next article, we'll be covering `useCallback`, which also leverages memoization, but is subtly different from `useMemo`. Stay tuned to find out how!
