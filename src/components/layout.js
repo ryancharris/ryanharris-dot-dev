@@ -17,10 +17,19 @@ class Layout extends React.Component {
       width: 100%;
 
       code {
-        background: #2A2734;
+        background: #2a2734;
         color: #ffcc99;
         font-size: 1rem;
         padding: 0 8px;
+      }
+
+      a {
+        box-shadow: none;
+        color: #009fb7;
+
+        &:hover {
+          color: #ff5a5f;
+        }
       }
     `
 

@@ -66,5 +66,8 @@ export default {
     pre: {
       overflow: "auto",
     },
+    a: {
+      boxShadow: "none",
+    },
   },
 }
