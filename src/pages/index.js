@@ -36,6 +36,7 @@ class BlogIndex extends React.Component {
                   border-radius: 4px;
                   padding: 12px;
                   transition: box-shadow 0.35s ease-out;
+                  color: #000000;
                 `}
                 sx={{
                   ":hover": {
@@ -77,41 +78,58 @@ class BlogIndex extends React.Component {
                       __html: node.frontmatter.description || node.excerpt,
                     }}
                   />
-                  <ul
+                  <div
                     css={css`
                       display: flex;
-                      flex-direction: row;
-                      list-style: none;
-                      margin: 0;
+                      justify-content: space-between;
                     `}
                   >
-                    <li
+                    <ul
                       css={css`
-                        margin: 0 8px 0 0;
+                        display: flex;
+                        flex-direction: row;
+                        list-style: none;
+                        margin: 0;
                       `}
                     >
-                      Tags:
-                    </li>
-                    {tags.map((tag, index) => {
-                      return (
-                        <li
-                          css={css`
-                            margin-bottom: 0;
-                          `}
-                          key={`tag-${index}`}
-                        >
-                          <i>
-                            #{tag}
-                            {index === tags.length - 1 ? (
-                              ""
-                            ) : (
-                              <span>,&nbsp;</span>
-                            )}
-                          </i>
-                        </li>
-                      )
-                    })}
-                  </ul>
+                      <li
+                        css={css`
+                          margin: 0 8px 0 0;
+                        `}
+                      >
+                        Tags:
+                      </li>
+                      {tags.map((tag, index) => {
+                        return (
+                          <li
+                            css={css`
+                              margin-bottom: 0;
+                            `}
+                            key={`tag-${index}`}
+                          >
+                            <i>
+                              #{tag}
+                              {index === tags.length - 1 ? (
+                                ""
+                              ) : (
+                                <span>,&nbsp;</span>
+                              )}
+                            </i>
+                          </li>
+                        )
+                      })}
+                    </ul>
+                    <div>
+                      <span
+                        sx={{
+                          fontSize: [0],
+                        }}
+                      >
+                        {node.timeToRead}{" "}
+                        {node.timeToRead > 1 ? `mins.` : `min.`}
+                      </span>
+                    </div>
+                  </div>
                 </section>
               </article>
             </Link>
@@ -151,6 +169,7 @@ export const pageQuery = graphql`
           body
           excerpt(pruneLength: 275)
           id
+          timeToRead
         }
       }
     }
