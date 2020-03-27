@@ -128,7 +128,7 @@ const mapCoordinates = useMemo(() => {
 }, [inputValue, nasaLocations])
 ```
 
-First, look at the dependency array (i.e. `[inputValue, nasaLocations]`). Like `useEffect`, this tells `useMemo` only to run when either of those values change. Right now, we only make a call for `nasaLocation` on initial render, so its value will only change once, which triggers the hook.
+First, look at the dependency array (i.e. `[inputValue, nasaLocations]`). Like `useEffect`, this tells `useMemo` only to run when either of those values change. Right now, we only make a call for `nasaLocations` on initial render, so its value will only change once, which triggers the hook.
 
 Our other value (i.e. `inputValue`), represents the value the user has entered in the `<input />`. Anytime the user adds or removes characters from the input, the `inputValue` will change in our `useState` hook and cause `useMemo` to run again.
 
