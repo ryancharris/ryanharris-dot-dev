@@ -17,14 +17,19 @@ class BlogIndex extends React.Component {
     return (
       <Layout location={location} title={siteTitle}>
         <SEO title="blog" />
+
         {posts.map(({ node }) => {
           const title = node.frontmatter.title
           const tags = node.frontmatter.tags
 
           return (
-            <Link to={node.fields.slug} sx={{ color: "text" }}>
+            <Link
+              key={`link-${node.id}`}
+              to={node.fields.slug}
+              sx={{ color: "text" }}
+            >
               <article
-                key={node.id}
+                key={`article-${node.id}`}
                 css={css`
                   margin: 0 0 18px 0;
                   border: none;
@@ -93,6 +98,7 @@ class BlogIndex extends React.Component {
                           css={css`
                             margin-bottom: 0;
                           `}
+                          key={`tag-${index}`}
                         >
                           <i>
                             #{tag}
