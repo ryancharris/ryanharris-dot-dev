@@ -7,6 +7,7 @@ import GithubLogo from "../../content/assets/githubLogo.svg"
 import LinkedInLogo from "../../content/assets/linkedinLogo.svg"
 import TwitterLogo from "../../content/assets/twitterLogo.svg"
 import YoutubeLogo from "../../content/assets/youtubeLogo.svg"
+import TwitchLogo from "../../content/assets/twitchLogo.svg"
 
 function SocialMenu() {
   const socialIconListItem = css`
@@ -46,6 +47,7 @@ function SocialMenu() {
             linkedin
             twitter
             youtube
+            twitch
           }
         }
       }
@@ -110,6 +112,17 @@ function SocialMenu() {
           rel="noreferrer noopener"
         >
           <YoutubeLogo css={socialIcon} />
+        </a>
+      </li>
+      <li css={socialIconListItem}>
+        <a
+          href={`https://twitch.tv/${social.twitch}`}
+          css={socialIconLink}
+          sx={socialIconLinkThemeStyles}
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <TwitchLogo css={socialIcon} />
         </a>
       </li>
     </ul>
