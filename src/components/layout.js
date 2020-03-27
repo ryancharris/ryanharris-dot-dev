@@ -26,10 +26,6 @@ class Layout extends React.Component {
       a {
         box-shadow: none;
         color: #009fb7;
-
-        &:hover {
-          color: #ff5a5f;
-        }
       }
     `
 
