@@ -1,6 +1,6 @@
 ---
 title: "Hooks Revisited: useCallback"
-date: "2020-03-28"
+date: "2020-04-21"
 published: true
 tags:
   - "react"
@@ -9,4 +9,46 @@ tags:
 attachments:
 ---
 
-`useCallback`
+import { Link } from "gatsby"
+
+### Before you proceed...
+
+If you haven't read my <Link to="/hooks-usememo">useMemo</Link> article yet, I **highly suggest you go back and do so** now! In that article, we covered important concepts like [memoization](https://en.wikipedia.org/wiki/Memoization), which we will continue discussing below.
+
+Since `useMemo` and `useCallback` are similar (with one key difference), it will be important to understand how `useMemo` works before proceeding.
+
+### What's the difference?
+
+Both `useMemo` and `useCallback` utilize memoization to optimize performance, however, there is a subtle difference between them. While `useMemo` returns a memoized value resulting from the logic contained within the hook's body, `useCallback` returns a memoized version of the **function itself**.
+
+In the code block below, I've taken the `useCallback` example from the [React docs](https://reactjs.org/docs/hooks-reference.html#usecallback) and placed it next to its `useMemo` equivalent to better illustrate the difference:
+
+```javascript
+// memoizedFunction is a function
+const memoizedFunction = useCallback(() => {
+  doSomething(a, b)
+}, [a, b])
+
+// memoizedFunction is the value returned from doSomething(a, b)
+const memoizedValue = useMemo(() => {
+  doSomething(a, b)
+}, [a, b])
+```
+
+`useMemo` and `useCallback` achieve the same thing: optimizing performance by returning cached values when a function has alread executed using the arguments it receives. They just return different values and which you use is based on your specific use-case.
+
+### In practice
+
+`useCallback` is useful because you can assign a memoized function to a variable and pass it around your application. This allows you to avoid re-creating the caching mechanism allows memoization to improve perfomance.
+
+It also makes our lives easier because we do not need to duplicate `useMemo` logic in multiple places. We also don't need to import/export anything. Instead, we can just passed the memoized function as a prop and allow another component to use it.
+
+<iframe
+  src="https://codesandbox.io/embed/upbeat-bouman-89w2p?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+  title="hooks/useCallback"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+
+TODO: ADD EXPLANATION
