@@ -1,8 +1,6 @@
 const fetch = require("node-fetch")
 require("dotenv").config()
 
-const TWITCH_API = "https://id.twitch.tv/oauth2/token"
-
 function getTwitchData(token) {
   console.log("Fetching broadcast info...")
 
@@ -27,6 +25,7 @@ function getTwitchData(token) {
 exports.handler = async function(event, context) {
   console.log("Requesting token from Twitch API...")
 
+  const TWITCH_API = "https://id.twitch.tv/oauth2/token"
   const tokenUrl = `${TWITCH_API}?client_id=${process.env.GATSBY_TWITCH_CLIENT_ID}&client_secret=${process.env.GATSBY_TWITCH_CLIENT_SECRET}&grant_type=client_credentials`
 
   const data = fetch(tokenUrl, {
