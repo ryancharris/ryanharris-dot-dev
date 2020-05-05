@@ -35,13 +35,15 @@ const memoizedValue = useMemo(() => {
 }, [a, b])
 ```
 
-`useMemo` and `useCallback` achieve the same thing: optimizing performance by returning cached values when a function has alread executed using the arguments it receives. They just return different values and which you use is based on your specific use-case.
+Here, `useMemo` and `useCallback` achieve the same thing: optimizing performance by returning cached values when a function has already been executed using the arguments it receives. Since they return different values, both hooks offer you a different way to leverage memoization based on your specific use-case.
 
 ### In practice
 
-`useCallback` is useful because you can assign a memoized function to a variable and pass it around your application. This allows you to avoid re-creating the caching mechanism allows memoization to improve perfomance.
+`useCallback` is useful because you can assign a memoized function to a variable and pass it around your application. This allows you to avoid re-creating the caching mechanism that memoization uses to improve perfomance.
 
-It also makes our lives easier because we do not need to duplicate `useMemo` logic in multiple places. We also don't need to import/export anything. Instead, we can just passed the memoized function as a prop and allow another component to use it.
+It also makes our lives easier because we do not need to duplicate `useMemo` logic in multiple places. We also don't need to import/export anything. Instead, we can just pass the memoized function as a prop and allow another component to consume it.
+
+In the sandbox below, I've taken the code from our <Link to="/hooks-usecallback">useMemo</Link> example and refactored it to use `useCallback`:
 
 <iframe
   src="https://codesandbox.io/embed/upbeat-bouman-89w2p?fontsize=14&hidenavigation=1&theme=dark"
@@ -51,4 +53,14 @@ It also makes our lives easier because we do not need to duplicate `useMemo` log
   sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
 ></iframe>
 
-TODO: ADD EXPLANATION
+Like with `useMemo`, our `useCallback` hook is returning a memoized value. However, in this case, it is a memoized version of the anonymous function passed to it, **not** the function's return value.
+
+For demonstration purposes, we have two map components on this page (i.e. `MapOne` and `MapTwo`), which render -- you guessed it -- maps. If we assume they both plot coordinates in the same way, we can now pass `createMapCoordinates` to both components, allowing them to utilize the memoized function internally without having to recreate it in both places.
+
+If you think about it, what we're doing here with `useCallback` isn't too much different from the snippet below since both of them create a variable and assign a function as its value. Our hook just memoizes the function so we can optimize our applications perfromance.
+
+```javascript
+const myFunction = () => {
+  doStuff()
+}
+```
