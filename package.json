@@ -37,6 +37,7 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-helmet": "^5.2.1",
+    "react-livestream": "1.0.11",
     "react-typography": "^0.16.19",
     "theme-ui": "^0.2.46",
     "typeface-merriweather": "0.0.72",
@@ -45,6 +46,8 @@
     "typography-theme-wordpress-2016": "^0.16.19"
   },
   "devDependencies": {
+    "dotenv": "^8.2.0",
+    "node-fetch": "^2.6.0",
     "prettier": "^1.18.2"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
