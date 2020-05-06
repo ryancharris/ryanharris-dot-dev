@@ -39,14 +39,14 @@ Here, `useMemo` and `useCallback` achieve the same thing: optimizing performance
 
 ### In practice
 
-`useCallback` is useful because you can assign a memoized function to a variable and pass it around your application. This allows you to avoid re-creating the caching mechanism that memoization uses to improve perfomance.
+`useCallback` is useful because you can assign a memoized function to a variable and pass it around your application. This allows you to avoid re-creating the caching mechanism that memoization uses to improve performance.
 
 It also makes our lives easier because we do not need to duplicate `useMemo` logic in multiple places. We also don't need to import/export anything. Instead, we can just pass the memoized function as a prop and allow another component to consume it.
 
 In the sandbox below, I've taken the code from our <Link to="/hooks-usecallback">useMemo</Link> example and refactored it to use `useCallback`:
 
 <iframe
-  src="https://codesandbox.io/embed/upbeat-bouman-89w2p?fontsize=14&hidenavigation=1&theme=dark"
+  src="https://codesandbox.io/embed/hooksusecallback-89w2p?fontsize=14&hidenavigation=1&theme=dark&view=editor"
   style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
   title="hooks/useCallback"
   allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr"
@@ -57,10 +57,10 @@ Like with `useMemo`, our `useCallback` hook is returning a memoized value. Howev
 
 For demonstration purposes, we have two map components on this page (i.e. `MapOne` and `MapTwo`), which render -- you guessed it -- maps. If we assume they both plot coordinates in the same way, we can now pass `createMapCoordinates` to both components, allowing them to utilize the memoized function internally without having to recreate it in both places.
 
-If you think about it, what we're doing here with `useCallback` isn't too much different from the snippet below since both of them create a variable and assign a function as its value. Our hook just memoizes the function so we can optimize our applications perfromance.
-
 ```javascript
 const myFunction = () => {
   doStuff()
 }
 ```
+
+If you think about it, what we're doing here with `useCallback` isn't too much different from the snippet above since both of them create a variable and assign a function as its value. Our hook just memoizes the function so we can optimize our applications performance!
