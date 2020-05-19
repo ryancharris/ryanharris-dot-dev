@@ -13,14 +13,14 @@ attachments:
 
 Throughout this series, all of the code snippets and sandboxes we've created have used `useState` to manage our component data. However, React offers us an additional hook to use for storing data: `useReducer`.
 
-While `useState` allows us to store and set a single value, `useReducer` helps us work with more complex or structured data by allows us to store and manipulate related values alongside one another.
+While `useState` allows us to store and set a single value, `useReducer` helps us work with more complex or structured data by letting us to store and manipulate related values alongside one another.
 
 ### Anatomy of useReducer
 
 Like `useState`, `useReducer` returns an array with two values:
 
-1. The current state
-2. A function that allows us to manipulate the state
+- The current state
+- A function used to update the state
 
 ```javascript
 const [value, setValue] = useState(null)
@@ -28,19 +28,19 @@ const [value, setValue] = useState(null)
 const [state, dispatch] = useReducer(reducer, initialState)
 ```
 
-The `useReduce` hook takes two arguments, with an [optional third](https://reactjs.org/docs/hooks-reference.html#specifying-the-initial-state).
+The `useReduce` hook also takes up to three arguments:
 
-The first argument is a reducer function, which defines the logic associated with each reducer action and the logic for updating state whenever a specific action is fired. We'll see an example of how this works in a moment.
+The first argument is a **reducer function**, which defines the logic associated with each reducer action and the logic for updating state whenever a specific action is fired. We'll see an example of how this works in a moment.
 
-Secondly, we pass the `useReducer` hook a value that represents it's initial state. This effectively works in the same way as the value you pass to the `useState` hook.
+Secondly, we pass the `useReducer` hook a value that represents its **initial state**. This effectively works in the same way as the value you pass to the `useState` hook.
 
-The third argument is an optional initialization function. According to the documentation:
+The third argument is an **optional initialization function**. According to the documentation, this is useful for...
 
-> It lets you extract the logic for calculating the initial state outside the reducer. This is also handy for resetting the state later in response to an action. ~ [[React docs](https://reactjs.org/docs/hooks-reference.html#lazy-initialization)]
+> ...calculating the initial state outside the reducer. This is also handy for resetting the state later in response to an action. ~ [[React docs](https://reactjs.org/docs/hooks-reference.html#lazy-initialization)]
 
 ### Difference from useState
 
-To best illustrate the difference in how `useReducer` and `useState` work, respectively, let's look at them side by side. The snippet below shows the code you'd need to use to instantiate and update a state value using both hooks:
+To best illustrate the difference in how `useReducer` and `useState` update their state values, respectively, let's take a look at them side by side. The snippet below shows the code you'd need to use to instantiate and update a state value using both hooks:
 
 ```javascript
 // useState
@@ -68,7 +68,9 @@ dispatch({ type: "update-name", value: "Ryan" })
 console.log(state.name) // 'Ryan'
 ```
 
-While `useState`'s setter function updates it's value directly, `useReducer` dispatches an action. The reducer function (which is listening for these actions) the determins what type of action was fired and subsequently how to update its state. If you haven't used it in the past, this is pretty much exactly how [Redux](https://redux.js.org/) works.
+While `useState`'s setter function updates its value directly, `useReducer` dispatches an action. The reducer function then determines what type of action was fired and, subsequently, how to update its state.
+
+_Note:_ If you haven't used it in the past, this is pretty much how [Redux](https://redux.js.org/) works.
 
 ### In practice
 
@@ -82,9 +84,9 @@ In the sandbox below, I've built a form for scheduling an appointment. Though th
   sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
 ></iframe>
 
-Instead of storing each input value in its own `useState` hook, we can store and manage all of the values in our form using a single `useReducer`. In this case, its state is an object with many keys, each representing an individual input's value. In fact, it's very similar to how `this.state` in `class` components.
+Instead of storing each input value in its own `useState` hook, we can store and manage all of the values in our form using a single `useReducer`. In this case, its state is an object with many keys, each representing a different value we want to store. Personally, this reminds me a bit of `this.state` in `class` components before we had hooks.
 
-We've defined our initial state as the following:
+In `App.js`, we've defined our initial state like this:
 
 ```javascript
 const blankForm = {
@@ -98,7 +100,7 @@ const blankForm = {
 const [formState, dispatch] = useReducer(reducer, blankForm)
 ```
 
-Each of the fields in the `blankForm` object represents and stores the value for the associated input in our form. Since the initial state of `email` is an empty string, the e-mail input will be blank on render since it reads its value from the `useReducer`'s state:
+Each of the fields in the `blankForm` object represents and stores the value for an associated input in our form. Since the initial state of `email` is an empty string, the e-mail input will be blank on render as it reads its value from `useReducer`'s state:
 
 ```javascript
 <input
@@ -109,7 +111,7 @@ Each of the fields in the `blankForm` object represents and stores the value for
 />
 ```
 
-To make this work, we've also set our inputs' `onChange` handlers to dispatch specific actions in order to update the state:
+To make this work, we've also set our inputs' `onChange` handlers to dispatch specific actions in order to update the state. Here's what our e-mail input now looks like:
 
 ```javascript
 <input
@@ -123,7 +125,7 @@ To make this work, we've also set our inputs' `onChange` handlers to dispatch sp
 />
 ```
 
-In the snippet above, we're specifically dispatching the `setEmail` action. Inside of the reducer, the `switch` statement looks at the `action.type` and determines what to do:
+In the snippet above, we're specifically dispatching the `setEmail` action. Inside of our reducer function, the `switch` statement looks for the `case` that matches the `action.type` and executes its logic to update state:
 
 ```javascript
 function reducer(state, action) {
@@ -159,6 +161,13 @@ function reducer(state, action) {
 }
 ```
 
-When `setEmail` is called, the reducer returns a new object that contains all of the current state information, except it updates `email` to whatever was dispatched as `action.value`.
+For example, when `setEmail` is called the reducer returns a new object that contains all of the current state information, except it **also** updates the `email` field.
 
-Finally, since our hook's state has been updated, the component re-renders and the `<input />`s all read their updated value from `formState`.
+```javascript
+return {
+  ...state,
+  email: action.value,
+}
+```
+
+Finally, since our `useReducer` hook's state has now been updated, the component will re-render and the `<input />`s all display their updated value from `formState`.
