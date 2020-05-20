@@ -1,7 +1,7 @@
 ---
 title: "Hooks Revisited: useReducer"
 date: "2020-05-18"
-published: false
+published: true
 tags:
   - "react"
   - "hooks"
@@ -15,7 +15,7 @@ import { Link } from "gatsby"
 
 Throughout this series, all of the code snippets and sandboxes we've created have used `useState` to manage our component data. However, React offers us an additional hook to use for storing data: `useReducer`.
 
-While `useState` allows us to store and set a single value, `useReducer` helps us work with more complex or structured data by letting us to store and manipulate related values alongside one another.
+While `useState` allows us to store and set a single value, `useReducer` helps us work with more complex or structured data by allowing us to store and manipulate related values alongside one another.
 
 ### Anatomy of useReducer
 
@@ -32,7 +32,7 @@ const [state, dispatch] = useReducer(reducer, initialState)
 
 The `useReducer` hook takes up to three arguments:
 
-1. **Reducer function** -- Based on the type of action dispatched, the logic in this function determines how to update our state.
+1. **Reducer function** -- This function describes how our state should be updated based on the action that was dispatched.
 
 2. **Initial state** -- This value defines the hook's initial state and works similiarly to how we provide the `useState` hook a default value when instantiating it.
 
