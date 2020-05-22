@@ -10,6 +10,7 @@ function getTwitchData(token) {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
+      "Client-ID": process.env.GATSBY_TWITCH_CLIENT_ID,
     },
   })
     .then(res => {
