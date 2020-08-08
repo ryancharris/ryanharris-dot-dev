@@ -19,11 +19,11 @@ class BlogIndex extends React.Component {
       <Layout location={location} title={siteTitle}>
         <SEO title="blog" />
 
-        <ReactLivestream
+        {/* <ReactLivestream
           platform="twitch"
-          twitchUserName="ryan_c_harris"
-          twitchClientId={process.env.GATSBY_TWITCH_CLIENT_ID}
-        />
+          twitchUserName="cmgriffing"
+          twitchDataUrl="http://localhost:34567/.netlify/functions/twitch-api"
+        /> */}
 
         {posts.map(({ node }) => {
           const title = node.frontmatter.title

@@ -19,11 +19,11 @@ I'll be honest: before working on this series, I had never heard of `useDebugVal
 
 Unlike the hooks we've covered thus far, `useDebugValue` is not intended to add functionality to your applications. Instead, as the name suggests, it is used as a debugging tool and can help developers troubleshoot issues in their custom React hooks.
 
-While it doesn't effect your application logic in anyway, this hook can negatively effect performance in certain cases if you're not careful. We'll talk more about this in a bit.
+Though it doesn't effect your application logic in anyway, this hook can negatively effect performance in certain cases if you're not careful, but we'll talk more about this in a bit.
 
 ### Anatomy of useDebugValue
 
-Here's what `useDebugValue` looks like in action:
+First things first, let's see what `useDebugValue` looks like in action:
 
 ```javascript
 useDebugValue("hello world")
