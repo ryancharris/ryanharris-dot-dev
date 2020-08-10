@@ -34,23 +34,23 @@ First things first, let's see what `useDebugValue` looks like in action:
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
 
-In the snippet above, we've defined our own custom hook, `useLog` (more about these in an upcoming article). Currently, it just logs `"hi"` to the dev console the first time our `App` component renders due to the empty dependency array.
+In the snippet above, we've defined our own custom hook, `useLog` (more about these in an upcoming article). Currently, it just logs the current date to the React dev console the first time our `App` component renders due to the empty dependency array.
 
 Note that we're also using a `useDebugValue` hook within `useLog`, which takes a single value and then displays it in the [React DevTools](https://github.com/facebook/react-devtools). In the screenshot below, you can see how the snippet above would look in your browser.
 
-![useDebugValue output in React DevTools](./01-hello-world.png)
+![useDebugValue output in React DevTools](./01-debug-value-before-after.png)
 
 ### Formatting useDebugValue
 
 `useDebugValue` also takes an optional second argument, which can be used to format the hook's display value. In this case, the function's signature would look like this:
 
 ```javascript
-useDebugValue("hello world", value => value.toUpperCase())
+useDebugValue(date, date => date.toDateString().toUpperCase())
 ```
 
 The hook works the same way it does without the second argument, however, it's output now looks like this:
 
-![Formatted useDebugValue output in React DevTools](./02-hello-world.png)
+![Formatted useDebugValue output in React DevTools](./02-upper-case.png)
 
 ### Notes about the formatting function
 
