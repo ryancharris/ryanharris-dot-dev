@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import React from "react"
-// import ReactLivestream from "react-livestream"
 import { Link, graphql } from "gatsby"
 import { jsx } from "theme-ui"
 import { css } from "@emotion/core"
@@ -18,12 +17,6 @@ class BlogIndex extends React.Component {
     return (
       <Layout location={location} title={siteTitle}>
         <SEO title="blog" />
-
-        {/* <ReactLivestream */}
-        {/*   platform="twitch" */}
-        {/*   twitchUserName="ryan_c_harris" */}
-        {/*   twitchClientId={process.env.GATSBY_TWITCH_CLIENT_ID} */}
-        {/* /> */}
 
         {posts.map(({ node }) => {
           const title = node.frontmatter.title
