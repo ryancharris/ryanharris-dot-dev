@@ -19,19 +19,28 @@ I'll be honest: before working on this series, I had never heard of `useDebugVal
 
 Unlike the hooks we've covered thus far, `useDebugValue` is not intended to add functionality to your applications. Instead, as the name suggests, it is used as a debugging tool and can help developers troubleshoot issues in their custom React hooks.
 
-Though it doesn't effect your application logic in anyway, this hook can negatively effect performance in certain cases if you're not careful, but we'll talk more about this in a bit.
+> We don’t recommend adding debug values to every custom Hook. It’s most valuable for custom Hooks that are part of shared libraries. ~ [React docs](https://reactjs.org/docs/hooks-reference.html#usedebugvalue)
+
+Though it doesn't effect your application logic in anyway, this hook can negatively effect performance in certain cases if you're not careful (more on this later).
 
 ### Anatomy of useDebugValue
 
 First things first, let's see what `useDebugValue` looks like in action:
 
-```javascript
-useDebugValue("hello world")
-```
+<iframe src="https://codesandbox.io/embed/hooksusedebugvalue-ccnju?fontsize=14&hidenavigation=1&theme=dark&view=editor"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="hooks/useDebugValue"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
 
-The hook takes a single value and then displays it in the [React DevTools](https://github.com/facebook/react-devtools). In the screenshot below, you can see how the snippet above would look in your browser.
+In the snippet above, we've defined our own custom hook, `useLog` (more about these in an upcoming article). Currently, it just logs `"hi"` to the dev console the first time our `App` component renders due to the empty dependency array.
+
+Note that we're also using a `useDebugValue` hook within `useLog`, which takes a single value and then displays it in the [React DevTools](https://github.com/facebook/react-devtools). In the screenshot below, you can see how the snippet above would look in your browser.
 
 ![useDebugValue output in React DevTools](./01-hello-world.png)
+
+### Formatting useDebugValue
 
 `useDebugValue` also takes an optional second argument, which can be used to format the hook's display value. In this case, the function's signature would look like this:
 
@@ -50,3 +59,9 @@ As I mentioned in the intro, while this hook does not effect how your applicatio
 Luckily, the React team built in a safeguard for this and, [as it says in the documentation](https://reactjs.org/docs/hooks-reference.html#defer-formatting-debug-values), the function will only be executed when you are inspecting your hooks within the dev tools.
 
 Though use-cases for a complex formatter function may be few and far between, be careful about the logic you house within it so as to avoid unintended performance issues.
+
+### Real-world use case
+
+Odds are you won't be using `useDebugValue` too much in your day to day work unless you're building custom hooks or an open source library.
+
+Since custom hooks are built using the standard hooks provided by React, `useDebugValue` is primarily a nice solution to help you debug the internals of your hook implementation in the React Dev Tools pane, as opposed to adding `console.log()` calls everywhere.
