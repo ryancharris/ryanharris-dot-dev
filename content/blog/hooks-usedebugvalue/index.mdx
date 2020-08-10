@@ -34,9 +34,9 @@ First things first, let's see what `useDebugValue` looks like in action:
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
 
-In the snippet above, we've defined our own custom hook, `useLog` (more about these in an upcoming article). Currently, it just logs the current date to the React dev console the first time our `App` component renders due to the empty dependency array.
+In the snippet above, we've defined our own custom hook, `useDate` (more about these in an upcoming article). Currently, the hook fires once on `App`'s initial render -- due to the empty dependency array -- and displays it on the page.
 
-Note that we're also using a `useDebugValue` hook within `useLog`, which takes a single value and then displays it in the [React DevTools](https://github.com/facebook/react-devtools). In the screenshot below, you can see how the snippet above would look in your browser.
+Note that we're also using a `useDebugValue` hook within `useDate`, which takes a single value and then displays it in the [React DevTools](https://github.com/facebook/react-devtools). In the screenshot below, you can see how the snippet above would look in your browser.
 
 ![useDebugValue output in React DevTools](./01-debug-value-before-after.png)
 
