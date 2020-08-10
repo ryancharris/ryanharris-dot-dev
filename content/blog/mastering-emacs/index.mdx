@@ -1,0 +1,57 @@
+---
+title: "Notes on 'Mastering emacs'"
+date: "2020-08-09"
+published: true
+tags:
+  - "emacs"
+  - "community"
+attachments:
+---
+
+I just started going through ['Mastering emacs'](https://www.masteringemacs.org/) by Mickey Petersen with a new Egghead book club cohort organized by [Ian Jones](https://www.ianjones.us).
+
+'Why emacs?' you may ask. Good question. I've been happily using VS Code for a few years and enjoy it. My interest in emacs is primarily due to one thing: org mode. Imagine Notion, iCal and Todoist (plus more I don't even know about yet) all inside your editor. That's org mode.
+
+Below are my evolving notes as we make our way through the book.
+
+### Week 1
+#### Reading and discussion notes
+- GNU emacs is most common
+- emacs is "for tinkerers"
+- Built on elisp
+  - 95% elisp
+  - 5% C
+- Has had a speech interface for 20+ years (emacspeak)
+- Some terms predate modern computing terms
+  - "killing" -- cutting
+  - "yanking" -- pasting
+  - "saving to the kill ring" -- copying
+
+
+#### Usage notes
+Commands are semantic:
+- **Spc w** -- window commands
+- **Spc b** -- buffer commands
+- **Spc f** -- file commands
+- **Spc p** -- project commands
+
+**Spc o t**
+- toggle integrated terminal window
+
+**Spc b b**
+- Show recent buffers
+
+To add Prettier formatting:
+- Add Prettier to `packages.el`
+```
+(package! prettier-js)
+```
+- Require Prettier in `config.el`
+```
+(require 'prettier-js)
+```
+- Add hooks to format on save in TypeScript and JavaScript modes
+```
+(add-hook 'javascript-mode 'prettier-js-mode)
+(add-hook 'typescript-mode 'prettier-js-mode)
+```
