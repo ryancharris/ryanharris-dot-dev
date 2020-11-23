@@ -27,6 +27,9 @@ module.exports = {
       {
         url: `/uses`,
         label: `Uses`,
+      },{
+        url: `/resume`,
+        label: `CV`,
       },
     ],
   },

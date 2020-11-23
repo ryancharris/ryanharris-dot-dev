@@ -15,6 +15,7 @@ class Layout extends React.Component {
       flex: 0 0 66.66%;
       overflow: auto;
       width: 100%;
+      flex-grow: 1;
 
       code {
         background: #2a2734;
