@@ -12,7 +12,6 @@ module.exports = {
       twitch: "ryan_c_harris",
     },
     siteRoutes: [
-      ,
       // {
       //   url: `/about`,
       //   label: `About`,
