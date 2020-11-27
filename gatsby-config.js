@@ -12,24 +12,26 @@ module.exports = {
       twitch: "ryan_c_harris",
     },
     siteRoutes: [
-      {
-        url: `/about`,
-        label: `About`,
-      },
+      ,
+      // {
+      //   url: `/about`,
+      //   label: `About`,
+      // }
       {
         url: `/`,
         label: `Blog`,
       },
       {
-        url: `/talks`,
-        label: `Talks`,
-      },
-      {
         url: `/uses`,
         label: `Uses`,
-      },{
+      },
+      {
         url: `/resume`,
         label: `CV`,
+      },
+      {
+        url: `/talks`,
+        label: `Talks`,
       },
     ],
   },
