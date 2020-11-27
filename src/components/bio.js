@@ -94,7 +94,7 @@ const Bio = () => {
           </h3>
         </div>
       </Link>
-      <p
+      <div
         css={css`
           line-height: 2.25;
           margin: 0;
@@ -104,38 +104,55 @@ const Bio = () => {
           textShadow: `1px 1px 1px rgba(0, 0, 0, 0.15)`,
         }}
       >
-        engineer @{" "}
-        <a
-          css={descriptionLink}
-          sx={descriptionLinkThemeStyles}
-          href="https://www.fauna.com"
-          target="_blank"
-          rel="noopener noreferrer"
+        <p
+          css={css`
+            margin: 0;
+          `}
         >
-          Fauna
-        </a>
-        . Organizer of{" "}
-        <a
-          css={descriptionLink}
-          sx={descriptionLinkThemeStyles}
-          href="https://www.meetup.com/Reactadelphia"
-          target="_blank"
-          rel="noopener noreferrer"
+          engineer @{" "}
+          <a
+            css={descriptionLink}
+            sx={descriptionLinkThemeStyles}
+            href="https://www.fauna.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Fauna
+          </a>
+        </p>
+        <p
+          css={css`
+            margin: 0;
+          `}
         >
-          Reactadelphia
-        </a>
-        . Writer for{" "}
-        <a
-          css={descriptionLink}
-          sx={descriptionLinkThemeStyles}
-          href="https://blog.logrocket.com/author/ryanharris/"
-          target="_blank"
-          rel="noopener noreferrer"
+          instructor @{" "}
+          <a
+            css={descriptionLink}
+            sx={descriptionLinkThemeStyles}
+            href="https://blog.logrocket.com/author/ryanharris/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Egghead
+          </a>
+        </p>
+        <p
+          css={css`
+            margin: 0;
+          `}
         >
-          LogRocket
-        </a>
-        .
-      </p>
+          organizer @{" "}
+          <a
+            css={descriptionLink}
+            sx={descriptionLinkThemeStyles}
+            href="https://www.meetup.com/Reactadelphia"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Reactadelphia
+          </a>
+        </p>
+      </div>
     </div>
   )
 }
