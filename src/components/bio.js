@@ -4,8 +4,6 @@ import { css } from "@emotion/core"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Image from "gatsby-image"
 
-import { rhythm } from "../utils/typography"
-
 const bioHeader = css`
   align-items: center;
   display: flex;
@@ -32,7 +30,7 @@ const descriptionLinkThemeStyles = {
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
-    query BioQuery {
+    {
       avatar: file(absolutePath: { regex: "/avatar.jpg/" }) {
         childImageSharp {
           fixed(width: 50, height: 50) {
@@ -70,7 +68,7 @@ const Bio = () => {
               fixed={data.avatar.childImageSharp.fixed}
               alt="Ryan Harris profile picture"
               style={{
-                marginRight: rhythm(1 / 2),
+                /* marginRight: rhythm(1 / 2), */
                 marginBottom: 0,
                 minWidth: 50,
                 borderRadius: `100%`,

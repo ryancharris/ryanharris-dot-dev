@@ -11,8 +11,6 @@ import CodeBlock from "../components/CodeBlock"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-import { rhythm, scale } from "../utils/typography"
-
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.mdx
@@ -79,9 +77,9 @@ class BlogPostTemplate extends React.Component {
               </h1>
               <p
                 style={{
-                  ...scale(-1 / 5),
+                  /* ...scale(-1 / 5), */
                   display: `block`,
-                  marginBottom: rhythm(1),
+                  /* marginBottom: rhythm(1), */
                 }}
               >
                 {post.frontmatter.date}

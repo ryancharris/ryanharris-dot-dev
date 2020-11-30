@@ -42,7 +42,7 @@ function SocialMenu() {
     query SocialMenu {
       site {
         siteMetadata {
-          social {
+          socialInfo {
             github
             linkedin
             twitter
@@ -54,7 +54,7 @@ function SocialMenu() {
     }
   `)
 
-  const { social } = data.site.siteMetadata
+  const { socialInfo } = data.site.siteMetadata
 
   return (
     <ul
@@ -72,7 +72,7 @@ function SocialMenu() {
     >
       <li css={socialIconListItem}>
         <a
-          href={`https://www.twitter.com/${social.twitter}`}
+          href={`https://www.twitter.com/${socialInfo.twitter}`}
           css={socialIconLink}
           sx={socialIconLinkThemeStyles}
           target="_blank"
@@ -83,7 +83,7 @@ function SocialMenu() {
       </li>
       <li css={socialIconListItem}>
         <a
-          href={`https://www.github.com/${social.github}`}
+          href={`https://www.github.com/${socialInfo.github}`}
           css={socialIconLink}
           sx={socialIconLinkThemeStyles}
           target="_blank"
@@ -94,7 +94,7 @@ function SocialMenu() {
       </li>
       <li css={socialIconListItem}>
         <a
-          href={`https://www.linkedin.com/in/${social.linkedin}`}
+          href={`https://www.linkedin.com/in/${socialInfo.linkedin}`}
           css={socialIconLink}
           sx={socialIconLinkThemeStyles}
           target="_blank"
@@ -105,7 +105,7 @@ function SocialMenu() {
       </li>
       <li css={socialIconListItem}>
         <a
-          href={social.youtube}
+          href={socialInfo.youtube}
           css={socialIconLink}
           sx={socialIconLinkThemeStyles}
           target="_blank"
@@ -116,7 +116,7 @@ function SocialMenu() {
       </li>
       <li css={socialIconListItem}>
         <a
-          href={`https://twitch.tv/${social.twitch}`}
+          href={`https://twitch.tv/${socialInfo.twitch}`}
           css={socialIconLink}
           sx={socialIconLinkThemeStyles}
           target="_blank"
