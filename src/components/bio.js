@@ -4,6 +4,8 @@ import { css } from "@emotion/core"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Image from "gatsby-image"
 
+import SocialMenu from "../components/SocialMenu"
+
 const bioHeader = css`
   align-items: center;
   display: flex;
@@ -32,7 +34,7 @@ const Bio = () => {
     {
       avatar: file(absolutePath: { regex: "/avatar.jpg/" }) {
         childImageSharp {
-          fixed(width: 50, height: 50) {
+          fixed(width: 100, height: 100) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -49,39 +51,45 @@ const Bio = () => {
 
   return (
     <div>
-      <Link to={`/`}>
+      <Link
+        to={`/`}
+        css={css`
+          text-decoration: none;
+        `}
+      >
         <div css={bioHeader}>
-          <div
-            sx={{
-              display: ["none", "inherit"],
+          <Image
+            fixed={data.avatar.childImageSharp.fixed}
+            alt="Ryan Harris profile picture"
+            style={{
+              marginRight: `1rem`,
+              marginBottom: 0,
+              minWidth: 50,
+              width: 100,
+              height: 100,
+              borderRadius: `100%`,
             }}
-          >
-            <Image
-              fixed={data.avatar.childImageSharp.fixed}
-              alt="Ryan Harris profile picture"
-              style={{
-                marginRight: `1rem`,
-                marginBottom: 0,
-                minWidth: 50,
-                borderRadius: `100%`,
-              }}
-              imgStyle={{
-                borderRadius: `50%`,
-                margin: 0,
-              }}
-              sx={{
-                border: theme => `2px solid ${theme.colors.white}`,
-              }}
-            />
+            imgStyle={{
+              borderRadius: `50%`,
+              border: "5px solid orange",
+              margin: 0,
+            }}
+            sx={{
+              border: theme => `2px solid ${theme.colors.white}`,
+            }}
+          />
+
+          <div>
+            <h3
+              css={css`
+                color: black;
+                font-size: 2rem;
+              `}
+            >
+              {author}
+            </h3>
+            <SocialMenu />
           </div>
-          <h3
-            sx={{
-              color: "white",
-              textShadow: theme => `1px 1px 2px ${theme.colors.text}`,
-            }}
-          >
-            {author}
-          </h3>
         </div>
       </Link>
     </div>

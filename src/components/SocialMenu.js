@@ -62,12 +62,10 @@ function SocialMenu() {
         align-items: center;
         list-style: none;
         padding: 0;
-        margin: 0;
-        justify-content: flex-end;
+        margin: 0.25rem 0 0 0;
+        justify-content: flex-start;
+        display: flex;
       `}
-      sx={{
-        display: ["none", "flex"],
-      }}
     >
       <li css={socialIconListItem}>
         <a

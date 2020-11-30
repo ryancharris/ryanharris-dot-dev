@@ -22,29 +22,23 @@ class BlogIndex extends React.Component {
           const tags = node.frontmatter.tags
 
           return (
-            <Link
-              key={`link-${node.id}`}
-              to={node.fields.slug}
-              sx={{ color: "text" }}
+            <article
+              key={`article-${node.id}`}
+              css={css`
+                margin: 0 0 2rem 0;
+                color: #000000;
+              `}
             >
-              <article
-                key={`article-${node.id}`}
-                css={css`
-                  margin: 0 0 2rem 0;
-                  border: none;
-                  transition: box-shadow 0.35s ease-out;
-                  color: #000000;
-                `}
-                sx={{
-                  ":hover": {
-                    boxShadow: theme => `1px 1px 2px ${theme.colors.text}`,
-                  },
-                }}
+              <Link
+                key={`link-${node.id}`}
+                to={node.fields.slug}
+                sx={{ color: "text" }}
               >
                 <header>
                   <h3
                     style={{
                       marginTop: 0,
+                      marginBottom: 0,
                     }}
                     sx={{
                       lineHeight: "heading",
@@ -53,82 +47,62 @@ class BlogIndex extends React.Component {
                     {title}
                   </h3>
                 </header>
-                <section>
-                  <small
-                    css={css`
-                      display: block;
-                      margin: 0 0 8px 0;
-                      text-align: right;
-                    `}
-                  >
-                    {node.frontmatter.date}
-                  </small>
-                  <p
-                    css={css`
-                      margin-bottom: 20px;
-                    `}
-                    sx={{
-                      fontSize: [1, 2],
-                    }}
-                    dangerouslySetInnerHTML={{
-                      __html: node.frontmatter.description || node.excerpt,
-                    }}
-                  />
-                  <div
-                    css={css`
-                      display: flex;
-                      justify-content: space-between;
-                    `}
-                  >
-                    <ul
-                      css={css`
-                        display: flex;
-                        flex-direction: row;
-                        list-style: none;
-                        margin: 0;
-                      `}
-                    >
+              </Link>
+              <section>
+                <p
+                  css={css`
+                    display: inline;
+                  `}
+                  sx={{
+                    fontSize: [0],
+                  }}
+                >
+                  {node.timeToRead} {node.timeToRead > 1 ? `mins.` : `min.`}
+                </p>
+                <p
+                  css={css`
+                    margin: 0.75rem 0;
+                    line-height: 1.5;
+                  `}
+                  sx={{
+                    fontSize: [1, 2],
+                  }}
+                  dangerouslySetInnerHTML={{
+                    __html: node.frontmatter.description || node.excerpt,
+                  }}
+                />
+
+                <ul
+                  css={css`
+                    display: flex;
+                    flex-direction: row;
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                  `}
+                >
+                  {tags.map((tag, index) => {
+                    return (
                       <li
                         css={css`
-                          margin: 0 8px 0 0;
+                          margin-bottom: 0;
                         `}
+                        key={`tag-${index}`}
                       >
-                        Tags:
+                        <i>
+                          #{tag}
+                          {index === tags.length - 1 ? (
+                            ""
+                          ) : (
+                            <span>,&nbsp;</span>
+                          )}
+                        </i>
                       </li>
-                      {tags.map((tag, index) => {
-                        return (
-                          <li
-                            css={css`
-                              margin-bottom: 0;
-                            `}
-                            key={`tag-${index}`}
-                          >
-                            <i>
-                              #{tag}
-                              {index === tags.length - 1 ? (
-                                ""
-                              ) : (
-                                <span>,&nbsp;</span>
-                              )}
-                            </i>
-                          </li>
-                        )
-                      })}
-                    </ul>
-                    <div>
-                      <span
-                        sx={{
-                          fontSize: [0],
-                        }}
-                      >
-                        {node.timeToRead}{" "}
-                        {node.timeToRead > 1 ? `mins.` : `min.`}
-                      </span>
-                    </div>
-                  </div>
-                </section>
-              </article>
-            </Link>
+                    )
+                  })}
+                </ul>
+              </section>
+            </article>
           )
         })}
       </Layout>
@@ -158,7 +132,6 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
             title
             tags
           }

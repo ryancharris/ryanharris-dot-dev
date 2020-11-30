@@ -33,23 +33,21 @@ function Nav(props) {
         key={`route-${route.label.toLowerCase()}`}
         css={routeListItem}
         sx={{
-          margin: "0 0 0 1rem",
+          margin: ["0 1rem 0 0", "0 0 0 1rem"],
         }}
       >
         <Link
           to={route.url}
           sx={{
             "&:hover": {
-              color: "white",
-              textShadow: "1px 1px 1px rgba(0, 0, 0, 0.5)",
+              color: "orange",
             },
           }}
           getProps={props => {
             return props.isCurrent
               ? {
                   style: {
-                    color: "#eff1f3",
-                    textShadow: "1px 1px 1px rgba(0, 0, 0, 0.5)",
+                    color: "orange",
                   },
                 }
               : null
@@ -63,13 +61,15 @@ function Nav(props) {
 
   return (
     <ul
+      css={css`
+        display: flex;
+        list-style: none;
+        padding: 0;
+        flex-direction: row;
+      `}
       sx={{
-        display: `flex`,
-        listStyle: `none`,
-        margin: `0`,
-        padding: `0px`,
-        flexDirection: "row",
-        fontSize: [2, 3],
+        fontSize: 3,
+        margin: ["1rem 0 0 0", "0.75rem 0 0 0"],
       }}
     >
       {pageLinks}

@@ -36,12 +36,13 @@ class Layout extends React.Component {
           box-sizing: border-box;
           display: flex;
           min-height: 100vh;
-          padding: 1rem;
-          width: 100%;
+          padding: 2.625rem 1.3125rem;
+          margin: 0 auto;
         `}
         sx={{
           color: "text",
           flexDirection: "column",
+          maxWidth: "42rem",
         }}
       >
         <Sidebar />
