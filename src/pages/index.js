@@ -30,10 +30,8 @@ class BlogIndex extends React.Component {
               <article
                 key={`article-${node.id}`}
                 css={css`
-                  margin: 0 0 18px 0;
+                  margin: 0 0 2rem 0;
                   border: none;
-                  border-radius: 4px;
-                  padding: 12px;
                   transition: box-shadow 0.35s ease-out;
                   color: #000000;
                 `}
@@ -46,7 +44,6 @@ class BlogIndex extends React.Component {
                 <header>
                   <h3
                     style={{
-                      /* marginBottom: rhythm(1 / 4), */
                       marginTop: 0,
                     }}
                     sx={{

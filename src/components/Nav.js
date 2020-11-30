@@ -33,7 +33,7 @@ function Nav(props) {
         key={`route-${route.label.toLowerCase()}`}
         css={routeListItem}
         sx={{
-          margin: [`0 12px 0 0`, "0 0 8px 0"],
+          margin: "0 0 0 1rem",
         }}
       >
         <Link
@@ -68,7 +68,7 @@ function Nav(props) {
         listStyle: `none`,
         margin: `0`,
         padding: `0px`,
-        flexDirection: [`row`, `column`],
+        flexDirection: "row",
         fontSize: [2, 3],
       }}
     >

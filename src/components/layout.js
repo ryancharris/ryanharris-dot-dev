@@ -30,55 +30,27 @@ class Layout extends React.Component {
       }
     `
 
-    const header =
-      location.pathname === rootPath ? (
-        <header
-          sx={{
-            display: ["none", "block"],
-          }}
-        >
-          <h1
-            style={{
-              marginTop: "12px",
-            }}
-          >
-            <Link
-              style={{
-                boxShadow: `none`,
-                textDecoration: `none`,
-                color: `inherit`,
-              }}
-              to={`/`}
-            >
-              {title}
-            </Link>
-          </h1>
-        </header>
-      ) : null
-
     return (
       <div
         css={css`
           box-sizing: border-box;
           display: flex;
           min-height: 100vh;
-          padding: 0;
+          padding: 1rem;
           width: 100%;
         `}
         sx={{
           color: "text",
-          flexDirection: ["column", "row"],
+          flexDirection: "column",
         }}
       >
         <Sidebar />
         <main
           css={mainContainer}
           sx={{
-            padding: ["16px 32px", "12px 24px"],
-            maxWidth: ["100%", "800px"],
+            maxWidth: "100%",
           }}
         >
-          {header}
           {children}
         </main>
       </div>

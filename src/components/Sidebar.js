@@ -12,26 +12,22 @@ function Sidebar() {
       css={css`
         flex: 0 0 33.33%;
         position: relative;
+        margin-bottom: 2.5rem;
       `}
-      sx={{
-        backgroundColor: "sidebar",
-        maxWidth: ["100%", "320px"],
-        padding: ["18px 32px", "24px 0 24px 28px"],
-      }}
     >
       <div
         css={css`
-          position: relative;
+          display: flex;
+          justify-content: space-between;
         `}
         sx={{
-          position: ["static", "sticky"],
-          top: ["auto", "24px"],
+          alignItems: ["center"],
         }}
       >
         <Bio />
-        <SocialMenu />
         <Nav />
       </div>
+      <SocialMenu />
     </aside>
   )
 }

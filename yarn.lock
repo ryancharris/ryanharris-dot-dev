@@ -6807,10 +6807,10 @@ gatsby-plugin-theme-ui@0.4.0-alpha.3:
   resolved "https://registry.yarnpkg.com/gatsby-plugin-theme-ui/-/gatsby-plugin-theme-ui-0.4.0-alpha.3.tgz#0d1ad42e6cefc35610a8a74c54f73b25853e818b"
   integrity sha512-jaEN95M7z5f6pV4/4eaPxNx48GNpAYzNcnFtZ03Hou4RtXyzmM9A87zisXbQFayAWTF+C7efZ4Bp3Pv2+NAvbA==
 
-gatsby-plugin-theme-ui@^0.2.43:
-  version "0.2.53"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-theme-ui/-/gatsby-plugin-theme-ui-0.2.53.tgz#57a52339e50ede7ef4df0b1b5593d360b56b597d"
-  integrity sha512-AlQC+uC9lvrP3LlGsLe0f0azp7B5c49qWl4b3FDj8xbravBoqFmJT7XrNTpYYbxnCnx/K1v0QtwP8qindw0S2g==
+gatsby-plugin-theme-ui@^0.3.4:
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-theme-ui/-/gatsby-plugin-theme-ui-0.3.4.tgz#b3ed23b847c9667a7b54f2f3549a02582e34b633"
+  integrity sha512-Jz3Z+LHkYJvKTotuibfKy5JgN74VuDYMphMk/dWe4P4AY/4MmJh9YN7Uvkr3J0hZc32x8E9m8YgbSDb3M53HsA==
 
 gatsby-plugin-twitter@^2.3.10:
   version "2.5.0"

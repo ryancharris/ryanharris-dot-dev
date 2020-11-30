@@ -21,8 +21,8 @@ function SocialMenu() {
   `
 
   const socialIcon = css`
-    height: 18px;
-    width: 18px;
+    height: 16px;
+    width: 16px;
   `
 
   const socialIconLink = css`
@@ -46,7 +46,7 @@ function SocialMenu() {
             github
             linkedin
             twitter
-            youtube
+
             twitch
           }
         }
@@ -60,14 +60,13 @@ function SocialMenu() {
     <ul
       css={css`
         align-items: center;
-        display: flex;
         list-style: none;
+        padding: 0;
+        margin: 0;
+        justify-content: flex-end;
       `}
       sx={{
-        margin: ["0 0 8px 0", "0 0 16px 0"],
-        position: ["absolute", "inherit"],
-        right: ["0"],
-        top: ["6px"],
+        display: ["none", "flex"],
       }}
     >
       <li css={socialIconListItem}>
@@ -101,17 +100,6 @@ function SocialMenu() {
           rel="noreferrer noopener"
         >
           <LinkedInLogo css={socialIcon} />
-        </a>
-      </li>
-      <li css={socialIconListItem}>
-        <a
-          href={socialInfo.youtube}
-          css={socialIconLink}
-          sx={socialIconLinkThemeStyles}
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          <YoutubeLogo css={socialIcon} />
         </a>
       </li>
       <li css={socialIconListItem}>
