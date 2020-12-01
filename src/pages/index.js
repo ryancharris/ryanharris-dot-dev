@@ -25,13 +25,16 @@ class BlogIndex extends React.Component {
             <article
               key={`article-${node.id}`}
               css={css`
-                margin: 0 0 2rem 0;
+                margin: 0 0 3.5rem 0;
                 color: #000000;
               `}
             >
               <Link
                 key={`link-${node.id}`}
                 to={node.fields.slug}
+                css={css`
+                  text-decoration: none;
+                `}
                 sx={{ color: "text" }}
               >
                 <header>
@@ -57,6 +60,9 @@ class BlogIndex extends React.Component {
                     fontSize: [0],
                   }}
                 >
+                  <span role="img" aria-label="open-book">
+                    📖
+                  </span>{" "}
                   {node.timeToRead} {node.timeToRead > 1 ? `mins.` : `min.`}
                 </p>
                 <p

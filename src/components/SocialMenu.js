@@ -34,7 +34,7 @@ function SocialMenu() {
     color: "text",
     textShadow: theme => `1px 1px 1px ${theme.colors.white}`,
     "&:hover": {
-      color: "white",
+      color: "streamPink",
     },
   }
 

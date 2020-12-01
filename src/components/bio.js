@@ -34,7 +34,7 @@ const Bio = () => {
     {
       avatar: file(absolutePath: { regex: "/avatar.jpg/" }) {
         childImageSharp {
-          fixed(width: 100, height: 100) {
+          fixed(width: 72, height: 72) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -65,17 +65,16 @@ const Bio = () => {
               marginRight: `1rem`,
               marginBottom: 0,
               minWidth: 50,
-              width: 100,
-              height: 100,
+              width: 72,
+              height: 72,
               borderRadius: `100%`,
             }}
             imgStyle={{
               borderRadius: `50%`,
-              border: "5px solid orange",
               margin: 0,
             }}
             sx={{
-              border: theme => `2px solid ${theme.colors.white}`,
+              border: theme => `4px solid ${theme.colors.streamPink}`,
             }}
           />
 

@@ -3,6 +3,8 @@ import { graphql, Link, useStaticQuery } from "gatsby"
 import { css } from "@emotion/core"
 import { jsx } from "theme-ui"
 
+import theme from "../gatsby-plugin-theme-ui/index"
+
 const routeListItem = css`
   a {
     box-shadow: none;
@@ -40,14 +42,14 @@ function Nav(props) {
           to={route.url}
           sx={{
             "&:hover": {
-              color: "orange",
+              color: "streamPink",
             },
           }}
           getProps={props => {
             return props.isCurrent
               ? {
                   style: {
-                    color: "orange",
+                    color: theme.colors.streamPink,
                   },
                 }
               : null

@@ -12,7 +12,6 @@ class Layout extends React.Component {
     const rootPath = `${__PATH_PREFIX__}/`
 
     const mainContainer = css`
-      flex: 0 0 66.66%;
       overflow: auto;
       width: 100%;
       flex-grow: 1;

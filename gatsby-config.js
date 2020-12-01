@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `ryanharris.dev`,
     author: `Ryan Harris`,
-    description: `dev @ fauna. organizer @ reactadelphia. streamer @ twitch.tv/ryan_c_harris. member of @thelivecoders.`,
+    description: `dev @ fauna. instructor @ egghead. organizer @ reactadelphia. streamer @ twitch.tv/ryan_c_harris.`,
     siteUrl: `https://ryanharris.dev`,
     socialInfo: {
       github: `ryancharris`,
@@ -56,6 +56,12 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-page-creator",
+      options: {
+        path: `${__dirname}/content/blog`,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/assets`,
@@ -65,8 +71,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `pages`,
         path: `${__dirname}/src/pages/`,
+        name: `pages`,
       },
     },
     {
@@ -87,7 +93,8 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         defaultLayouts: {
-          default: require.resolve("./src/templates/page-template.js"),
+          // blog: require.resolve("./src/templates/blog-post.js"),
+          pages: require.resolve("./src/templates/page-template.js"),
         },
         gatsbyRemarkPlugins: [
           `gatsby-remark-images`,
