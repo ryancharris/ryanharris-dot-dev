@@ -38,6 +38,7 @@ export default {
     h3: {
       marginBottom: "24px",
       marginTop: 0,
+      color: "red",
     },
     h4: {
       marginBottom: "12px",
@@ -71,5 +72,6 @@ export default {
     a: {
       boxShadow: "none",
     },
+    p: { color: "red" },
   },
 }

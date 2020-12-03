@@ -1,58 +1,50 @@
 module.exports = {
   siteMetadata: {
-    title: `ryanharris.dev`,
-    author: `Ryan Harris`,
-    description: `dev @ fauna. instructor @ egghead. organizer @ reactadelphia. streamer @ twitch.tv/ryan_c_harris.`,
-    siteUrl: `https://ryanharris.dev`,
+    title: "ryanharris.dev",
+    author: "Ryan Harris",
+    description:
+      "dev @ fauna. instructor @ egghead. organizer @ reactadelphia. streamer @ twitch.tv/ryan_c_harris.",
+    siteUrl: "https://ryanharris.dev",
     socialInfo: {
-      github: `ryancharris`,
-      linkedin: `ryancharris`,
-      twitter: `ryan_c_harris`,
+      github: "ryancharris",
+      linkedin: "ryancharris",
+      twitter: "ryan_c_harris",
       twitch: "ryan_c_harris",
     },
-    social: [
-      {
-        name: `Twitter`,
-        url: `https://twitter.com/gatsbyjs`,
-      },
-      {
-        name: `GitHub`,
-        url: `https://github.com/gatsbyjs`,
-      },
-    ],
     siteRoutes: [
       {
-        url: `/`,
-        label: `blog`,
+        url: "/",
+        label: "blog",
       },
       {
-        url: `/uses`,
-        label: `uses`,
+        url: "/uses",
+        label: "uses",
       },
       {
-        url: `/resume`,
-        label: `cv`,
+        url: "/resume",
+        label: "cv",
       },
       {
-        url: `/talks`,
-        label: `talks`,
+        url: "/talks",
+        label: "talks",
       },
     ],
   },
   plugins: [
     {
-      resolve: `gatsby-theme-blog`,
+      resolve: "gatsby-theme-blog",
       options: {
-        basePath: `/`,
-        prismPreset: `dracula`,
+        assetPath: "content/assets",
+        contentPath: "content/blog",
+        prismPreset: "dracula",
         mdxOtherwiseConfigured: true,
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/content/blog`,
-        name: `blog`,
+        name: "blog",
       },
     },
     {
@@ -62,76 +54,76 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/content/assets`,
-        name: `assets`,
+        name: "assets",
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/src/pages/`,
-        name: `pages`,
+        name: "pages",
       },
     },
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: "gatsby-plugin-manifest",
       options: {
-        name: `ryanharris.dev`,
-        short_name: `ryanharris.dev`,
+        name: "ryanharris.dev",
+        short_name: "ryanharris.dev",
         description:
           "dev @ fauna. instructor @ egghead. organizer @ reactadelphia. streamer @ twitch.tv/ryan_c_harris.",
-        start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#009fb7`,
-        display: `minimal-ui`,
-        icon: `content/assets/favicon.jpg`,
+        start_url: "/",
+        background_color: "#ffffff",
+        theme_color: "#009fb7",
+        display: "minimal-ui",
+        icon: "content/assets/favicon.jpg",
       },
     },
     {
-      resolve: `gatsby-plugin-mdx`,
+      resolve: "gatsby-plugin-mdx",
       options: {
         defaultLayouts: {
-          // blog: require.resolve("./src/templates/blog-post.js"),
-          pages: require.resolve("./src/templates/page-template.js"),
+          blog: require.resolve("./src/templates/blog-post.js"),
+          default: require.resolve("./src/templates/page-template.js"),
         },
         gatsbyRemarkPlugins: [
-          `gatsby-remark-images`,
+          "gatsby-remark-images",
           {
-            resolve: `gatsby-remark-responsive-iframe`,
+            resolve: "gatsby-remark-responsive-iframe",
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
+              wrapperStyle: "margin-bottom: 1.0725rem",
             },
           },
         ],
       },
     },
-    `gatsby-plugin-react-helmet`,
+    "gatsby-plugin-react-helmet",
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-images`,
+            resolve: "gatsby-remark-images",
             options: {
               maxWidth: 590,
             },
           },
           {
-            resolve: `gatsby-remark-responsive-iframe`,
+            resolve: "gatsby-remark-responsive-iframe",
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
+              wrapperStyle: "margin-bottom: 1.0725rem",
             },
           },
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
+          "gatsby-remark-prismjs",
+          "gatsby-remark-copy-linked-files",
+          "gatsby-remark-smartypants",
         ],
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-sharp",
     {
       resolve: "gatsby-plugin-react-svg",
       options: {

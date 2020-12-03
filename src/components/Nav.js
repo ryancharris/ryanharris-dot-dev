@@ -71,7 +71,7 @@ function Nav(props) {
       `}
       sx={{
         fontSize: 3,
-        margin: ["1rem 0 0 0", "0.75rem 0 0 0"],
+        margin: ["2rem 0 0 0", "0.75rem 0 0 0"],
       }}
     >
       {pageLinks}

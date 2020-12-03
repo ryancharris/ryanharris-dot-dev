@@ -62,7 +62,7 @@ const Bio = () => {
             fixed={data.avatar.childImageSharp.fixed}
             alt="Ryan Harris profile picture"
             style={{
-              marginRight: `1rem`,
+              marginRight: `1.5rem`,
               marginBottom: 0,
               minWidth: 50,
               width: 72,

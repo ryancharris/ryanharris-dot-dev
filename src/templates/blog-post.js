@@ -12,10 +12,11 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 function BlogPostTemplate(props) {
+  console.log("props", props)
   const post = props.data.mdx
   const siteTitle = props.data.site.siteMetadata.title
   const { tags, title } = post.frontmatter
-  // const { previous, next } = this.props.pageContext
+  const { previous, next } = this.props.pageContext
 
   const socialImage = getShareImage({
     title: title,
@@ -71,42 +72,37 @@ function BlogPostTemplate(props) {
                 margin-top: 12px;
               `}
             >
-              {post.frontmatter.title}
+              <MDXRenderer>{post.frontmatter.title}</MDXRenderer>
             </h1>
           </header>
-          <MDXRenderer>{post.body}</MDXRenderer>
-          {/* <hr
-                  style={{
-                  marginBottom: rhythm(1),
-                  }}
-                  /> */}
+          {post.body}
         </article>
-        {/* <nav>
-                <ul
-                style={{
-                display: `flex`,
-                flexWrap: `wrap`,
-                justifyContent: `space-between`,
-                listStyle: `none`,
-                padding: 0,
-                }}
-                >
-                <li>
-                {previous && (
+        <nav>
+          <ul
+            style={{
+              display: `flex`,
+              flexWrap: `wrap`,
+              justifyContent: `space-between`,
+              listStyle: `none`,
+              padding: 0,
+            }}
+          >
+            <li>
+              {previous && (
                 <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
+                  ← {previous.frontmatter.title}
                 </Link>
-                )}
-                </li>
-                <li>
-                {next && (
+              )}
+            </li>
+            <li>
+              {next && (
                 <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
+                  {next.frontmatter.title} →
                 </Link>
-                )}
-                </li>
-                </ul>
-                </nav> */}
+              )}
+            </li>
+          </ul>
+        </nav>
       </MDXProvider>
     </Layout>
   )
