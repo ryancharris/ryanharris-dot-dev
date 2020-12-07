@@ -1,26 +1,22 @@
-/** @jsx jsx */
 import React from "react"
-import { jsx } from "theme-ui"
-import { css } from "@emotion/core"
-import { graphql } from "gatsby"
-import { MDXRenderer } from "gatsby-plugin-mdx"
 import { MDXProvider } from "@mdx-js/react"
+import { MDXRenderer } from "gatsby-plugin-mdx"
+import { css } from "@emotion/core"
+import { jsx } from "theme-ui"
+import { graphql, Link } from "gatsby"
 import getShareImage from "@jlengstorf/get-share-image"
 
-import CodeBlock from "../components/CodeBlock"
 import Layout from "../components/layout"
+import CodeBlock from "../components/CodeBlock"
 import SEO from "../components/seo"
 
-function BlogPostTemplate(props) {
-  console.log("props", props)
+export default props => {
+  const { children, location } = props
   const post = props.data.mdx
-  const siteTitle = props.data.site.siteMetadata.title
-  const { tags, title } = post.frontmatter
-  const { previous, next } = this.props.pageContext
 
   const socialImage = getShareImage({
-    title: title,
-    tagline: tags.map(tag => `#${tag}`).join(" "),
+    title: post.frontmatter.title,
+    tagline: post.frontmatter.tags.map(tag => `#${tag}`).join(" "),
     cloudName: "dzs14kcef",
     imagePublicID: "ryanharris-dot-dev/og-image",
     textAreaWidth: 800,
@@ -37,7 +33,7 @@ function BlogPostTemplate(props) {
     taglineColor: "ffffff",
   })
 
-  const tagsMeta = tags.map(tag => {
+  const tagsMeta = post.frontmatter.tags.map(tag => {
     return {
       name: "keyword",
       content: tag,
@@ -57,13 +53,15 @@ function BlogPostTemplate(props) {
   }
 
   return (
-    <Layout location={props.location} title={siteTitle}>
+    <Layout
+      location={location}
       title={post.frontmatter.title}
       description={post.excerpt}
       meta={metaData}
       socialImage={socialImage}
-      />
-      <MDXProvider components={components}>
+    >
+      <SEO title={post.frontmatter.title} socialImage={socialImage} />
+      <MDXProvider component={components}>
         <article>
           <header>
             <h1
@@ -72,10 +70,10 @@ function BlogPostTemplate(props) {
                 margin-top: 12px;
               `}
             >
-              <MDXRenderer>{post.frontmatter.title}</MDXRenderer>
+              {post.frontmatter.title}
             </h1>
           </header>
-          {post.body}
+          <MDXRenderer>{post.body}</MDXRenderer>
         </article>
         <nav>
           <ul
@@ -88,16 +86,16 @@ function BlogPostTemplate(props) {
             }}
           >
             <li>
-              {previous && (
-                <Link to={previous.fields.slug} rel="prev">
-                  ← {previous.frontmatter.title}
+              {props.pageContext.previous && (
+                <Link to={props.pageContext.previous.fields.slug} rel="prev">
+                  ← {props.pageContext.previous.frontmatter.title}
                 </Link>
               )}
             </li>
             <li>
-              {next && (
-                <Link to={next.fields.slug} rel="next">
-                  {next.frontmatter.title} →
+              {props.pageContext.next && (
+                <Link to={props.pageContext.next.fields.slug} rel="next">
+                  {props.pageContext.next.frontmatter.title} →
                 </Link>
               )}
             </li>
@@ -107,8 +105,6 @@ function BlogPostTemplate(props) {
     </Layout>
   )
 }
-
-export default BlogPostTemplate
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
