@@ -40,9 +40,9 @@ While there is nothing wrong with this approach, it can be unwieldy when dealing
 
 ![Without Context](https://drive.google.com/uc?export=view&id=1eJ_V1v65mDzlrjWftb6cHmGOPuHNBV6c)
 
-In order to use the Context API, you need to create a `Context.Provider` that takes a `value` prop representing all the data you want to inject into the child components that need it.
+In order to use the Context API, you need to create a Context.Provider that takes a value prop representing all the data you want to inject into the child components that need it.
 
-Before the advent of [Hooks](https://blog.logrocket.com/frustrations-with-react-hooks/), you would do this by using an associated `Context.Consumer`, but in the post-Hooks world, we can leverage the `useContext` Hook to subscribe a component to the closest Provider above it in the component tree.
+Before the advent of [Hooks](https://blog.logrocket.com/frustrations-with-react-hooks/), you would do this by using an associated Context.Consumer, but in the post-Hooks world, we can leverage the useContext Hook to subscribe a component to the closest Provider above it in the component tree.
 
 ![With Context](https://drive.google.com/uc?export=view&id=12ib9i5CnTFI63l5iaVfQEff4na5Zr-oL)
 
@@ -85,7 +85,7 @@ Alternatively, React is designed to have events update the virtual DOM (a snapsh
 
 This not only makes React more performant by reducing the work done to update the page, but it also makes for a more consistent user experience.
 
-For us, we need to directly access the three `input`s in our component tree in order to use the browser’s `.focus()` method. Since we need to change focus states for our inputs based on user interaction, it makes sense to keep this logic in our parent component, too.
+For us, we need to directly access the three inputs in our component tree in order to use the browser’s .focus() method. Since we need to change focus states for our inputs based on user interaction, it makes sense to keep this logic in our parent component, too.
 
 We’ll create three different refs in our parent component that will point to the following:
 
@@ -93,7 +93,7 @@ We’ll create three different refs in our parent component that will point to t
 2. The input in our first filter menu (ex. Author)
 3. The input in our second filter menu (ex. Year)
 
-Using our Context, we can then pass these refs down to our child components. In the child component, we destructure the appropriate `ref` off the component’s `props` object and assign it directly to our HTML `input`:
+Using our Context, we can then pass these refs down to our child components. In the child component, we destructure the appropriate ref off the component’s props object and assign it directly to our HTML input:
 
 ```javascript
 // Provide value in App.jsx
@@ -150,9 +150,9 @@ For example, if one of our filter menus is open and then closes, we would want t
 
 One thing to note here is that function components don’t play well with refs.
 
-In order to pass a `ref` into a function component, you will need to use `React.forwardRef`, which creates a new component that receives a `ref` attribute and then passes it on to another component below.
+In order to pass a ref into a function component, you will need to use React.forwardRef, which creates a new component that receives a ref attribute and then passes it on to another component below.
 
-For a more detailed look at how to use `forwardRef`, check out the [official React docs](https://reactjs.org/docs/react-api.html#reactforwardref).
+For a more detailed look at how to use forwardRef, check out the [official React docs](https://reactjs.org/docs/react-api.html#reactforwardref).
 
 ### Conclusion
 
@@ -162,7 +162,7 @@ While we didn’t use any stores in this example, you could easily wire one up a
 
 For example, in the project I built at work, my parent component was subscribed to a store that provided a list of the items to be rendered in our dropdown menus.
 
-Once the parent received this data, it added it to our Context’s `value` prop and passed it down to the child components.
+Once the parent received this data, it added it to our Context’s value prop and passed it down to the child components.
 
 Ultimately, the ability to centrally locate logic in this way allows for a more consistent user experience.
 

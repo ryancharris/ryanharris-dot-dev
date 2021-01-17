@@ -6,7 +6,6 @@ import { useStaticQuery, graphql } from "gatsby"
 import GithubLogo from "../../content/assets/githubLogo.svg"
 import LinkedInLogo from "../../content/assets/linkedinLogo.svg"
 import TwitterLogo from "../../content/assets/twitterLogo.svg"
-import YoutubeLogo from "../../content/assets/youtubeLogo.svg"
 import TwitchLogo from "../../content/assets/twitchLogo.svg"
 
 function SocialMenu() {

@@ -36,7 +36,6 @@ module.exports = {
       options: {
         assetPath: "content/assets",
         contentPath: "content/blog",
-        prismPreset: "dracula",
         mdxOtherwiseConfigured: true,
       },
     },
@@ -90,6 +89,7 @@ module.exports = {
               wrapperStyle: "margin-bottom: 1.0725rem",
             },
           },
+          'gatsby-remark-prismjs'
         ],
       },
     },
@@ -110,7 +110,6 @@ module.exports = {
               wrapperStyle: "margin-bottom: 1.0725rem",
             },
           },
-          "gatsby-remark-prismjs",
           "gatsby-remark-copy-linked-files",
           "gatsby-remark-smartypants",
         ],

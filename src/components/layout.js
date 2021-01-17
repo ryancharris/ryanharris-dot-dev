@@ -16,16 +16,28 @@ class Layout extends React.Component {
       width: 100%;
       flex-grow: 1;
 
-      code {
-        background: #2a2734;
-        color: #ffcc99;
-        font-size: 1rem;
-        padding: 0 8px;
-      }
-
       a {
         box-shadow: none;
         color: #009fb7;
+        text-decoration: none;
+      }
+
+      p {
+        line-height: 1.5;
+      }
+
+      li {
+        margin-bottom: 16px;
+      }
+
+      .gatsby-highlight-code-line {
+        background-color: #feb;
+        display: block;
+        margin-right: -1em;
+        margin-left: -1em;
+        padding-right: 1em;
+        padding-left: 0.75em;
+        border-left: 0.25em solid #f99;
       }
     `
 

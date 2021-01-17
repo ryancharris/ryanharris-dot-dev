@@ -59,29 +59,29 @@ React, on the other hand, feels a bit more like HTML-in-JavaScript. Take a look 
 
 First, with React:
 
-```
+```javascript
 function Accordion() {
-  const [isAccordionOpen, toggleAccordion] = React.useState(false);
+  const [isAccordionOpen, toggleAccordion] = React.useState(false)
 
   return (
     <div className="Accordion">
       <h3>Accordion Header</h3>
       <button
         onClick={() => {
-          toggleAccordion(!isAccordionOpen);
+          toggleAccordion(!isAccordionOpen)
         }}
       >
         Toggle Accordion
       </button>
       {isAccordionOpen && <p>Accordion content lives here...</p>}
     </div>
-  );
+  )
 }
 ```
 
 Now, with Vue:
 
-```
+```javascript
 <template>
   <div class="accordion">
     <button @click="toggleAccordion">Toggle Accordion</button>
@@ -116,9 +116,9 @@ Below, I’ve highlighted five tasks a developer commonly performs when building
 
 A common strategy developers use is called conditional rendering. Essentially, this is a fancy way of saying “if X, then Y.” This is often how we show or hide parts of our interface from the user.
 
-We can see an example of this in **App.vue** within the `<template>` tags. Two of our components (`<Work />` and `<Home />`) are being conditionally rendered using Vue’s v-bindings. In this case, the user sees `<Work />` if our local state (i.e., `data.isWorkScreen`) has a value of true. Otherwise, they see, `<Home />`.
+We can see an example of this in **App.vue** within the <template> tags. Two of our components (<Work /> and <Home />) are being conditionally rendered using Vue’s v-bindings. In this case, the user sees <Work /> if our local state (i.e., data.isWorkScreen) has a value of true. Otherwise, they see, <Home />.
 
-```
+```javascript
 <div id="app">
   <h1 class="app__header">{{createHeader}}</h1>
   <Toggle @toggled="handleToggleChange"/>
@@ -129,7 +129,7 @@ We can see an example of this in **App.vue** within the `<template>` tags. Two o
 
 In React, we would do this slightly differently. There are a number of ways we could replicate the behavior seen above, but the most straightforward way would be to use an inline JSX expression right inside of the render function.
 
-```
+```javascript
 <div id="App">
   <h1 className="App_header">My Cool App</h1>
   <Toggle onClick={handleToggleChange} />
@@ -139,11 +139,11 @@ In React, we would do this slightly differently. There are a number of ways we c
 
 #### #2 Rendering a list
 
-Another common thing I find myself doing when building an application is iterating through a data object and creating component instances for each item in the list. For example, this would be a good way to create every `<Item />` in a `<ToDoList />`.
+Another common thing I find myself doing when building an application is iterating through a data object and creating component instances for each item in the list. For example, this would be a good way to create every <Item /> in a <ToDoList />.
 
-In our case, we’re creating two instances of `<BusRoute />` in **Work.vue** and another two in **Home.vue**. In both files, we are iterating through our route information using the `v-for` binding in order to create each individual route component.
+In our case, we’re creating two instances of <BusRoute /> in **Work.vue** and another two in **Home.vue**. In both files, we are iterating through our route information using the v-for binding in order to create each individual route component.
 
-```
+```javascript
 <div class="Work">
   <BusRoute
     v-for="bus in buses"
@@ -156,10 +156,10 @@ In our case, we’re creating two instances of `<BusRoute />` in **Work.vue** an
 </div>
 ```
 
-To replicate this in React, we can use something as simple as **.map** to create a `<BusRoute />` for each item in our data object. Then, we can interpolate this value into the JSX tree we’re returning.
+To replicate this in React, we can use something as simple as **.map** to create a <BusRoute /> for each item in our data object. Then, we can interpolate this value into the JSX tree we’re returning.
 
-```
-const { buses } = this.state;
+```javascript
+const { buses } = this.state
 
 const busRoutes = buses.map(bus => {
   return (
@@ -173,11 +173,7 @@ const busRoutes = buses.map(bus => {
   )
 })
 
-return (
-  <div className="Work">
-    {busRoutes}
-  </div>
-);
+return <div className="Work">{busRoutes}</div>
 ```
 
 #### #3 Rendering Children
@@ -186,30 +182,30 @@ This one probably seems straightforward, and for the most part, it is. However, 
 
 In React, this whole process is easy. You simply import the file and then use it in your renders.
 
-Vue components require an extra step. In addition to importing and using child components, Vue components must locally register their component dependencies using the Vue instance’s `component` field. This overhead is intended to help with efficient bundling, thus reducing client download sizes.
+Vue components require an extra step. In addition to importing and using child components, Vue components must locally register their component dependencies using the Vue instance’s component field. This overhead is intended to help with efficient bundling, thus reducing client download sizes.
 
 **App.vue** would be the best example of this in our bus application as it is responsible for rendering three child components at various points in its lifecycle.
 
-```
+```javascript
 export default {
   name: "App",
   components: {
     Home,
     Toggle,
-    Work
-  }
+    Work,
+  },
 }
 ```
 
 #### #4 Rendering children
 
-Injecting data into your components in Vue is similar to how it was done in React before Hooks were released. Like React’s `componentDidMount`, Vue has a similar lifecycle method called `created`, which is where you would retrieve your data from an external source and ostensibly store it in local state.
+Injecting data into your components in Vue is similar to how it was done in React before Hooks were released. Like React’s componentDidMount, Vue has a similar lifecycle method called created, which is where you would retrieve your data from an external source and ostensibly store it in local state.
 
 Here’s what these two lifecycle methods look like side by side:
 
 React:
 
-```
+```javascript
 componentDidMount() {
   axios({
     method: "get",
@@ -229,7 +225,7 @@ componentDidMount() {
 
 Vue:
 
-```
+```javascript
 created: function(jsonUrl) {
   axios({
     method: "get",
@@ -247,37 +243,37 @@ created: function(jsonUrl) {
 
 And let’s not forget our new friend, Hooks! If you happen to be using React 16.8 (or newer), you may have already begun writing function components that use hooks, so here’s how the above would be done in React going forward:
 
-```
+```javascript
 React.useEffect(() => {
   axios({
     method: "get",
-    url: props.jsonUrl
+    url: props.jsonUrl,
   })
     .then(res => {
-      const { routes } = res.data;
+      const { routes } = res.data
 
       // setState is part of a useState hook unseen here
-      setRoute(routes[0].legs[0].departure_time.text);
+      setRoute(routes[0].legs[0].departure_time.text)
     })
     .catch(err => {
-      console.log(err);
-    });
-}, []);
+      console.log(err)
+    })
+}, [])
 ```
 
 #### #5 Managing component state from a parent
 
-Earlier we used the local state (i.e., `data.isHomeScreen` in **App.vue**) to determine whether the user saw the Home or Work child component. But how was this value changing? Great question!
+Earlier we used the local state (i.e., data.isHomeScreen in **App.vue**) to determine whether the user saw the Home or Work child component. But how was this value changing? Great question!
 
 If you looked at the Codesandbox, I’m sure you saw that **Home** and **Work** are not alone; they have a sibling called **Toggle**, which has some interesting markup we haven’t seen before.
 
-```
+```javascript
 <Toggle @toggled="handleToggleChange"/>
 ```
 
-The `@toggled=”handleToggleChange”` is shorthand for another v-binding, `v-on`, which tells Vue to fire the local method `handleToggleChange`.
+The `@toggled=”handleToggleChange”` is shorthand for another v-binding, v-on, which tells Vue to fire the local method handleToggleChange.
 
-```
+```javascript
 methods: {
   handleToggleChange(newView) {
     this.isWorkScreen = Boolean(newView === "work");
@@ -287,10 +283,10 @@ methods: {
 
 This function simply changes the local state to flip between the **Home** and **Work** screens. But what is toggled?
 
-To answer this, we have to look inside the **Toggle** component. In the template, there are two **ToggleButtons**, both which have `v-on:clicked` bindings. These are essentially the equivalent of an `onClick` prop in React.
+To answer this, we have to look inside the **Toggle** component. In the template, there are two **ToggleButtons**, both which have v-on:clicked bindings. These are essentially the equivalent of an onClick prop in React.
 
-```
-template>
+```javascript
+<template>
   <div class="toggle">
     <ToggleButton
       @clicked="workClicked"
@@ -308,7 +304,7 @@ template>
 
 Both of the callback functions toggle some local state, but the important part here is the last line of each function: `this.$emit(...)`.
 
-```
+```javascript
 methods: {
   workClicked() {
     this.workActive = true;
@@ -323,27 +319,23 @@ methods: {
 }
 ```
 
-Notice the first argument, `toggled`. Essentially, this line triggers an event that **App** is now listening for due to the `@toggled` binding we added above.
+Notice the first argument, toggled. Essentially, this line triggers an event that **App** is now listening for due to the @toggled binding we added above.
 
 In React, we do something similar, but instead of listening for an event emitted from the child, we pass a function prop from parent to child and execute that function inside the local event listener within the child component.
 
-```
+```javascript
 function Child(props) {
   return (
     <div>
-      <button onClick={() => props.toggleView("work")}>
-        Work
-      </button>
-      <button onClick={() => props.toggleView("home")}>
-        Home
-      </button>
+      <button onClick={() => props.toggleView("work")}>Work</button>
+      <button onClick={() => props.toggleView("home")}>Home</button>
     </div>
-  );
+  )
 }
 
 function Parent() {
-  const [isWorkView, setWorkView] = React.useState(true);
-  return <Child toggleView={setWorkView} />;
+  const [isWorkView, setWorkView] = React.useState(true)
+  return <Child toggleView={setWorkView} />
 }
 ```
 

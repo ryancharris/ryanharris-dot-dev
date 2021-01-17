@@ -25,7 +25,7 @@ class BlogIndex extends React.Component {
             <article
               key={`article-${node.id}`}
               css={css`
-                margin: 0 0 3.5rem 0;
+                margin: 0 0 2.25rem 0;
                 color: #000000;
               `}
             >
@@ -100,8 +100,8 @@ class BlogIndex extends React.Component {
                           {index === tags.length - 1 ? (
                             ""
                           ) : (
-                            <span>,&nbsp;</span>
-                          )}
+                              <span>,&nbsp;</span>
+                            )}
                         </i>
                       </li>
                     )

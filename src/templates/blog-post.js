@@ -62,7 +62,9 @@ export default props => {
     >
       <SEO title={post.frontmatter.title} socialImage={socialImage} />
       <MDXProvider component={components}>
-        <article>
+        <article css={css`
+          line-height: 1.5
+        `}>
           <header>
             <h1
               css={css`

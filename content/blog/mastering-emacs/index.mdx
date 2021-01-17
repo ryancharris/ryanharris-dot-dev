@@ -50,19 +50,19 @@ To add Prettier formatting:
 
 - Add Prettier to `packages.el`
 
-```
+```elisp
 (package! prettier-js)
 ```
 
 - Require Prettier in `config.el`
 
-```
+```elisp
 (require 'prettier-js)
 ```
 
 - Add hooks to format on save in TypeScript and JavaScript modes
 
-```
+```elisp
 (add-hook 'javascript-mode 'prettier-js-mode)
 (add-hook 'typescript-mode 'prettier-js-mode)
 ```
@@ -189,7 +189,7 @@ The package manager
 - MELPA: community package manager
 - Add this config snippet to include ELPA and MELPA packages
 
-```
+```elisp
 (setq package-archives
 '(("gnu" . "http://elpa.gnu.org/packages/")
   ("melpa" . "http://melpa.org/packages/")))
@@ -210,7 +210,7 @@ Apropos
 - EX: `C-h a -word$` lists all commands ending with "word"
 - To sort your apropos results by relevancy
 
-```
+```elisp
 (setq apropos-sort-by-scores t)
 ```
 

@@ -40,7 +40,7 @@ function Hello() {
 }
 ```
 
-Behind the scenes, each element rendered by the `Hello` component is transpiled into to a React.createElement call. In this case:
+Behind the scenes, each element rendered by the Hello component is transpiled into to a React.createElement call. In this case:
 
 ```javascript
 function Hello() {
@@ -89,7 +89,7 @@ When React creates elements, it calls this method, which takes three arguments.
 2. An object representing the element's props
 3. An array of the element's children
 
-One thing to note here is that React interprets lowercase elements as HTML and Pascal case (ex. `ThisIsPascalCase`) elements as custom components. Because of this, **the following examples would be interpreted differently**.
+One thing to note here is that React interprets lowercase elements as HTML and Pascal case (ex. ThisIsPascalCase) elements as custom components. Because of this, **the following examples would be interpreted differently**.
 
 ```javascript
 // 1. HTML element
@@ -99,7 +99,7 @@ React.createElement("div", null, "Some content text here")
 React.createElement(Div, null, "Some content text here")
 ```
 
-The first example would generate a `<div>` with the string `"Some content text here"` as its child. However, the second version would throw an error (unless, of course, a custom component `<Div />` was in scope) because `<Div />` is undefined.
+The first example would generate a <div> with the string "Some content text here" as its child. However, the second version would throw an error (unless, of course, a custom component <Div /> was in scope) because <Div /> is undefined.
 
 ### Props in JSX
 
@@ -139,7 +139,7 @@ There are four ways to render child elements using JSX:
 
 #### Strings
 
-This is the simplest example of JSX children. In the case below, React creates a `<h1>` HTML element with one child. The child, however, is not another HTML element, just a simple string.
+This is the simplest example of JSX children. In the case below, React creates a <h1> HTML element with one child. The child, however, is not another HTML element, just a simple string.
 
 ```javascript
 function AlertBanner() {
@@ -149,7 +149,7 @@ function AlertBanner() {
 
 #### JSX Elements
 
-This is probably the use case new React developers would be the most familiar with. In the component below, we're returning an HTML child (the `<header>`), which has two children of its own `<Nav />` and `<ProfilePic />` both of which are custom defined JSX elements.
+This is probably the use case new React developers would be the most familiar with. In the component below, we're returning an HTML child (the <header>), which has two children of its own <Nav /> and <ProfilePic /> both of which are custom defined JSX elements.
 
 ```javascript
 function Header(props) {
@@ -166,7 +166,7 @@ function Header(props) {
 
 Expressions allow us to easily render elements in our UI that are the result of a JavaScript computation. A simple example of this would be basic addition.
 
-Say we have a component called `<BillFooter />` that renders information about a bill or receipt. Let's assume it takes one prop called `total` that represents the pre-tax cost and another prop `taxRate`, which represents the applicable tax rate.
+Say we have a component called <BillFooter /> that renders information about a bill or receipt. Let's assume it takes one prop called total that represents the pre-tax cost and another prop taxRate, which represents the applicable tax rate.
 
 Using expressions, we can easily render out some useful information for our users!
 
@@ -185,7 +185,7 @@ function BillFooter(props) {
 
 With functions, we can programmatically create elements and structures, which React will then render for us. This makes it easy to create multiple instances of a component or render repeated UI elements.
 
-As an example, let's use JavaScript's `.map()`function to create a navigation bar.
+As an example, let's use JavaScript's .map() function to create a navigation bar.
 
 ```javascript
 // Array of page information
@@ -222,9 +222,9 @@ function Nav() {
 }
 ```
 
-Now, if we want to add a new page to our site, all we need to do is add a new object to the `pages` array and React will take care of the rest!
+Now, if we want to add a new page to our site, all we need to do is add a new object to the pages array and React will take care of the rest!
 
-**Take note of the `key` prop**. Our function returns an array of sibling elements, in this case `<li>`s, and React needs a way to keep track of which mounts, unmounts or updates. To do that, it relies on this unique identifier for each element.
+**Take note of the key prop**. Our function returns an array of sibling elements, in this case <li>s, and React needs a way to keep track of which mounts, unmounts or updates. To do that, it relies on this unique identifier for each element.
 
 ---
 
