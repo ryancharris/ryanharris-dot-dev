@@ -3,6 +3,8 @@ import { graphql, Link, useStaticQuery } from "gatsby"
 import { css } from "@emotion/core"
 import { jsx } from "theme-ui"
 
+import theme from "../gatsby-plugin-theme-ui/index"
+
 const routeListItem = css`
   a {
     box-shadow: none;
@@ -33,23 +35,21 @@ function Nav(props) {
         key={`route-${route.label.toLowerCase()}`}
         css={routeListItem}
         sx={{
-          margin: [`0 12px 0 0`, "0 0 8px 0"],
+          margin: ["0 1rem 0 0", "0 0 0 1rem"],
         }}
       >
         <Link
           to={route.url}
           sx={{
             "&:hover": {
-              color: "white",
-              textShadow: "1px 1px 1px rgba(0, 0, 0, 0.5)",
+              color: "streamPink",
             },
           }}
           getProps={props => {
             return props.isCurrent
               ? {
                   style: {
-                    color: "#eff1f3",
-                    textShadow: "1px 1px 1px rgba(0, 0, 0, 0.5)",
+                    color: theme.colors.streamPink,
                   },
                 }
               : null
@@ -63,13 +63,15 @@ function Nav(props) {
 
   return (
     <ul
+      css={css`
+        display: flex;
+        list-style: none;
+        padding: 0;
+        flex-direction: row;
+      `}
       sx={{
-        display: `flex`,
-        listStyle: `none`,
-        margin: `0`,
-        padding: `0px`,
-        flexDirection: [`row`, `column`],
-        fontSize: [2, 3],
+        fontSize: 3,
+        margin: ["2rem 0 0 0", "0.75rem 0 0 0"],
       }}
     >
       {pageLinks}

@@ -6,7 +6,6 @@ import { useStaticQuery, graphql } from "gatsby"
 import GithubLogo from "../../content/assets/githubLogo.svg"
 import LinkedInLogo from "../../content/assets/linkedinLogo.svg"
 import TwitterLogo from "../../content/assets/twitterLogo.svg"
-import YoutubeLogo from "../../content/assets/youtubeLogo.svg"
 import TwitchLogo from "../../content/assets/twitchLogo.svg"
 
 function SocialMenu() {
@@ -21,8 +20,8 @@ function SocialMenu() {
   `
 
   const socialIcon = css`
-    height: 18px;
-    width: 18px;
+    height: 16px;
+    width: 16px;
   `
 
   const socialIconLink = css`
@@ -34,7 +33,7 @@ function SocialMenu() {
     color: "text",
     textShadow: theme => `1px 1px 1px ${theme.colors.white}`,
     "&:hover": {
-      color: "white",
+      color: "streamPink",
     },
   }
 
@@ -42,11 +41,11 @@ function SocialMenu() {
     query SocialMenu {
       site {
         siteMetadata {
-          social {
+          socialInfo {
             github
             linkedin
             twitter
-            youtube
+
             twitch
           }
         }
@@ -54,25 +53,22 @@ function SocialMenu() {
     }
   `)
 
-  const { social } = data.site.siteMetadata
+  const { socialInfo } = data.site.siteMetadata
 
   return (
     <ul
       css={css`
         align-items: center;
-        display: flex;
         list-style: none;
+        padding: 0;
+        margin: 0.25rem 0 0 0;
+        justify-content: flex-start;
+        display: flex;
       `}
-      sx={{
-        margin: ["0 0 8px 0", "0 0 16px 0"],
-        position: ["absolute", "inherit"],
-        right: ["0"],
-        top: ["6px"],
-      }}
     >
       <li css={socialIconListItem}>
         <a
-          href={`https://www.twitter.com/${social.twitter}`}
+          href={`https://www.twitter.com/${socialInfo.twitter}`}
           css={socialIconLink}
           sx={socialIconLinkThemeStyles}
           target="_blank"
@@ -83,7 +79,7 @@ function SocialMenu() {
       </li>
       <li css={socialIconListItem}>
         <a
-          href={`https://www.github.com/${social.github}`}
+          href={`https://www.github.com/${socialInfo.github}`}
           css={socialIconLink}
           sx={socialIconLinkThemeStyles}
           target="_blank"
@@ -94,7 +90,7 @@ function SocialMenu() {
       </li>
       <li css={socialIconListItem}>
         <a
-          href={`https://www.linkedin.com/in/${social.linkedin}`}
+          href={`https://www.linkedin.com/in/${socialInfo.linkedin}`}
           css={socialIconLink}
           sx={socialIconLinkThemeStyles}
           target="_blank"
@@ -105,18 +101,7 @@ function SocialMenu() {
       </li>
       <li css={socialIconListItem}>
         <a
-          href={social.youtube}
-          css={socialIconLink}
-          sx={socialIconLinkThemeStyles}
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          <YoutubeLogo css={socialIcon} />
-        </a>
-      </li>
-      <li css={socialIconListItem}>
-        <a
-          href={`https://twitch.tv/${social.twitch}`}
+          href={`https://twitch.tv/${socialInfo.twitch}`}
           css={socialIconLink}
           sx={socialIconLinkThemeStyles}
           target="_blank"

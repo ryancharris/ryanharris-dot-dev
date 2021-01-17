@@ -12,49 +12,34 @@ class Layout extends React.Component {
     const rootPath = `${__PATH_PREFIX__}/`
 
     const mainContainer = css`
-      flex: 0 0 66.66%;
       overflow: auto;
       width: 100%;
       flex-grow: 1;
 
-      code {
-        background: #2a2734;
-        color: #ffcc99;
-        font-size: 1rem;
-        padding: 0 8px;
-      }
-
       a {
         box-shadow: none;
         color: #009fb7;
+        text-decoration: none;
+      }
+
+      p {
+        line-height: 1.5;
+      }
+
+      li {
+        margin-bottom: 16px;
+      }
+
+      .gatsby-highlight-code-line {
+        background-color: #feb;
+        display: block;
+        margin-right: -1em;
+        margin-left: -1em;
+        padding-right: 1em;
+        padding-left: 0.75em;
+        border-left: 0.25em solid #f99;
       }
     `
-
-    const header =
-      location.pathname === rootPath ? (
-        <header
-          sx={{
-            display: ["none", "block"],
-          }}
-        >
-          <h1
-            style={{
-              marginTop: "12px",
-            }}
-          >
-            <Link
-              style={{
-                boxShadow: `none`,
-                textDecoration: `none`,
-                color: `inherit`,
-              }}
-              to={`/`}
-            >
-              {title}
-            </Link>
-          </h1>
-        </header>
-      ) : null
 
     return (
       <div
@@ -62,23 +47,22 @@ class Layout extends React.Component {
           box-sizing: border-box;
           display: flex;
           min-height: 100vh;
-          padding: 0;
-          width: 100%;
+          padding: 2.625rem 1.3125rem;
+          margin: 0 auto;
         `}
         sx={{
           color: "text",
-          flexDirection: ["column", "row"],
+          flexDirection: "column",
+          maxWidth: "42rem",
         }}
       >
         <Sidebar />
         <main
           css={mainContainer}
           sx={{
-            padding: ["16px 32px", "12px 24px"],
-            maxWidth: ["100%", "800px"],
+            maxWidth: "100%",
           }}
         >
-          {header}
           {children}
         </main>
       </div>

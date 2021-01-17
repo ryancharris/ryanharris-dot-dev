@@ -20,6 +20,8 @@ export default {
     text: "#272727",
     white: "#eff1f3",
     codeBlack: "#2a2734",
+    streamBlue: "#4dc0c7",
+    streamPink: "#f22465",
     modes: {
       dark: {},
     },
@@ -28,6 +30,7 @@ export default {
     h1: {
       marginBottom: "32px",
       marginTop: "12px",
+      color: "red",
     },
     h2: {
       marginBottom: "12px",
@@ -36,6 +39,7 @@ export default {
     h3: {
       marginBottom: "24px",
       marginTop: 0,
+      color: "red",
     },
     h4: {
       marginBottom: "12px",
@@ -55,7 +59,7 @@ export default {
       marginBottom: "16px",
     },
     ul: {
-      marginLeft: "32px",
+      marginLeft: "4px",
     },
     ol: {
       marginLeft: "32px",

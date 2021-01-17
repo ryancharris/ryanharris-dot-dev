@@ -45,7 +45,7 @@ You can use ESLint in a number of ways:
 
 The CLI comes in handy because you can lint (and fix) specific files and directories, use it in your pre-commit hooks, or integrate it into your CI/CD pipeline. Extensions, on the other hand, make your life easier when actually writing code by highlighting code blocks that break your preferred rules. In some cases, they can even suggest or fix violations on their own.
 
-ESLint also allows you to extend rule sets, which are distributed as `npm` packages, from other developers and organizations. Extending a configuration like the one <a href="https://www.npmjs.com/package/eslint-config-airbnb" target="_blank">Airbnb's engineeering team</a> uses or <a href="https://github.com/standard/standard" target="_blank">StandardJS</a> is an easy way to get started with ESLint. Over time, if there are rules your team does not like, you can always override them to create a custom configuration.
+ESLint also allows you to extend rule sets, which are distributed as npm packages, from other developers and organizations. Extending a configuration like the one <a href="https://www.npmjs.com/package/eslint-config-airbnb" target="_blank">Airbnb's engineeering team</a> uses or <a href="https://github.com/standard/standard" target="_blank">StandardJS</a> is an easy way to get started with ESLint. Over time, if there are rules your team does not like, you can always override them to create a custom configuration.
 
 ### Prettier
 
@@ -91,23 +91,11 @@ If you're using <a href="https://code.visualstudio.com/" target="_blank">VS Code
 
 When using ESLint and Prettier together, there are a couple packages you'll want to install in order to help them work well together.
 
-1. <a
-     href="https://www.npmjs.com/package/eslint-config-prettier"
-     target="_blank"
-   >
-     eslint-config-prettier
-   </a> - This disables ESLint's formatting rules and defers that concern to Prettier.
+1. <a href="https://www.npmjs.com/package/eslint-config-prettier" target="\_blank">eslint-config-prettier</a> - This disables ESLint's formatting rules and defers that concern to Prettier.
 
-2. <a
-     href="https://www.npmjs.com/package/eslint-plugin-prettier"
-     target="_blank"
-   >
-     eslint-plugin-prettier
-   </a> - Using this plugin allows ESLint to check for violations of Prettier rules and throw errors as part of its linting process.
+2. <a href="https://www.npmjs.com/package/eslint-plugin-prettier" target="\_blank">eslint-plugin-prettier</a> - Using this plugin allows ESLint to check for violations of Prettier rules and throw errors as part of its linting process.
 
-3. <a href="https://www.npmjs.com/package/eslint-config-airbnb" target="_blank">
-     eslint-config-airbnb
-   </a> - Extending this configuration allows you to use Airbnb's preferred coding style and standards.
+3. <a href="https://www.npmjs.com/package/eslint-config-airbnb" target="_blank">eslint-config-airbnb</a> - Extending this configuration allows you to use Airbnb's preferred coding style and standards.
 
 With these three packages installed, your `.eslintrc` would look something like this:
 

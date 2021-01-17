@@ -18,6 +18,7 @@ The TL;DR of the solution I came up with was to pipe Discord's audio into my str
 It took some experimentation, but here's the general setup I landed on:
 
 **Tools**
+
 - Macbook Pro (2019)
 - [Streamlabs OBS](https://streamlabs.com/) (stream software)
 - [iShowU Audio](https://support.shinywhitebox.com/hc/en-us/articles/204161459-Installing-iShowU-Audio-Capture-Mojave-and-earlier-) (desktop audio capture)
@@ -27,15 +28,15 @@ It took some experimentation, but here's the general setup I landed on:
 
 Since I want to split Spotfiy and Discord audio up, I can't simply use iShowU to capture and output all my audio wholesale. To do this, I had to:
 
-1. Set the macOS Sound preferences to out put to `Multi-Output Device`. You can create this in the Audio MIDI Setup app.
+1. Set the macOS Sound preferences to out put to Multi-Output Device. You can create this in the Audio MIDI Setup app.
 
 ![Sound preferences](./01-sound-prefs.png)
 
-2. In the aforementioned app, select the headphones (`USB PnP Audio Device`). All desktop audio now plays in the headphones.
+2. In the aforementioned app, select the headphones (USB PnP Audio Device). All desktop audio now plays in the headphones.
 
 ![Audio MIDI settings](./02-audio-midi.png)
 
-3. Change the Discord audio preference to output to `iShowU Audio Capture`. You will no longer hear Discord audio in your headphones.
+3. Change the Discord audio preference to output to iShowU Audio Capture. You will no longer hear Discord audio in your headphones.
 
 ![Discord settings](./03-discord-settings.png)
 

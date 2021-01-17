@@ -1,107 +1,122 @@
 module.exports = {
   siteMetadata: {
-    title: `ryanharris.dev`,
-    author: `Ryan Harris`,
-    description: `dev @ fauna. organizer @ reactadelphia. streamer @ twitch.tv/ryan_c_harris. member of @thelivecoders.`,
-    siteUrl: `https://ryanharris.dev`,
-    social: {
-      github: `ryancharris`,
-      linkedin: `ryancharris`,
-      twitter: `ryan_c_harris`,
-      youtube: `https://www.youtube.com/playlist?list=PLCP3kvy3RyhRyre5F-S9-CL2vFea43I-W`,
+    title: "ryanharris.dev",
+    author: "Ryan Harris",
+    description:
+      "dev @ fauna. instructor @ egghead. organizer @ reactadelphia. streamer @ twitch.tv/ryan_c_harris.",
+    siteUrl: "https://ryanharris.dev",
+    socialInfo: {
+      github: "ryancharris",
+      linkedin: "ryancharris",
+      twitter: "ryan_c_harris",
       twitch: "ryan_c_harris",
     },
     siteRoutes: [
-      // {
-      //   url: `/about`,
-      //   label: `About`,
-      // }
       {
-        url: `/`,
-        label: `Blog`,
+        url: "/",
+        label: "blog",
       },
       {
-        url: `/uses`,
-        label: `Uses`,
+        url: "/uses",
+        label: "uses",
       },
       {
-        url: `/resume`,
-        label: `CV`,
+        url: "/resume",
+        label: "cv",
       },
       {
-        url: `/talks`,
-        label: `Talks`,
+        url: "/talks",
+        label: "talks",
       },
     ],
   },
   plugins: [
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-theme-blog",
+      options: {
+        assetPath: "content/assets",
+        contentPath: "content/blog",
+        mdxOtherwiseConfigured: true,
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/content/blog`,
-        name: `blog`,
+        name: "blog",
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/content/assets`,
-        name: `assets`,
+        name: "assets",
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: `${__dirname}/src/pages/`,
+        name: "pages",
+      },
+    },
+    {
+      resolve: "gatsby-plugin-manifest",
+      options: {
+        name: "ryanharris.dev",
+        short_name: "ryanharris.dev",
+        description:
+          "dev @ fauna. instructor @ egghead. organizer @ reactadelphia. streamer @ twitch.tv/ryan_c_harris.",
+        start_url: "/",
+        background_color: "#ffffff",
+        theme_color: "#009fb7",
+        display: "minimal-ui",
+        icon: "content/assets/favicon.jpg",
+      },
+    },
+    {
+      resolve: "gatsby-plugin-mdx",
+      options: {
+        defaultLayouts: {
+          blog: require.resolve("./src/templates/blog-post.js"),
+          default: require.resolve("./src/templates/page-template.js"),
+        },
+        gatsbyRemarkPlugins: [
+          "gatsby-remark-images",
+          {
+            resolve: "gatsby-remark-responsive-iframe",
+            options: {
+              wrapperStyle: "margin-bottom: 1.0725rem",
+            },
+          },
+          'gatsby-remark-prismjs'
+        ],
+      },
+    },
+    "gatsby-plugin-react-helmet",
+    {
+      resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-images`,
+            resolve: "gatsby-remark-images",
             options: {
               maxWidth: 590,
             },
           },
           {
-            resolve: `gatsby-remark-responsive-iframe`,
+            resolve: "gatsby-remark-responsive-iframe",
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
+              wrapperStyle: "margin-bottom: 1.0725rem",
             },
           },
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
+          "gatsby-remark-copy-linked-files",
+          "gatsby-remark-smartypants",
         ],
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: `UA-135453133-1`,
-      },
-    },
-    // `gatsby-plugin-feed`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `ryanharris.dev`,
-        short_name: `ryanharris.dev`,
-        description:
-          "dev @ fauna. organizer @ reactadelphia. streamer @ twitch.tv/ryan_c_harris. member of @thelivecoders.",
-        start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#009fb7`,
-        display: `minimal-ui`,
-        icon: `content/assets/favicon.jpg`,
-      },
-    },
-    `gatsby-plugin-offline`,
-    `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-sharp",
     {
       resolve: "gatsby-plugin-react-svg",
       options: {
@@ -110,30 +125,5 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `pages`,
-        path: `${__dirname}/src/pages/`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-mdx`,
-      options: {
-        defaultLayouts: {
-          default: require.resolve("./src/templates/page-template.js"),
-        },
-        gatsbyRemarkPlugins: [
-          `gatsby-remark-images`,
-          {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
-            },
-          },
-        ],
-      },
-    },
-    `gatsby-plugin-theme-ui`,
   ],
 }

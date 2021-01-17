@@ -19,7 +19,7 @@ function SEO({ description, lang, meta, title, socialImage }) {
             title
             description
             author
-            social {
+            socialInfo {
               twitter
             }
           }
@@ -60,11 +60,11 @@ function SEO({ description, lang, meta, title, socialImage }) {
         },
         {
           name: `twitter:creator`,
-          content: `@${site.siteMetadata.social.twitter}`,
+          content: `@${site.siteMetadata.socialInfo.twitter}`,
         },
         {
           name: `twitter:site`,
-          content: `@${site.siteMetadata.social.twitter}`,
+          content: `@${site.siteMetadata.socialInfo.twitter}`,
         },
         {
           name: `og:image`,
@@ -79,7 +79,7 @@ SEO.defaultProps = {
   lang: `en`,
   meta: [],
   description: ``,
-  socialImage: ''
+  socialImage: "",
 }
 
 SEO.propTypes = {
@@ -87,7 +87,7 @@ SEO.propTypes = {
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
-  socialImage: PropTypes.string
+  socialImage: PropTypes.string,
 }
 
 export default SEO
