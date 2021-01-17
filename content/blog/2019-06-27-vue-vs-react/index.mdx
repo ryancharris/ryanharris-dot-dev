@@ -116,7 +116,7 @@ Below, I’ve highlighted five tasks a developer commonly performs when building
 
 A common strategy developers use is called conditional rendering. Essentially, this is a fancy way of saying “if X, then Y.” This is often how we show or hide parts of our interface from the user.
 
-We can see an example of this in **App.vue** within the <template> tags. Two of our components (<Work /> and <Home />) are being conditionally rendered using Vue’s v-bindings. In this case, the user sees <Work /> if our local state (i.e., data.isWorkScreen) has a value of true. Otherwise, they see, <Home />.
+We can see an example of this in **App.vue** within the template tags. Two of our components (Work and Home) are being conditionally rendered using Vue’s v-bindings. In this case, the user sees Work if our local state (i.e., data.isWorkScreen) has a value of true. Otherwise, they see, Home.
 
 ```javascript
 <div id="app">
@@ -139,9 +139,9 @@ In React, we would do this slightly differently. There are a number of ways we c
 
 #### #2 Rendering a list
 
-Another common thing I find myself doing when building an application is iterating through a data object and creating component instances for each item in the list. For example, this would be a good way to create every <Item /> in a <ToDoList />.
+Another common thing I find myself doing when building an application is iterating through a data object and creating component instances for each item in the list. For example, this would be a good way to create every Item in a ToDoList.
 
-In our case, we’re creating two instances of <BusRoute /> in **Work.vue** and another two in **Home.vue**. In both files, we are iterating through our route information using the v-for binding in order to create each individual route component.
+In our case, we’re creating two instances of BusRoute in **Work.vue** and another two in **Home.vue**. In both files, we are iterating through our route information using the v-for binding in order to create each individual route component.
 
 ```javascript
 <div class="Work">
@@ -156,7 +156,7 @@ In our case, we’re creating two instances of <BusRoute /> in **Work.vue** and 
 </div>
 ```
 
-To replicate this in React, we can use something as simple as **.map** to create a <BusRoute /> for each item in our data object. Then, we can interpolate this value into the JSX tree we’re returning.
+To replicate this in React, we can use something as simple as **.map** to create a BusRoute for each item in our data object. Then, we can interpolate this value into the JSX tree we’re returning.
 
 ```javascript
 const { buses } = this.state

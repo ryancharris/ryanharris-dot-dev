@@ -126,7 +126,7 @@ In the sections below, we'll walk through two examples that better illustrate ho
 
 #### Accessing DOM elements
 
-For this example, I have built a small SearchInput component that uses the useRef hook in order to refer to the <input /> element rendered by our component:
+For this example, I have built a small SearchInput component that uses the useRef hook in order to refer to the input element rendered by our component:
 
 <iframe
   src="https://codesandbox.io/embed/serene-sunset-z80cl?fontsize=14&hidenavigation=1&theme=dark"
@@ -136,7 +136,7 @@ For this example, I have built a small SearchInput component that uses the useRe
   sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
 ></iframe>
 
-In this specific case, our SearchInput component takes an autoFocus prop, which determines whether or not we want the <input /> to be focused automatically on mount. In order to do this, we need to use a web API (i.e. .focus()) and thus need to be able to directly refer to the HTML element on the page.
+In this specific case, our SearchInput component takes an autoFocus prop, which determines whether or not we want the input to be focused automatically on mount. In order to do this, we need to use a web API (i.e. .focus()) and thus need to be able to directly refer to the HTML element on the page.
 
 To get this to work, the first thing we need to do is create a ref and assign it to our element:
 
@@ -148,7 +148,7 @@ const inputRef = useRef(null)
 ;<input ref={inputRef} type="search" className="SearchInput__input" />
 ```
 
-Now, our inputRef is pointing at the search input, so if we were to log out inputRef.current, we would see our <input />:
+Now, our inputRef is pointing at the search input, so if we were to log out inputRef.current, we would see our input:
 
 ```javascript
 console.log(inputRef.current)
@@ -168,7 +168,7 @@ useLayoutEffect(() => {
 }, [autoFocus])
 ```
 
-By calling inputRef.current.focus(), we are setting the <input /> inside our component as the active element in the document. In addition, we're also updating our focused value stored in a useState hook in order to style our component.
+By calling inputRef.current.focus(), we are setting the input inside our component as the active element in the document. In addition, we're also updating our focused value stored in a useState hook in order to style our component.
 
 ```javascript
 const focusCn = focused ? "SearchInput focused" : "SearchInput"

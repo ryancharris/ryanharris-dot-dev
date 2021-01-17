@@ -74,7 +74,7 @@ _Note: If you're unfamiliar with <Link to="/hooks-useeffect">useEffect</Link> or
   sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
 ></iframe>
 
-Here, our <App /> component does three things:
+Here, our App component does three things:
 
 1. Makes a call to the NASA API in a useEffect hook and fetches a list of NASA facilities, which we store in useState
 
@@ -89,7 +89,7 @@ useEffect(() => {
 }, [])
 ```
 
-2. Observes the <input /> in our return and stores its value in another useState hook
+2. Observes the input in our return and stores its value in another useState hook
 
 ```javascript
 const [inputValue, setInputValue] = useState("")
@@ -101,7 +101,7 @@ const [inputValue, setInputValue] = useState("")
 />
 ```
 
-3. Passes a filtered array to <MapView /> via the coordinates prop, which represents location information for each facility
+3. Passes a filtered array to MapView via the coordinates prop, which represents location information for each facility
 
 ```javascript
 <MapView coordinates={mapCoordinates} />
@@ -132,7 +132,7 @@ const mapCoordinates = useMemo(() => {
 
 First, look at the dependency array (i.e. [inputValue, nasaLocations]). Like useEffect, this tells useMemo only to run when either of those values change. Right now, we only make a call for nasaLocations on initial render, so its value will only change once, which triggers the hook.
 
-Our other value (i.e. inputValue), represents the value the user has entered in the <input />. Anytime the user adds or removes characters from the input, the inputValue will change in our useState hook and cause useMemo to run again.
+Our other value (i.e. inputValue), represents the value the user has entered in the input. Anytime the user adds or removes characters from the input, the inputValue will change in our useState hook and cause useMemo to run again.
 
 The trick here is that since we filter our nasaLocations list based on the inputValue, we can use useMemo to reduce computations. Since the hook will return a cached value whenever it receives inputs it has used for computation before, we will avoid re-running all the logic in createCoordsForLocation() and createMapCoordinates() if the inputValue and nasaLocations array we're passing in have already been processed.
 
