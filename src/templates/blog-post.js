@@ -2,7 +2,6 @@ import React from "react"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { css } from "@emotion/core"
-import { jsx } from "theme-ui"
 import { graphql, Link } from "gatsby"
 import getShareImage from "@jlengstorf/get-share-image"
 
@@ -63,7 +62,9 @@ export default props => {
       <SEO title={post.frontmatter.title} socialImage={socialImage} />
       <MDXProvider component={components}>
         <article css={css`
-          line-height: 1.5
+          line-height: 1.5;
+          margin-bottom: 36px;
+          overflow: auto;
         `}>
           <header>
             <h1
