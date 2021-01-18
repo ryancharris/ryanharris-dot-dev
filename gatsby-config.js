@@ -21,12 +21,12 @@ module.exports = {
         label: "uses",
       },
       {
-        url: "/resume",
-        label: "cv",
-      },
-      {
         url: "/talks",
         label: "talks",
+      },
+      {
+        url: "/resume",
+        label: "cv",
       },
     ],
   },

@@ -16,6 +16,10 @@ class Layout extends React.Component {
       width: 100%;
       flex-grow: 1;
 
+      h3 {
+        margin-top: 0;
+      }
+
       a {
         box-shadow: none;
         color: #009fb7;
