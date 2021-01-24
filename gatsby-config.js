@@ -34,9 +34,10 @@ module.exports = {
     {
       resolve: "gatsby-theme-blog",
       options: {
-        assetPath: "content/assets",
-        contentPath: "content/blog",
+        assetPath: `${__dirname}/content/assets`,
+        contentPath: `${__dirname}/content/blog`,
         mdxOtherwiseConfigured: true,
+        prismPreset: 'dracula'
       },
     },
     {
@@ -56,8 +57,21 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        path: `${__dirname}/src/pages/`,
+        path: `${__dirname}/src/pages`,
         name: "pages",
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: `${__dirname}/src/mdx`,
+        name: "mdx",
+      },
+    },
+    {
+      resolve: "gatsby-plugin-page-creator",
+      options: {
+        path: `${__dirname}/src/mdx`,
       },
     },
     {
@@ -66,7 +80,7 @@ module.exports = {
         name: "ryanharris.dev",
         short_name: "ryanharris.dev",
         description:
-          "dev @ fauna. instructor @ egghead. organizer @ reactadelphia. streamer @ twitch.tv/ryan_c_harris.",
+          "instructor @ egghead. organizer @ reactadelphia. streamer @ twitch.tv/ryan_c_harris.",
         start_url: "/",
         background_color: "#ffffff",
         theme_color: "#009fb7",
@@ -76,6 +90,7 @@ module.exports = {
     },
     {
       resolve: "gatsby-plugin-mdx",
+      extensions: [".mdx"],
       options: {
         defaultLayouts: {
           blog: require.resolve("./src/templates/blog-post.js"),
@@ -89,34 +104,10 @@ module.exports = {
               wrapperStyle: "margin-bottom: 1.0725rem",
             },
           },
-          'gatsby-remark-prismjs'
         ],
       },
     },
     "gatsby-plugin-react-helmet",
-    {
-      resolve: "gatsby-transformer-remark",
-      options: {
-        plugins: [
-          {
-            resolve: "gatsby-remark-images",
-            options: {
-              maxWidth: 590,
-            },
-          },
-          {
-            resolve: "gatsby-remark-responsive-iframe",
-            options: {
-              wrapperStyle: "margin-bottom: 1.0725rem",
-            },
-          },
-          "gatsby-remark-copy-linked-files",
-          "gatsby-remark-smartypants",
-        ],
-      },
-    },
-    "gatsby-transformer-sharp",
-    "gatsby-plugin-sharp",
     {
       resolve: "gatsby-plugin-react-svg",
       options: {

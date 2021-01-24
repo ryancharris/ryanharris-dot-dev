@@ -15,20 +15,6 @@ const bioHeader = css`
   }
 `
 
-const descriptionLink = css`
-  box-shadow: none;
-  padding: 2px 4px;
-  text-decoration: none;
-`
-
-const descriptionLinkThemeStyles = {
-  color: "white",
-  "&:hover": {
-    backgroundColor: "accent",
-    boxShadown: "0.5px 1px 2px rgba(0, 0, 0, 0.2)",
-  },
-}
-
 const Bio = () => {
   const data = useStaticQuery(graphql`
     {

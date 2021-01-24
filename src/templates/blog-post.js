@@ -10,7 +10,7 @@ import CodeBlock from "../components/CodeBlock"
 import SEO from "../components/seo"
 
 export default props => {
-  const { children, location } = props
+  const { location } = props
   const post = props.data.mdx
 
   const socialImage = getShareImage({
@@ -60,7 +60,9 @@ export default props => {
       socialImage={socialImage}
     >
       <SEO title={post.frontmatter.title} socialImage={socialImage} />
-      <MDXProvider component={components}>
+      <MDXProvider
+        component={components}
+      >
         <article css={css`
           line-height: 1.5;
           margin-bottom: 36px;
